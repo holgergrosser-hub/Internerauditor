@@ -862,80 +862,38 @@
                 <button class="btn btn-primary" onclick="goToModule(9)">Zum Abschlusstest →</button>
             </div>
         </section>
-straße 14, 90763 Fürth</p>
+    </main>
+
+    <footer class="footer">
+        <h3>QM-Dienstleistungen | Holger Grosser</h3>
+        <p>📍 Simonstraße 14, 90763 Fürth</p>
         <p>🌐 <a href="https://www.qm-guru.de">www.qm-guru.de</a> · 📧 <a href="mailto:info@qm-guru.de">info@qm-guru.de</a></p>
-        <p style="margin-top:0.75rem;opacity:0.7;">✓ 30+ Jahre Erfahrung · ✓ 1.000+ Projekte · ✓ Erstellt: QM Elfe · Freigabe: QM Guru</p>
+        <p style="margin-top:0.75rem;opacity:0.7;">✓ 30+ Jahre Erfahrung · ✓ 1.000+ Projekte</p>
+        <p style="margin-top:0.5rem;"><a href="abschlusstest.html" style="color:var(--gold);font-weight:bold;">→ Zum Abschlusstest</a></p>
     </footer>
 
     <script>
         const modules=document.querySelectorAll('.module'),navBtns=document.querySelectorAll('.nav-btn'),progressFill=document.getElementById('progressFill');
         let completedModules=new Set();
-        
         function goToModule(i){
+            if(i===9){window.location.href='abschlusstest.html';return;}
             modules.forEach((m,x)=>{m.classList.remove('active');if(x===i)m.classList.add('active');});
             navBtns.forEach((b,x)=>{b.classList.remove('active');if(x===i)b.classList.add('active');});
             if(i>0){completedModules.add(i-1);navBtns[i-1].classList.add('completed');}
-            progressFill.style.width=(completedModules.size/(modules.length-1))*100+'%';
+            progressFill.style.width=(completedModules.size/9)*100+'%';
             window.scrollTo({top:0,behavior:'smooth'});
         }
-        
         navBtns.forEach((b,i)=>b.addEventListener('click',()=>goToModule(i)));
-        
         function toggleAccordion(h){h.parentElement.classList.toggle('open');}
         function toggleCheckbox(c){c.classList.toggle('checked');}
-        
         document.querySelectorAll('.quiz-option').forEach(o=>{
             o.addEventListener('click',function(){
-                const q=this.closest('.quiz-question'),
-                      opts=q.querySelectorAll('.quiz-option'),
-                      fb=q.querySelector('.quiz-feedback'),
-                      correct=q.dataset.correct,
-                      selected=this.dataset.value;
+                const q=this.closest('.quiz-question'),opts=q.querySelectorAll('.quiz-option'),fb=q.querySelector('.quiz-feedback'),correct=q.dataset.correct,selected=this.dataset.value;
                 opts.forEach(x=>x.classList.remove('selected','correct','incorrect'));
                 this.classList.add('selected');
-                if(selected===correct){
-                    this.classList.add('correct');
-                    fb.className='quiz-feedback show correct';
-                    fb.innerHTML='✓ Richtig!';
-                }else{
-                    this.classList.add('incorrect');
-                    opts.forEach(x=>{if(x.dataset.value===correct)x.classList.add('correct');});
-                    fb.className='quiz-feedback show incorrect';
-                    fb.innerHTML='✗ Leider falsch';
-                }
+                if(selected===correct){this.classList.add('correct');fb.className='quiz-feedback show correct';fb.innerHTML='✓ Richtig!';}
+                else{this.classList.add('incorrect');opts.forEach(x=>{if(x.dataset.value===correct)x.classList.add('correct');});fb.className='quiz-feedback show incorrect';fb.innerHTML='✗ Leider falsch';}
             });
-        });
-        
-        function evaluateFinalQuiz(){
-            const qs=document.querySelectorAll('#finalQuiz .quiz-question');
-            let c=0,a=0;
-            qs.forEach(q=>{
-                const s=q.querySelector('.quiz-option.selected');
-                if(s){a++;if(s.dataset.value===q.dataset.correct)c++;}
-            });
-            const r=document.getElementById('finalResult'),
-                  cert=document.getElementById('certificatePreview'),
-                  needed=Math.ceil(qs.length*0.8);
-            if(a<qs.length){
-                r.style.display='block';
-                r.innerHTML='⚠️ Bitte alle '+qs.length+' Fragen beantworten (noch '+(qs.length-a)+' offen).';
-                return;
-            }
-            r.style.display='block';
-            if(c>=needed){
-                r.innerHTML='🎉 <strong>Herzlichen Glückwunsch - Bestanden!</strong><br>'+c+' von '+qs.length+' Fragen richtig ('+Math.round(c/qs.length*100)+'%)';
-                cert.style.display='block';
-                document.getElementById('certDate').textContent=new Date().toLocaleDateString('de-DE');
-                navBtns.forEach(b=>b.classList.add('completed'));
-                progressFill.style.width='100%';
-            }else{
-                r.innerHTML='📚 Leider nicht bestanden. '+c+' von '+qs.length+' richtig (benötigt: '+needed+'). <br>Bitte die Module noch einmal durcharbeiten.';
-            }
-        }
-        
-        document.getElementById('certName').addEventListener('click',function(){
-            const n=prompt('Bitte geben Sie Ihren Namen ein:');
-            if(n&&n.trim())this.textContent=n.trim();
         });
     </script>
 </body>
