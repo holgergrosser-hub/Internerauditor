@@ -1,0 +1,21 @@
+[build]
+  publish = "."
+  # Kein Build-Command nötig - nur statisches HTML
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Redirects für saubere URLs
+[[redirects]]
+  from = "/schulung"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/audit-training"
+  to = "/index.html"
+  status = 200
