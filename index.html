@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interner Auditor ISO 9001 | Erweiterte Online-Schulung | QM-Guru</title>
+    <title>Interner Auditor ISO 9001 | Online-Schulung | QM-Guru</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root{--primary:#1a365d;--primary-light:#2c5282;--secondary:#c53030;--accent:#38a169;--gold:#d69e2e;--bg-light:#f7fafc;--bg-cream:#fffbf0;--text-dark:#1a202c;--text-muted:#4a5568}
@@ -42,100 +42,103 @@
         .info-box.norm{background:#ebf8ff;border-color:#3182ce}
         .info-box-header{display:flex;align-items:center;gap:0.5rem;font-weight:600;margin-bottom:0.5rem;color:var(--primary)}
         .styled-list{list-style:none;padding:0}
-        .styled-list li{padding:0.6rem 0 0.6rem 1.75rem;position:relative;border-bottom:1px solid #e2e8f0}
+        .styled-list li{padding:0.5rem 0 0.5rem 1.75rem;position:relative;border-bottom:1px solid #e2e8f0}
         .styled-list li:last-child{border-bottom:none}
         .styled-list li::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:bold}
         .numbered-list{counter-reset:item;list-style:none;padding:0}
-        .numbered-list li{counter-increment:item;padding:0.75rem 0 0.75rem 3rem;position:relative;border-bottom:1px solid #e2e8f0}
-        .numbered-list li::before{content:counter(item);position:absolute;left:0;top:0.75rem;width:1.75rem;height:1.75rem;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem}
-        .process-flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0.75rem;margin:1.5rem 0}
-        .process-step{background:#fff;border-radius:12px;padding:1rem;text-align:center;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1)}
-        .step-number{width:40px;height:40px;background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:700;margin:0 auto 0.75rem}
-        .process-step h4{color:var(--primary);margin-bottom:0.25rem;font-size:0.85rem}
-        .process-step p{color:var(--text-muted);font-size:0.75rem}
+        .numbered-list li{counter-increment:item;padding:0.6rem 0 0.6rem 2.5rem;position:relative;border-bottom:1px solid #e2e8f0}
+        .numbered-list li::before{content:counter(item);position:absolute;left:0;top:0.6rem;width:1.5rem;height:1.5rem;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.8rem}
+        .process-flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:0.5rem;margin:1rem 0}
+        .process-step{background:#fff;border-radius:10px;padding:0.75rem;text-align:center;box-shadow:0 2px 4px rgba(0,0,0,0.1)}
+        .step-number{width:32px;height:32px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;margin:0 auto 0.5rem}
+        .process-step h4{color:var(--primary);font-size:0.75rem}
         .accordion-item{background:#fff;border-radius:8px;margin-bottom:0.5rem;box-shadow:0 2px 4px rgba(0,0,0,0.05);overflow:hidden}
-        .accordion-header{padding:1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;color:var(--primary)}
+        .accordion-header{padding:0.75rem 1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;color:var(--primary);font-size:0.95rem}
         .accordion-header:hover{background:#f7fafc}
         .accordion-icon{transition:transform 0.3s ease}
         .accordion-item.open .accordion-icon{transform:rotate(180deg)}
         .accordion-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease}
-        .accordion-item.open .accordion-content{max-height:500px}
-        .accordion-body{padding:0 1rem 1rem}
-        .styled-table{width:100%;border-collapse:collapse;margin:1rem 0;background:#fff;border-radius:12px;overflow:hidden;font-size:0.9rem}
-        .styled-table th{background:var(--primary);color:#fff;padding:0.75rem;text-align:left}
-        .styled-table td{padding:0.75rem;border-bottom:1px solid #e2e8f0}
+        .accordion-item.open .accordion-content{max-height:800px}
+        .accordion-body{padding:0 1rem 1rem;font-size:0.9rem}
+        .styled-table{width:100%;border-collapse:collapse;margin:1rem 0;background:#fff;border-radius:12px;overflow:hidden;font-size:0.85rem}
+        .styled-table th{background:var(--primary);color:#fff;padding:0.6rem;text-align:left}
+        .styled-table td{padding:0.6rem;border-bottom:1px solid #e2e8f0}
         .styled-table tr:hover td{background:#f7fafc}
-        .compare-table{width:100%;border-collapse:collapse;margin:1rem 0}
-        .compare-table th{background:var(--primary);color:#fff;padding:0.75rem;text-align:center}
+        .compare-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.85rem}
+        .compare-table th{background:var(--primary);color:#fff;padding:0.6rem;text-align:center}
         .compare-table th.pro{background:var(--accent)}
         .compare-table th.con{background:var(--secondary)}
-        .compare-table td{padding:0.75rem;border:1px solid #e2e8f0;vertical-align:top}
-        .quiz-container{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border-radius:16px;padding:1.5rem;margin:1.5rem 0;color:#fff}
-        .quiz-container h3{margin-bottom:1rem}
-        .quiz-question{background:rgba(255,255,255,0.1);border-radius:12px;padding:1.25rem;margin-bottom:1rem}
-        .quiz-question p{margin-bottom:0.75rem;font-weight:600}
-        .quiz-options{display:flex;flex-direction:column;gap:0.4rem}
-        .quiz-option{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 1rem;background:rgba(255,255,255,0.1);border-radius:8px;cursor:pointer;border:2px solid transparent;transition:all 0.3s}
+        .compare-table td{padding:0.6rem;border:1px solid #e2e8f0;vertical-align:top}
+        .quiz-container{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border-radius:16px;padding:1.25rem;margin:1.5rem 0;color:#fff}
+        .quiz-container h3{margin-bottom:0.75rem;font-size:1.1rem}
+        .quiz-question{background:rgba(255,255,255,0.1);border-radius:10px;padding:1rem;margin-bottom:0.75rem}
+        .quiz-question p{margin-bottom:0.5rem;font-weight:600;font-size:0.95rem}
+        .quiz-options{display:flex;flex-direction:column;gap:0.3rem}
+        .quiz-option{display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.75rem;background:rgba(255,255,255,0.1);border-radius:6px;cursor:pointer;border:2px solid transparent;transition:all 0.3s;font-size:0.9rem}
         .quiz-option:hover{background:rgba(255,255,255,0.2)}
         .quiz-option.selected{border-color:var(--gold);background:rgba(255,255,255,0.2)}
         .quiz-option.correct{border-color:var(--accent);background:rgba(56,161,105,0.3)}
         .quiz-option.incorrect{border-color:var(--secondary);background:rgba(197,48,48,0.3)}
         .quiz-option input{display:none}
-        .quiz-radio{width:18px;height:18px;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-        .quiz-option.selected .quiz-radio::after,.quiz-option.correct .quiz-radio::after{content:'';width:10px;height:10px;background:#fff;border-radius:50%}
-        .quiz-feedback{margin-top:0.75rem;padding:0.75rem;border-radius:8px;display:none}
+        .quiz-radio{width:16px;height:16px;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .quiz-option.selected .quiz-radio::after,.quiz-option.correct .quiz-radio::after{content:'';width:8px;height:8px;background:#fff;border-radius:50%}
+        .quiz-feedback{margin-top:0.5rem;padding:0.5rem;border-radius:6px;display:none;font-size:0.85rem}
         .quiz-feedback.show{display:block}
         .quiz-feedback.correct{background:rgba(56,161,105,0.3)}
         .quiz-feedback.incorrect{background:rgba(197,48,48,0.3)}
-        .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.875rem 1.75rem;border:none;border-radius:50px;font-family:inherit;font-size:1rem;font-weight:600;cursor:pointer;transition:all 0.3s ease}
+        .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;border:none;border-radius:50px;font-family:inherit;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all 0.3s ease}
         .btn-primary{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);color:#fff}
         .btn-primary:hover{transform:translateY(-2px)}
         .btn-secondary{background:transparent;color:var(--primary);border:2px solid var(--primary)}
         .btn-secondary:hover{background:var(--primary);color:#fff}
         .btn-success{background:var(--accent);color:#fff}
         .module-navigation{display:flex;justify-content:space-between;margin-top:2rem;padding-top:1.5rem;border-top:1px solid #e2e8f0}
-        .checklist{background:#fff;border-radius:12px;padding:1rem}
-        .checklist-item{display:flex;align-items:flex-start;gap:0.75rem;padding:0.6rem 0;border-bottom:1px solid #e2e8f0}
-        .checkbox{width:22px;height:22px;border:2px solid var(--primary);border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .checklist{background:#fff;border-radius:10px;padding:0.75rem}
+        .checklist-item{display:flex;align-items:flex-start;gap:0.5rem;padding:0.4rem 0;border-bottom:1px solid #e2e8f0;font-size:0.9rem}
+        .checkbox{width:20px;height:20px;border:2px solid var(--primary);border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
         .checkbox.checked{background:var(--accent);border-color:var(--accent)}
-        .checkbox.checked::after{content:'✓';color:#fff;font-weight:bold;font-size:0.8rem}
-        .turtle-diagram{display:grid;grid-template-areas:"top top top" "left center right" "bottom bottom bottom";grid-template-columns:1fr 2fr 1fr;gap:0.75rem;margin:1.5rem 0;padding:1rem;background:#fff;border-radius:16px}
-        .turtle-section{background:var(--bg-cream);padding:0.75rem;border-radius:10px;text-align:center}
+        .checkbox.checked::after{content:'✓';color:#fff;font-weight:bold;font-size:0.7rem}
+        .turtle-diagram{display:grid;grid-template-areas:"top top top" "left center right" "bottom bottom bottom";grid-template-columns:1fr 2fr 1fr;gap:0.5rem;margin:1rem 0;padding:0.75rem;background:#fff;border-radius:12px}
+        .turtle-section{background:var(--bg-cream);padding:0.6rem;border-radius:8px;text-align:center}
         .turtle-section.top{grid-area:top;background:#ebf8ff}
         .turtle-section.left{grid-area:left;background:#fff5f5}
         .turtle-section.center{grid-area:center;background:var(--primary);color:#fff}
         .turtle-section.right{grid-area:right;background:#f0fff4}
         .turtle-section.bottom{grid-area:bottom;background:#faf5ff}
-        .turtle-section h4{margin-bottom:0.4rem;font-size:0.85rem}
-        .turtle-section ul{text-align:left;font-size:0.75rem;padding-left:1rem}
-        .swimlane{background:#fff;border-radius:12px;padding:1rem;margin:1rem 0;overflow-x:auto}
-        .swimlane-row{display:flex;border-bottom:1px solid #e2e8f0;min-height:60px}
-        .swimlane-label{width:100px;flex-shrink:0;background:var(--primary);color:#fff;padding:0.5rem;font-weight:600;font-size:0.75rem;display:flex;align-items:center}
-        .swimlane-content{flex:1;display:flex;align-items:center;gap:0.5rem;padding:0.5rem;flex-wrap:wrap}
-        .swimlane-item{background:var(--bg-cream);border:1px solid var(--gold);padding:0.4rem 0.6rem;border-radius:6px;font-size:0.7rem;white-space:nowrap}
-        .swimlane-arrow{color:var(--primary);font-weight:bold}
-        .pdca-cycle{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
-        .pdca-item{padding:1.25rem;border-radius:12px;text-align:center}
+        .turtle-section h4{margin-bottom:0.3rem;font-size:0.8rem}
+        .turtle-section ul{text-align:left;font-size:0.7rem;padding-left:1rem;margin:0}
+        .audit-questions{background:#f8f9fa;border-radius:10px;padding:1rem;margin:1rem 0}
+        .audit-questions h4{color:var(--primary);margin-bottom:0.75rem;font-size:1rem;display:flex;align-items:center;gap:0.5rem}
+        .audit-questions ul{list-style:none;padding:0;margin:0}
+        .audit-questions li{padding:0.4rem 0 0.4rem 1.5rem;position:relative;border-bottom:1px solid #e2e8f0;font-size:0.85rem}
+        .audit-questions li::before{content:'❓';position:absolute;left:0;font-size:0.75rem}
+        .audit-questions li:last-child{border-bottom:none}
+        .example-box{background:#fff;border:2px solid var(--gold);border-radius:10px;padding:1rem;margin:1rem 0}
+        .example-box h4{color:var(--gold);margin-bottom:0.5rem;font-size:0.95rem}
+        .example-box .good{color:var(--accent);font-weight:600}
+        .example-box .bad{color:var(--secondary);font-weight:600}
+        .pdca-cycle{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1rem 0}
+        .pdca-item{padding:1rem;border-radius:10px;text-align:center}
         .pdca-item.plan{background:#ebf8ff;border:2px solid #3182ce}
         .pdca-item.do{background:#f0fff4;border:2px solid var(--accent)}
         .pdca-item.check{background:#faf5ff;border:2px solid #805ad5}
         .pdca-item.act{background:#fff5f5;border:2px solid var(--secondary)}
-        .pdca-item h4{margin-bottom:0.5rem}
+        .pdca-item h4{margin-bottom:0.4rem;font-size:0.9rem}
+        .pdca-item p{font-size:0.8rem}
         .certificate-preview{background:linear-gradient(135deg,#faf5ff 0%,#ebf8ff 100%);border:3px solid var(--gold);border-radius:16px;padding:2rem;text-align:center;margin:1.5rem 0}
-        .certificate-preview h2{color:var(--primary);font-size:1.6rem;margin-bottom:0.75rem}
-        .certificate-preview .seal{width:60px;height:60px;background:var(--gold);border-radius:50%;margin:1rem auto;display:flex;align-items:center;justify-content:center;font-size:1.75rem}
+        .certificate-preview h2{color:var(--primary);font-size:1.5rem;margin-bottom:0.5rem}
+        .certificate-preview .seal{width:50px;height:50px;background:var(--gold);border-radius:50%;margin:0.75rem auto;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
         .footer{background:var(--primary);color:#fff;padding:2rem 1.5rem;text-align:center}
-        .footer h3{margin-bottom:0.75rem;font-size:1.1rem}
+        .footer h3{margin-bottom:0.5rem;font-size:1rem}
         .footer a{color:var(--gold);text-decoration:none}
+        .footer p{font-size:0.85rem}
         @media(max-width:768px){
-            .hero h1{font-size:1.5rem}
+            .hero h1{font-size:1.4rem}
             .process-flow{grid-template-columns:1fr 1fr}
             .turtle-diagram{grid-template-areas:"top" "left" "center" "right" "bottom";grid-template-columns:1fr}
-            .module-navigation{flex-direction:column;gap:0.75rem}
+            .module-navigation{flex-direction:column;gap:0.5rem}
             .btn{width:100%;justify-content:center}
             .pdca-cycle{grid-template-columns:1fr}
-            .swimlane-row{flex-direction:column}
-            .swimlane-label{width:100%}
         }
         @media print{.header,.nav-container,.module-navigation,.quiz-container{display:none}.module{display:block!important}}
     </style>
@@ -144,11 +147,11 @@
     <header class="header"><div class="header-content"><div class="logo">QM-<span>Guru</span></div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></div></header>
     <section class="hero">
         <h1>Interner Auditor ISO 9001</h1>
-        <p class="hero-subtitle">Erweiterte Online-Schulung mit Praxiswissen aus 30 Jahren Erfahrung</p>
+        <p class="hero-subtitle">Praxisnahe Online-Schulung mit echten Auditfragen aus 30 Jahren Erfahrung</p>
         <div class="hero-badges">
-            <div class="badge"><span>📚</span><span>11 Module</span></div>
-            <div class="badge"><span>⏱️</span><span>ca. 2 Std.</span></div>
-            <div class="badge"><span>🎯</span><span>Praxisnah</span></div>
+            <div class="badge"><span>📚</span><span>10 Module</span></div>
+            <div class="badge"><span>⏱️</span><span>ca. 90 Min.</span></div>
+            <div class="badge"><span>❓</span><span>Praxis-Auditfragen</span></div>
             <div class="badge"><span>🏆</span><span>Zertifikat</span></div>
         </div>
     </section>
@@ -160,54 +163,54 @@
             <button class="nav-btn" data-module="3">3. Planung</button>
             <button class="nav-btn" data-module="4">4. Vorbereitung</button>
             <button class="nav-btn" data-module="5">5. Durchführung</button>
-            <button class="nav-btn" data-module="6">6. Methoden</button>
-            <button class="nav-btn" data-module="7">7. Fragen</button>
+            <button class="nav-btn" data-module="6">6. Fragetechnik</button>
+            <button class="nav-btn" data-module="7">7. Auditfragen</button>
             <button class="nav-btn" data-module="8">8. Dokumentation</button>
-            <button class="nav-btn" data-module="9">9. Nachbereitung</button>
-            <button class="nav-btn" data-module="10">Abschluss</button>
+            <button class="nav-btn" data-module="9">Abschluss</button>
         </div>
     </nav>
     <main class="main-content">
-        <!-- Modul 0: Überblick -->
+        <!-- Modul 0: Start -->
         <section class="module active" id="module-0">
             <div class="module-header">
                 <span class="module-number">Willkommen</span>
                 <h2 class="module-title">Mehr Energie für interne Audits</h2>
-                <p class="module-subtitle">Praxisnahe Schulung für erfolgreiche interne Auditoren</p>
+                <p class="module-subtitle">Erstellt: QM Elfe · Freigabe: QM Guru</p>
             </div>
             <div class="content-card">
                 <h3>Was Sie in dieser Schulung lernen</h3>
-                <p>Diese erweiterte Schulung vermittelt Ihnen alle Kenntnisse und praktischen Fähigkeiten für professionelle interne Audits - von der Planung bis zur Wirksamkeitsprüfung.</p>
+                <p>Diese Schulung macht Sie fit für professionelle interne Audits - von der Planung bis zur Wirksamkeitsprüfung. Mit echten Praxisfragen aus über 1.000 durchgeführten Audits.</p>
                 <div class="info-box">
-                    <div class="info-box-header"><span>💡</span> Unser Ansatz nach 30 Jahren Erfahrung</div>
-                    <p><strong>"So wenig wie möglich, so viel wie nötig."</strong> Audits sollen positiv angekündigt werden - nicht nur auf "Fehler finden" abzielen!</p>
+                    <div class="info-box-header"><span>💡</span> Unser Grundsatz</div>
+                    <p style="font-size:1.1rem;text-align:center;margin:0.5rem 0;"><strong>"So wenig wie möglich, so viel wie nötig."</strong></p>
+                    <p style="text-align:center;">Audits sollen <strong>positiv</strong> angekündigt werden - nicht nur auf "Fehler finden" abzielen!</p>
                 </div>
             </div>
             <div class="content-card">
-                <h3>Die 11 Module im Überblick</h3>
+                <h3>Die 10 Module im Überblick</h3>
                 <div class="process-flow">
-                    <div class="process-step"><div class="step-number">1</div><h4>Grundlagen</h4><p>Was ist ein Audit?</p></div>
-                    <div class="process-step"><div class="step-number">2</div><h4>Normen</h4><p>ISO 9001 & 19011</p></div>
-                    <div class="process-step"><div class="step-number">3</div><h4>Planung</h4><p>Auditprogramm</p></div>
-                    <div class="process-step"><div class="step-number">4</div><h4>Vorbereitung</h4><p>Gesprächspartner</p></div>
-                    <div class="process-step"><div class="step-number">5</div><h4>Durchführung</h4><p>Ablauf & Phasen</p></div>
-                    <div class="process-step"><div class="step-number">6</div><h4>Methoden</h4><p>Remote & Vor-Ort</p></div>
-                    <div class="process-step"><div class="step-number">7</div><h4>Fragen</h4><p>5 Fragearten</p></div>
-                    <div class="process-step"><div class="step-number">8</div><h4>Doku</h4><p>Auditbericht</p></div>
-                    <div class="process-step"><div class="step-number">9</div><h4>Nachbereitung</h4><p>PDCA & Maßnahmen</p></div>
-                    <div class="process-step"><div class="step-number">✓</div><h4>Abschluss</h4><p>Zertifikat</p></div>
+                    <div class="process-step"><div class="step-number">1</div><h4>Grundlagen</h4></div>
+                    <div class="process-step"><div class="step-number">2</div><h4>Normen</h4></div>
+                    <div class="process-step"><div class="step-number">3</div><h4>Planung</h4></div>
+                    <div class="process-step"><div class="step-number">4</div><h4>Vorbereitung</h4></div>
+                    <div class="process-step"><div class="step-number">5</div><h4>Durchführung</h4></div>
+                    <div class="process-step"><div class="step-number">6</div><h4>Fragetechnik</h4></div>
+                    <div class="process-step"><div class="step-number">7</div><h4>Auditfragen</h4></div>
+                    <div class="process-step"><div class="step-number">8</div><h4>Dokumentation</h4></div>
+                    <div class="process-step"><div class="step-number">9</div><h4>Nachbereitung</h4></div>
+                    <div class="process-step"><div class="step-number">✓</div><h4>Zertifikat</h4></div>
                 </div>
             </div>
             <div class="content-card">
                 <h3>Vorwissen abfragen</h3>
-                <p>Bevor wir starten: Was wissen Sie bereits zum Thema internes Audit?</p>
+                <p>Was wissen Sie bereits zum Thema internes Audit?</p>
                 <div class="checklist">
                     <div class="checklist-item"><div class="checkbox" onclick="toggleCheckbox(this)"></div><div>Ich weiß, was ein internes Audit ist</div></div>
                     <div class="checklist-item"><div class="checkbox" onclick="toggleCheckbox(this)"></div><div>Ich habe schon an einem Audit teilgenommen</div></div>
                     <div class="checklist-item"><div class="checkbox" onclick="toggleCheckbox(this)"></div><div>Ich kenne die ISO 9001 Grundlagen</div></div>
                     <div class="checklist-item"><div class="checkbox" onclick="toggleCheckbox(this)"></div><div>Ich habe bereits selbst auditiert</div></div>
                 </div>
-                <p style="margin-top:1rem;color:var(--text-muted);font-size:0.9rem;">Keine Sorge - diese Schulung ist für Einsteiger und Fortgeschrittene geeignet!</p>
+                <p style="margin-top:0.75rem;color:var(--text-muted);font-size:0.85rem;">Keine Sorge - diese Schulung ist für Einsteiger und Fortgeschrittene geeignet!</p>
             </div>
             <div class="module-navigation"><div></div><button class="btn btn-primary" onclick="goToModule(1)">Schulung starten →</button></div>
         </section>
@@ -217,51 +220,47 @@
             <div class="module-header">
                 <span class="module-number">Modul 1</span>
                 <h2 class="module-title">Grundlagen des Audits</h2>
-                <p class="module-subtitle">Was ist ein Audit und warum ist es wichtig?</p>
+                <p class="module-subtitle">Was ist ein internes Audit?</p>
             </div>
             <div class="content-card">
                 <h3>Was ist ein internes Audit?</h3>
                 <ul class="styled-list">
-                    <li>Bestandsaufnahme der momentanen Situation</li>
-                    <li>Überprüfung der Prozesse und Dokumente</li>
-                    <li>Stichprobenprüfung</li>
-                    <li>Verbesserungspotential / Nichtkonformitäten aufdecken</li>
-                    <li>Mindestens 1x pro Jahr durchführen</li>
-                    <li><strong>Nicht die eigenen Tätigkeiten auditieren!</strong></li>
+                    <li><strong>Bestandsaufnahme</strong> der momentanen Situation</li>
+                    <li><strong>Überprüfung</strong> der Prozesse und Dokumente</li>
+                    <li><strong>Stichprobenprüfung</strong> - nicht alles kann geprüft werden</li>
+                    <li><strong>Verbesserungspotential</strong> und Nichtkonformitäten aufdecken</li>
+                    <li>Mindestens <strong>1x pro Jahr</strong> durchführen</li>
+                    <li><strong>Nicht die eigenen Tätigkeiten</strong> auditieren!</li>
                 </ul>
-                <div class="info-box norm">
-                    <div class="info-box-header"><span>📋</span> ISO 19011:2018 Definition</div>
-                    <p>"Systematischer, unabhängiger und dokumentierter Prozess zur Erlangung von Auditnachweisen und zu deren objektiver Auswertung."</p>
-                </div>
             </div>
             <div class="content-card">
                 <h3>Die drei Auditarten</h3>
                 <table class="styled-table">
-                    <tr><th>Auditart</th><th>Beschreibung</th><th>Durchführung</th></tr>
-                    <tr><td><strong>1st Party</strong></td><td>Internes Audit (Selbstbewertung)</td><td>Eigene Mitarbeiter</td></tr>
+                    <tr><th>Art</th><th>Bezeichnung</th><th>Wer auditiert?</th></tr>
+                    <tr><td><strong>1st Party</strong></td><td>Internes Audit</td><td>Eigene Mitarbeiter</td></tr>
                     <tr><td><strong>2nd Party</strong></td><td>Lieferantenaudit</td><td>Kunde beim Lieferanten</td></tr>
                     <tr><td><strong>3rd Party</strong></td><td>Zertifizierungsaudit</td><td>TÜV, DEKRA etc.</td></tr>
                 </table>
             </div>
             <div class="content-card">
-                <h3>Ziele des internen Audits</h3>
+                <h3>Die drei Ziele des internen Audits</h3>
                 <ol class="numbered-list">
-                    <li><strong>Konformitätsprüfung:</strong> Erfüllt das QM-System die Anforderungen der Norm?</li>
+                    <li><strong>Konformitätsprüfung:</strong> Erfüllt das QM-System die Normanforderungen?</li>
                     <li><strong>Wirksamkeitsprüfung:</strong> Werden die Qualitätsziele erreicht?</li>
                     <li><strong>Verbesserung:</strong> Wo gibt es Optimierungspotential?</li>
                 </ol>
                 <div class="info-box tip">
-                    <div class="info-box-header"><span>✨</span> Wichtig!</div>
-                    <p>Ein Audit ist <strong>keine Fehlersuche bei Mitarbeitern</strong>! Es ist ein Werkzeug zur Verbesserung der Prozesse.</p>
+                    <div class="info-box-header"><span>✨</span> Merke</div>
+                    <p>Ein Audit ist <strong>keine Fehlersuche bei Mitarbeitern</strong>! Es ist ein Werkzeug zur Verbesserung der <strong>Prozesse</strong>.</p>
                 </div>
             </div>
             <div class="quiz-container">
-                <h3>🎯 Wissenstest: Modul 1</h3>
+                <h3>🎯 Wissenstest</h3>
                 <div class="quiz-question" data-correct="b">
                     <p>Was ist das Hauptziel eines internen Audits?</p>
                     <div class="quiz-options">
                         <label class="quiz-option" data-value="a"><input type="radio" name="q1" value="a"><span class="quiz-radio"></span><span>Fehler bei Mitarbeitern finden</span></label>
-                        <label class="quiz-option" data-value="b"><input type="radio" name="q1" value="b"><span class="quiz-radio"></span><span>Konformität und Wirksamkeit prüfen, Verbesserungen finden</span></label>
+                        <label class="quiz-option" data-value="b"><input type="radio" name="q1" value="b"><span class="quiz-radio"></span><span>Konformität prüfen und Verbesserungen finden</span></label>
                         <label class="quiz-option" data-value="c"><input type="radio" name="q1" value="c"><span class="quiz-radio"></span><span>Die Zertifizierungsstelle zufriedenstellen</span></label>
                     </div>
                     <div class="quiz-feedback"></div>
@@ -273,47 +272,47 @@
             </div>
         </section>
 
-        <!-- Modul 2: Normative Anforderungen -->
+        <!-- Modul 2: Normen -->
         <section class="module" id="module-2">
             <div class="module-header">
                 <span class="module-number">Modul 2</span>
-                <h2 class="module-title">Normative Anforderungen</h2>
-                <p class="module-subtitle">ISO 9001:2015 und ISO 19011:2018</p>
+                <h2 class="module-title">Normative Grundlagen</h2>
+                <p class="module-subtitle">ISO 9001 und ISO 19011</p>
             </div>
             <div class="content-card">
                 <h3>ISO 9001:2015, Kapitel 9.2</h3>
                 <div class="info-box norm">
                     <div class="info-box-header"><span>📋</span> Normanforderung</div>
-                    <p>"Die Organisation muss in geplanten Abständen interne Audits durchführen, um Informationen darüber zu erhalten, ob das QMS die Anforderungen erfüllt und wirksam verwirklicht wird."</p>
+                    <p>"Die Organisation muss in <strong>geplanten Abständen</strong> interne Audits durchführen, um Informationen darüber zu erhalten, ob das QMS die Anforderungen erfüllt und <strong>wirksam</strong> verwirklicht wird."</p>
                 </div>
             </div>
             <div class="content-card">
                 <h3>Die 6 Auditprinzipien nach ISO 19011</h3>
-                <div class="accordion">
-                    <div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span>1. Integrität</span><span class="accordion-icon">▼</span></div><div class="accordion-content"><div class="accordion-body">Auditoren handeln ethisch, fair und ehrlich. Grundlage für Vertrauen.</div></div></div>
-                    <div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span>2. Sachliche Darstellung</span><span class="accordion-icon">▼</span></div><div class="accordion-content"><div class="accordion-body">Feststellungen werden wahrheitsgemäß und genau berichtet.</div></div></div>
-                    <div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span>3. Angemessene professionelle Sorgfalt</span><span class="accordion-icon">▼</span></div><div class="accordion-content"><div class="accordion-body">Sorgfalt und Urteilsvermögen beim Auditieren entsprechend der Bedeutung.</div></div></div>
-                    <div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span>4. Vertraulichkeit</span><span class="accordion-icon">▼</span></div><div class="accordion-content"><div class="accordion-body">Umsichtiger Umgang mit sensiblen Informationen.</div></div></div>
-                    <div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span>5. Unabhängigkeit</span><span class="accordion-icon">▼</span></div><div class="accordion-content"><div class="accordion-body"><strong>Auditoren dürfen nicht ihren eigenen Bereich auditieren!</strong></div></div></div>
-                    <div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span>6. Faktengestützter Ansatz</span><span class="accordion-icon">▼</span></div><div class="accordion-content"><div class="accordion-body">Nachweise sind verifizierbar und basieren auf Stichproben.</div></div></div>
-                </div>
+                <table class="styled-table">
+                    <tr><th>Nr.</th><th>Prinzip</th><th>Bedeutung</th></tr>
+                    <tr><td>1</td><td><strong>Integrität</strong></td><td>Ethisch, fair und ehrlich handeln</td></tr>
+                    <tr><td>2</td><td><strong>Sachlichkeit</strong></td><td>Wahrheitsgemäß und genau berichten</td></tr>
+                    <tr><td>3</td><td><strong>Sorgfalt</strong></td><td>Angemessene professionelle Sorgfalt</td></tr>
+                    <tr><td>4</td><td><strong>Vertraulichkeit</strong></td><td>Umsichtiger Umgang mit Informationen</td></tr>
+                    <tr><td>5</td><td><strong>Unabhängigkeit</strong></td><td>Nicht den eigenen Bereich auditieren!</td></tr>
+                    <tr><td>6</td><td><strong>Faktenbasiert</strong></td><td>Nachweise sind verifizierbar</td></tr>
+                </table>
             </div>
             <div class="content-card">
                 <h3>Kompetenzen des Auditors</h3>
-                <table class="styled-table">
-                    <tr><th>Bereich</th><th>Anforderungen</th></tr>
-                    <tr><td>Fachkenntnisse</td><td>ISO 9001 verstehen, Prozesse kennen</td></tr>
-                    <tr><td>Methoden</td><td>Fragetechniken, Auditmethoden</td></tr>
-                    <tr><td>Soziale Kompetenz</td><td>Kommunikation, Empathie, aktives Zuhören</td></tr>
-                    <tr><td>Persönlich</td><td>Unparteilich, offen, diplomatisch</td></tr>
-                </table>
+                <ul class="styled-list">
+                    <li><strong>Fachkenntnisse:</strong> ISO 9001 verstehen, Prozesse kennen</li>
+                    <li><strong>Methoden:</strong> Fragetechniken, Auditmethoden</li>
+                    <li><strong>Soziale Kompetenz:</strong> Kommunikation, Empathie, aktives Zuhören</li>
+                    <li><strong>Persönlich:</strong> Unparteilich, offen, diplomatisch</li>
+                </ul>
                 <div class="info-box warning">
                     <div class="info-box-header"><span>⚠️</span> Wichtig: Unabhängigkeit</div>
                     <p>Ein Auditor darf <strong>niemals</strong> seinen eigenen Arbeitsbereich auditieren!</p>
                 </div>
             </div>
             <div class="quiz-container">
-                <h3>🎯 Wissenstest: Modul 2</h3>
+                <h3>🎯 Wissenstest</h3>
                 <div class="quiz-question" data-correct="c">
                     <p>Warum darf ein Auditor seinen eigenen Bereich nicht auditieren?</p>
                     <div class="quiz-options">
@@ -329,37 +328,45 @@
                 <button class="btn btn-primary" onclick="goToModule(3)">Weiter →</button>
             </div>
         </section>
+        <!-- Modul 3: Planung -->
+        <section class="module" id="module-3">
+            <div class="module-header">
+                <span class="module-number">Modul 3</span>
+                <h2 class="module-title">Auditplanung</h2>
+                <p class="module-subtitle">Auditprogramm und Auditplan</p>
+            </div>
+            <div class="content-card">
+                <h3>Führungsebene einbeziehen</h3>
+                <ul class="styled-list">
+                    <li>Vorgespräch mit der Führung führen</li>
+                    <li>Ziele abfragen und Schwerpunkte festlegen</li>
+                    <li>Nutzen darlegen (Wirtschaftlichkeit, Image, Risiken)</li>
+                    <li>Führungskräfte zu <strong>Beteiligten</strong> machen - als Experten!</li>
+                </ul>
+            </div>
             <div class="content-card">
                 <h3>Zwei Planungsebenen</h3>
                 <table class="styled-table">
-                    <tr><th>Ebene</th><th>Dokument</th><th>Inhalt</th><th>Zeitraum</th></tr>
-                    <tr><td>Strategisch</td><td><strong>Auditprogramm</strong></td><td>Jahresplan aller Audits</td><td>1 Jahr</td></tr>
-                    <tr><td>Operativ</td><td><strong>Auditplan</strong></td><td>Detailplan Einzelaudit</td><td>1 Audit</td></tr>
+                    <tr><th>Ebene</th><th>Dokument</th><th>Inhalt</th></tr>
+                    <tr><td>Strategisch</td><td><strong>Auditprogramm</strong></td><td>Jahresplan aller Audits (alle Bereiche, Termine, Auditoren)</td></tr>
+                    <tr><td>Operativ</td><td><strong>Auditplan</strong></td><td>Detailplan für ein Einzelaudit (Ziele, Ablauf, Teilnehmer)</td></tr>
                 </table>
-            </div>
-            <div class="content-card">
-                <h3>Auditprogramm (Jahresplan)</h3>
-                <p>Das Auditprogramm dokumentiert alle geplanten Audits:</p>
-                <ul class="styled-list">
-                    <li>Alle zu auditierenden Bereiche und Prozesse</li>
-                    <li>Zeiträume (Monat/Quartal)</li>
-                    <li>Zugeordnete Auditoren</li>
-                    <li>Abgedeckte Normkapitel</li>
-                    <li>Auditmethoden (vor Ort / remote)</li>
-                </ul>
                 <div class="info-box tip">
-                    <div class="info-box-header"><span>✨</span> Risikobasierte Planung</div>
+                    <div class="info-box-header"><span>✨</span> Risikobasiert planen</div>
                     <p>Wichtige Themen sollten <strong>intensiver</strong> auditiert werden! Kritische Prozesse und Bereiche mit häufigen Abweichungen öfter einplanen.</p>
                 </div>
-                <table class="styled-table" style="font-size:0.8rem;margin-top:1rem;">
-                    <tr><th>Auditthema / Prozess</th><th>2024</th><th>2025</th><th>2026</th></tr>
-                    <tr><td>Anwendungsbereich</td><td style="background:#90EE90">x</td><td style="background:#90EE90">x</td><td style="background:#90EE90">x</td></tr>
-                    <tr><td>Interessierte Parteien</td><td style="background:#90EE90">x</td><td style="background:#90EE90">x</td><td style="background:#90EE90">x</td></tr>
-                    <tr><td>Risiken und Chancen</td><td style="background:#90EE90">x</td><td style="background:#90EE90">x</td><td style="background:#90EE90">x</td></tr>
-                    <tr><td>Schulungen & Kompetenzen</td><td style="background:#90EE90">x</td><td style="background:#90EE90">x</td><td style="background:#90EE90">x</td></tr>
-                    <tr><td>Kundenzufriedenheit</td><td style="background:#90EE90">x</td><td style="background:#90EE90">x</td><td style="background:#90EE90">x</td></tr>
-                    <tr><td>Lieferantenbewertung</td><td style="background:#90EE90">x</td><td></td><td style="background:#90EE90">x</td></tr>
-                    <tr><td>Datenschutz</td><td style="background:#90EE90">x</td><td></td><td style="background:#90EE90">x</td></tr>
+            </div>
+            <div class="content-card">
+                <h3>Auditprogramm (Jahresplan) - Beispiel</h3>
+                <table class="styled-table" style="font-size:0.8rem;">
+                    <tr><th>Thema / Prozess</th><th>2024</th><th>2025</th><th>2026</th></tr>
+                    <tr><td>Kontext & Interessierte Parteien</td><td style="background:#90EE90;text-align:center">✓</td><td style="background:#90EE90;text-align:center">✓</td><td style="background:#90EE90;text-align:center">✓</td></tr>
+                    <tr><td>Risiken und Chancen</td><td style="background:#90EE90;text-align:center">✓</td><td style="background:#90EE90;text-align:center">✓</td><td style="background:#90EE90;text-align:center">✓</td></tr>
+                    <tr><td>Schulungen & Kompetenzen</td><td style="background:#90EE90;text-align:center">✓</td><td style="background:#90EE90;text-align:center">✓</td><td style="background:#90EE90;text-align:center">✓</td></tr>
+                    <tr><td>Kundenzufriedenheit</td><td style="background:#90EE90;text-align:center">✓</td><td style="background:#90EE90;text-align:center">✓</td><td style="background:#90EE90;text-align:center">✓</td></tr>
+                    <tr><td>Lieferantenbewertung</td><td style="background:#90EE90;text-align:center">✓</td><td style="text-align:center">-</td><td style="background:#90EE90;text-align:center">✓</td></tr>
+                    <tr><td>Datenschutz</td><td style="background:#90EE90;text-align:center">✓</td><td style="text-align:center">-</td><td style="background:#90EE90;text-align:center">✓</td></tr>
+                    <tr><td>Prüfmittelüberwachung</td><td style="text-align:center">-</td><td style="background:#90EE90;text-align:center">✓</td><td style="text-align:center">-</td></tr>
                 </table>
             </div>
             <div class="content-card">
@@ -378,7 +385,7 @@
                 </div>
             </div>
             <div class="quiz-container">
-                <h3>🎯 Wissenstest: Modul 3</h3>
+                <h3>🎯 Wissenstest</h3>
                 <div class="quiz-question" data-correct="a">
                     <p>Wann sollte der Auditplan kommuniziert werden?</p>
                     <div class="quiz-options">
@@ -414,45 +421,34 @@
                 </table>
                 <div class="info-box">
                     <div class="info-box-header"><span>💡</span> Entscheidungshilfe</div>
-                    <ul style="margin-top:0.5rem;padding-left:1.5rem;">
-                        <li>Ist es das <strong>erste</strong> interne Audit?</li>
-                        <li>Ist die Person <strong>neu</strong> im Betrieb?</li>
-                        <li>Gab es <strong>Vorfälle</strong> im Unternehmen?</li>
-                        <li>Welchen <strong>Grund</strong> hat das Audit?</li>
-                    </ul>
-                    <p style="margin-top:0.75rem;"><strong>Empfehlung:</strong> Bei ersten Audits immer anmelden!</p>
+                    <p>Fragen Sie sich: Ist es das <strong>erste</strong> Audit? Ist die Person <strong>neu</strong>? Gab es <strong>Vorfälle</strong>? → Bei "Ja": <strong>Immer anmelden!</strong></p>
                 </div>
             </div>
             <div class="content-card">
                 <h3>Wer ist mein Gesprächspartner?</h3>
-                <p>Vor dem Audit klären:</p>
                 <ul class="styled-list">
                     <li>Kenne ich die Person bereits?</li>
                     <li>Welchen Charakter hat diese Person?</li>
                     <li>In welcher Abteilung arbeitet sie?</li>
-                    <li>Ist die Person neu im Betrieb oder der Abteilung?</li>
+                    <li>Ist die Person neu im Betrieb?</li>
                     <li>Hat die Person schon ein Audit mitgemacht?</li>
                     <li>Welche Normkapitel kann ich bei dieser Person abfragen?</li>
-                    <li>Was muss mein Gesprächspartner wissen?</li>
+                    <li>Was <strong>muss</strong> mein Gesprächspartner wissen?</li>
                 </ul>
             </div>
             <div class="content-card">
                 <h3>Checkliste: Vorbereitung</h3>
                 <div class="checklist">
                     <div class="checklist-item"><div class="checkbox" onclick="toggleCheckbox(this)"></div><div>Prozessdokumente und Verfahrensanweisungen sichten</div></div>
-                    <div class="checklist-item"><div class="checkbox" onclick="toggleCheckbox(this)"></div><div>Vorherige Auditergebnisse prüfen</div></div>
+                    <div class="checklist-item"><div class="checkbox" onclick="toggleCheckbox(this)"></div><div>Vorherige Auditergebnisse prüfen (offene Maßnahmen?)</div></div>
                     <div class="checklist-item"><div class="checkbox" onclick="toggleCheckbox(this)"></div><div>Fragenkatalog vorbereiten</div></div>
                     <div class="checklist-item"><div class="checkbox" onclick="toggleCheckbox(this)"></div><div>Normkapitel rekapitulieren</div></div>
                     <div class="checklist-item"><div class="checkbox" onclick="toggleCheckbox(this)"></div><div>Termin abstimmen und kommunizieren</div></div>
                     <div class="checklist-item"><div class="checkbox" onclick="toggleCheckbox(this)"></div><div>Gesprächspartner informieren</div></div>
                 </div>
-                <div class="info-box warning">
-                    <div class="info-box-header"><span>⚠️</span> Wichtig!</div>
-                    <p>Audits sollten <strong>positiv angekündigt</strong> werden - nicht nur auf "Fehler finden" abzielen!</p>
-                </div>
             </div>
             <div class="quiz-container">
-                <h3>🎯 Wissenstest: Modul 4</h3>
+                <h3>🎯 Wissenstest</h3>
                 <div class="quiz-question" data-correct="b">
                     <p>Wann ist ein unangemeldetes Audit NICHT empfehlenswert?</p>
                     <div class="quiz-options">
@@ -473,62 +469,50 @@
             <div class="module-header">
                 <span class="module-number">Modul 5</span>
                 <h2 class="module-title">Auditdurchführung</h2>
-                <p class="module-subtitle">Der strukturierte Ablauf eines Audits</p>
-            </div>
-            <div class="content-card">
-                <h3>Der Audit-Prozess (Swimlane)</h3>
-                <div class="swimlane">
-                    <div class="swimlane-row">
-                        <div class="swimlane-label">QMB</div>
-                        <div class="swimlane-content">
-                            <div class="swimlane-item">Auditprogramm erstellen</div>
-                            <span class="swimlane-arrow">→</span>
-                            <div class="swimlane-item">Info verteilen</div>
-                        </div>
-                    </div>
-                    <div class="swimlane-row">
-                        <div class="swimlane-label">Geschäfts-führung</div>
-                        <div class="swimlane-content">
-                            <div class="swimlane-item">Programm freigeben</div>
-                            <span class="swimlane-arrow">→</span>
-                            <div class="swimlane-item">Maßnahmen abwickeln</div>
-                        </div>
-                    </div>
-                    <div class="swimlane-row">
-                        <div class="swimlane-label">Auditor</div>
-                        <div class="swimlane-content">
-                            <div class="swimlane-item">Termin abstimmen</div>
-                            <span class="swimlane-arrow">→</span>
-                            <div class="swimlane-item">Einführung</div>
-                            <span class="swimlane-arrow">→</span>
-                            <div class="swimlane-item">Durchführung</div>
-                            <span class="swimlane-arrow">→</span>
-                            <div class="swimlane-item">Abschluss</div>
-                            <span class="swimlane-arrow">→</span>
-                            <div class="swimlane-item">Bericht</div>
-                        </div>
-                    </div>
-                    <div class="swimlane-row">
-                        <div class="swimlane-label">Verantwort-liche</div>
-                        <div class="swimlane-content">
-                            <div class="swimlane-item">Korrekturmaßnahmen festlegen</div>
-                        </div>
-                    </div>
-                </div>
-                <p style="font-size:0.85rem;color:var(--text-muted);margin-top:0.5rem;">Einmal jährlich werden alle Bereiche auditiert</p>
+                <p class="module-subtitle">Phasen, Methoden und Gesprächsführung</p>
             </div>
             <div class="content-card">
                 <h3>Die 5 Phasen eines Audits</h3>
                 <div class="process-flow">
-                    <div class="process-step"><div class="step-number">1</div><h4>Eröffnung</h4><p>Begrüßung & Ziele</p></div>
-                    <div class="process-step"><div class="step-number">2</div><h4>Sammlung</h4><p>Nachweise erheben</p></div>
-                    <div class="process-step"><div class="step-number">3</div><h4>Auswertung</h4><p>Bewertung</p></div>
-                    <div class="process-step"><div class="step-number">4</div><h4>Abschluss</h4><p>Ergebnisse</p></div>
-                    <div class="process-step"><div class="step-number">5</div><h4>Bericht</h4><p>Dokumentation</p></div>
+                    <div class="process-step"><div class="step-number">1</div><h4>Eröffnung</h4></div>
+                    <div class="process-step"><div class="step-number">2</div><h4>Sammlung</h4></div>
+                    <div class="process-step"><div class="step-number">3</div><h4>Auswertung</h4></div>
+                    <div class="process-step"><div class="step-number">4</div><h4>Abschluss</h4></div>
+                    <div class="process-step"><div class="step-number">5</div><h4>Bericht</h4></div>
                 </div>
             </div>
             <div class="content-card">
-                <h3>Tipps für das Gespräch</h3>
+                <h3>Remote vs. Vor-Ort Audit</h3>
+                <table class="compare-table">
+                    <tr><th class="pro" style="width:50%">🖥️ Remote</th><th class="con">🏢 Vor Ort</th></tr>
+                    <tr><td>+ Beliebig viele Teilnehmer</td><td>+ Persönliches Kennenlernen</td></tr>
+                    <tr><td>+ Keine Reisekosten</td><td>+ Vor-Ort Begehung möglich</td></tr>
+                    <tr><td>+ Auch in Krisenzeiten</td><td>+ Weniger technische Probleme</td></tr>
+                    <tr><td>− Evtl. Ablenkung</td><td>− Höhere Kosten</td></tr>
+                    <tr><td>− Nur bedingtes Kennenlernen</td><td>− Weite Anreisen</td></tr>
+                </table>
+            </div>
+            <div class="content-card">
+                <h3>Spezielle Auditmethoden</h3>
+                <div class="accordion">
+                    <div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span>🔄 TOP/FLOP-Vorgang</span><span class="accordion-icon">▼</span></div><div class="accordion-content"><div class="accordion-body">Einen <strong>besonders guten</strong> und einen <strong>problematischen</strong> Vorgang analysieren. Zeigt Best Practice und Verbesserungspotential.</div></div></div>
+                    <div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span>⬅️ Rückwärts auditieren</span><span class="accordion-icon">▼</span></div><div class="accordion-content"><div class="accordion-body">Vom <strong>Ergebnis zum Anfang</strong>: Fertiges Produkt nehmen und den Weg zurückverfolgen. Zeigt Lücken in der Dokumentation.</div></div></div>
+                    <div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span>👥 Stellvertreter befragen</span><span class="accordion-icon">▼</span></div><div class="accordion-content"><div class="accordion-body">Nicht den Prozessverantwortlichen, sondern den <strong>Stellvertreter</strong> befragen. Zeigt, ob Wissen geteilt wird.</div></div></div>
+                    <div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span>🆕 Neue Mitarbeiter auditieren</span><span class="accordion-icon">▼</span></div><div class="accordion-content"><div class="accordion-body">Neue Mitarbeiter haben <strong>frischen Blick</strong> und zeigen, wie gut die Einarbeitung funktioniert.</div></div></div>
+                </div>
+            </div>
+            <div class="content-card">
+                <h3>Die Turtle-Methode zur Prozessanalyse</h3>
+                <div class="turtle-diagram">
+                    <div class="turtle-section top"><h4>👤 Mit WEM?</h4><ul><li>Verantwortliche</li><li>Kompetenzen</li><li>Schulungen</li></ul></div>
+                    <div class="turtle-section left"><h4>📥 INPUT</h4><ul><li>Auslöser</li><li>Eingaben</li><li>Vorgaben</li></ul></div>
+                    <div class="turtle-section center"><h4>⚙️ PROZESS</h4><p style="font-size:0.75rem;">Was wird gemacht?<br>Wie wird es gemacht?</p></div>
+                    <div class="turtle-section right"><h4>📤 OUTPUT</h4><ul><li>Ergebnisse</li><li>Nachweise</li><li>Kennzahlen</li></ul></div>
+                    <div class="turtle-section bottom"><h4>🛠️ Mit WAS?</h4><ul><li>Ressourcen</li><li>Dokumente</li><li>Infrastruktur</li></ul></div>
+                </div>
+            </div>
+            <div class="content-card">
+                <h3>Tipps für das Auditgespräch</h3>
                 <table class="styled-table">
                     <tr><th>Phase</th><th>Tipps</th></tr>
                     <tr><td><strong>Beginn</strong></td><td>Transparenz schaffen, Icebreaker, positiver Start</td></tr>
@@ -536,28 +520,18 @@
                     <tr><td><strong>Ende</strong></td><td>Positive Verstärkung, Ergebnisse zusammenfassen</td></tr>
                 </table>
                 <div class="info-box tip">
-                    <div class="info-box-header"><span>✨</span> Positive Atmosphäre schaffen</div>
-                    <p>"Wir suchen nach Schwachstellen in <strong>Prozessen</strong>, nicht nach Fehlern von <strong>Personen</strong>."</p>
-                </div>
-            </div>
-            <div class="content-card">
-                <h3>Turtle-Methode zur Prozessanalyse</h3>
-                <div class="turtle-diagram">
-                    <div class="turtle-section top"><h4>👤 Mit WEM?</h4><ul><li>Verantwortliche</li><li>Kompetenzen</li><li>Schulungen</li></ul></div>
-                    <div class="turtle-section left"><h4>📥 INPUT</h4><ul><li>Auslöser</li><li>Eingaben</li><li>Vorgaben</li></ul></div>
-                    <div class="turtle-section center"><h4>⚙️ PROZESS</h4><p>Was wird gemacht?<br>Wie wird es gemacht?</p></div>
-                    <div class="turtle-section right"><h4>📤 OUTPUT</h4><ul><li>Ergebnisse</li><li>Nachweise</li><li>Kennzahlen</li></ul></div>
-                    <div class="turtle-section bottom"><h4>🛠️ Mit WAS?</h4><ul><li>Ressourcen</li><li>Dokumente</li><li>Infrastruktur</li></ul></div>
+                    <div class="info-box-header"><span>✨</span> Wichtig!</div>
+                    <p>Nicht stur nach Checkliste vorgehen! <strong>Zusammen Lösungen erarbeiten</strong>, nicht nur Fehler suchen. <strong>Starke Leistungen würdigen!</strong></p>
                 </div>
             </div>
             <div class="quiz-container">
-                <h3>🎯 Wissenstest: Modul 5</h3>
-                <div class="quiz-question" data-correct="c">
-                    <p>Was ist der wichtigste Tipp für ein gutes Auditgespräch?</p>
+                <h3>🎯 Wissenstest</h3>
+                <div class="quiz-question" data-correct="b">
+                    <p>Was ist ein Vorteil des "Rückwärts-Auditierens"?</p>
                     <div class="quiz-options">
-                        <label class="quiz-option" data-value="a"><input type="radio" name="q5" value="a"><span class="quiz-radio"></span><span>Möglichst viele Fehler finden</span></label>
-                        <label class="quiz-option" data-value="b"><input type="radio" name="q5" value="b"><span class="quiz-radio"></span><span>Streng nach Checkliste vorgehen</span></label>
-                        <label class="quiz-option" data-value="c"><input type="radio" name="q5" value="c"><span class="quiz-radio"></span><span>Positive Atmosphäre schaffen und aktiv zuhören</span></label>
+                        <label class="quiz-option" data-value="a"><input type="radio" name="q5" value="a"><span class="quiz-radio"></span><span>Es geht schneller</span></label>
+                        <label class="quiz-option" data-value="b"><input type="radio" name="q5" value="b"><span class="quiz-radio"></span><span>Es zeigt Lücken in der Dokumentation</span></label>
+                        <label class="quiz-option" data-value="c"><input type="radio" name="q5" value="c"><span class="quiz-radio"></span><span>Es ist einfacher für den Auditor</span></label>
                     </div>
                     <div class="quiz-feedback"></div>
                 </div>
@@ -568,73 +542,10 @@
             </div>
         </section>
 
-        <!-- Modul 6: Auditmethoden -->
+        <!-- Modul 6: Fragetechnik -->
         <section class="module" id="module-6">
             <div class="module-header">
                 <span class="module-number">Modul 6</span>
-                <h2 class="module-title">Auditmethoden</h2>
-                <p class="module-subtitle">Remote, Vor-Ort und spezielle Techniken</p>
-            </div>
-            <div class="content-card">
-                <h3>Remote vs. Vor-Ort Audit</h3>
-                <table class="compare-table">
-                    <tr><th colspan="2">🖥️ Remote-Audit (Skype, Teams, Telefon)</th></tr>
-                    <tr><th class="pro" style="width:50%">Vorteile ✓</th><th class="con">Nachteile ✗</th></tr>
-                    <tr><td>Beliebig viele Teilnehmer von jedem Standort</td><td>Mitarbeiter evtl. abgelenkt</td></tr>
-                    <tr><td>Auch in Krisenzeiten umsetzbar</td><td>Nur bedingtes persönliches Kennenlernen</td></tr>
-                    <tr><td>Keine Reisekosten</td><td>Technische Probleme möglich</td></tr>
-                </table>
-                <table class="compare-table" style="margin-top:1rem;">
-                    <tr><th colspan="2">🏢 Vor-Ort-Audit</th></tr>
-                    <tr><th class="pro" style="width:50%">Vorteile ✓</th><th class="con">Nachteile ✗</th></tr>
-                    <tr><td>Prüfungssituation durcharbeiten</td><td>Höhere Kosten (Reise, Zeit)</td></tr>
-                    <tr><td>Persönliches Kennenlernen</td><td>Weite Anreisen</td></tr>
-                    <tr><td>Vor-Ort Begehung möglich</td><td>Terminkoordination schwieriger</td></tr>
-                </table>
-            </div>
-            <div class="content-card">
-                <h3>Spezielle Auditmethoden</h3>
-                <div class="accordion">
-                    <div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span>🔄 TOP-Vorgang und FLOP-Vorgang</span><span class="accordion-icon">▼</span></div><div class="accordion-content"><div class="accordion-body">Einen besonders guten und einen problematischen Vorgang analysieren - zeigt Best Practice und Verbesserungspotential.</div></div></div>
-                    <div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span>⬅️ Rückwärts auditieren</span><span class="accordion-icon">▼</span></div><div class="accordion-content"><div class="accordion-body">Vom Ergebnis zum Anfang: Fertiges Produkt nehmen und den Weg zurückverfolgen. Zeigt Lücken in der Dokumentation.</div></div></div>
-                    <div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span>👥 Stellvertreter befragen</span><span class="accordion-icon">▼</span></div><div class="accordion-content"><div class="accordion-body">Nicht den Prozessverantwortlichen, sondern den Stellvertreter befragen. Zeigt, ob Wissen geteilt wird.</div></div></div>
-                    <div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span>🆕 Neue Mitarbeiter auditieren</span><span class="accordion-icon">▼</span></div><div class="accordion-content"><div class="accordion-body">Neue Mitarbeiter haben frischen Blick und zeigen, wie gut die Einarbeitung funktioniert.</div></div></div>
-                </div>
-            </div>
-            <div class="content-card">
-                <h3>Die drei Basis-Auditmethoden</h3>
-                <table class="styled-table">
-                    <tr><th>Methode</th><th>Beschreibung</th><th>Beispiel</th></tr>
-                    <tr><td>🗣️ <strong>Befragung</strong></td><td>Gespräche mit Mitarbeitern</td><td>"Wie läuft der Prozess ab?"</td></tr>
-                    <tr><td>👁️ <strong>Beobachtung</strong></td><td>Vor-Ort-Betrachtung</td><td>Arbeitsplatz ansehen</td></tr>
-                    <tr><td>📄 <strong>Dokumentenprüfung</strong></td><td>Einsicht in Aufzeichnungen</td><td>Protokolle, Checklisten</td></tr>
-                </table>
-                <div class="info-box tip">
-                    <div class="info-box-header"><span>✨</span> Praxistipp</div>
-                    <p>Nicht stur nach Checkliste vorgehen, sondern dem <strong>Gesprächsverlauf folgen</strong>. Zusammen Lösungen erarbeiten, nicht nur Fehler suchen!</p>
-                </div>
-            </div>
-            <div class="quiz-container">
-                <h3>🎯 Wissenstest: Modul 6</h3>
-                <div class="quiz-question" data-correct="b">
-                    <p>Was ist ein Vorteil des "Rückwärts-Auditierens"?</p>
-                    <div class="quiz-options">
-                        <label class="quiz-option" data-value="a"><input type="radio" name="q6" value="a"><span class="quiz-radio"></span><span>Es geht schneller</span></label>
-                        <label class="quiz-option" data-value="b"><input type="radio" name="q6" value="b"><span class="quiz-radio"></span><span>Es zeigt Lücken in der Dokumentation</span></label>
-                        <label class="quiz-option" data-value="c"><input type="radio" name="q6" value="c"><span class="quiz-radio"></span><span>Es ist einfacher für den Auditor</span></label>
-                    </div>
-                    <div class="quiz-feedback"></div>
-                </div>
-            </div>
-            <div class="module-navigation">
-                <button class="btn btn-secondary" onclick="goToModule(5)">← Zurück</button>
-                <button class="btn btn-primary" onclick="goToModule(7)">Weiter →</button>
-            </div>
-        </section>
-        <!-- Modul 7: Fragetechniken -->
-        <section class="module" id="module-7">
-            <div class="module-header">
-                <span class="module-number">Modul 7</span>
                 <h2 class="module-title">Fragetechniken</h2>
                 <p class="module-subtitle">Die 5 Fragearten und aktives Zuhören</p>
             </div>
@@ -642,19 +553,18 @@
                 <h3>Die goldene Regel</h3>
                 <div class="info-box">
                     <div class="info-box-header"><span>🎯</span> 80/20 Regel</div>
-                    <p style="font-size:1.2rem;text-align:center;margin:1rem 0;"><strong>80% redet der Auditierte<br>20% redet der Auditor</strong></p>
-                    <p style="text-align:center;">Zuhören, verstehen, nachfragen!</p>
+                    <p style="font-size:1.3rem;text-align:center;margin:0.75rem 0;"><strong>80% redet der Auditierte<br>20% redet der Auditor</strong></p>
                 </div>
             </div>
             <div class="content-card">
                 <h3>Die 5 Fragearten</h3>
                 <table class="styled-table">
-                    <tr><th>Frageart</th><th>Beispiel</th><th>Wirkung</th></tr>
-                    <tr style="background:#f0fff4;"><td><strong>Offene Frage</strong> ✓</td><td>"Wie geht es Ihnen?"<br>"Wie läuft der Prozess ab?"</td><td>Ausführliche Antworten, ideal für Audits!</td></tr>
-                    <tr><td><strong>Geschlossene Frage</strong></td><td>"Geht es Ihnen gut?"<br>"Haben Sie eine Anweisung?"</td><td>Ja/Nein-Antwort, wenig Information</td></tr>
-                    <tr><td><strong>Alternativfrage</strong></td><td>"Links oder rechts?"<br>"Montag oder Dienstag?"</td><td>Eingrenzung, Entscheidung</td></tr>
-                    <tr><td><strong>Sokrates-Frage</strong></td><td>"Habe ich Sie richtig verstanden, dass...?"</td><td>Verständnis absichern</td></tr>
-                    <tr style="background:#fff5f5;"><td><strong>Suggestivfrage</strong> ✗</td><td>"Sie führen sicherlich eine 100% Kontrolle durch, oder?"</td><td>Vermeiden! Beeinflusst die Antwort</td></tr>
+                    <tr><th>Frageart</th><th>Beispiel</th><th>Bewertung</th></tr>
+                    <tr style="background:#f0fff4;"><td><strong>Offene Frage</strong></td><td>"Wie läuft der Prozess ab?"</td><td style="color:var(--accent);">✓ Ideal!</td></tr>
+                    <tr><td><strong>Geschlossene Frage</strong></td><td>"Haben Sie eine Anweisung?"</td><td>○ Ja/Nein</td></tr>
+                    <tr><td><strong>Alternativfrage</strong></td><td>"Montag oder Dienstag?"</td><td>○ Eingrenzung</td></tr>
+                    <tr><td><strong>Sokrates-Frage</strong></td><td>"Habe ich Sie richtig verstanden, dass...?"</td><td style="color:var(--accent);">✓ Gut!</td></tr>
+                    <tr style="background:#fff5f5;"><td><strong>Suggestivfrage</strong></td><td>"Sie führen sicherlich eine Kontrolle durch, oder?"</td><td style="color:var(--secondary);">✗ Vermeiden!</td></tr>
                 </table>
             </div>
             <div class="content-card">
@@ -666,7 +576,7 @@
                     <li><strong>WANN</strong> wird es gemacht? Wie oft?</li>
                     <li><strong>WO</strong> findet der Prozess statt? Wo ist dokumentiert?</li>
                     <li><strong>WOMIT</strong> wird gearbeitet? Welche Hilfsmittel?</li>
-                    <li><strong>KÖNNEN SIE MIR ZEIGEN</strong>...? (Nachweise!)</li>
+                    <li><strong>KÖNNEN SIE MIR ZEIGEN...</strong>? (Nachweise!)</li>
                 </ol>
                 <div class="info-box warning">
                     <div class="info-box-header"><span>⚠️</span> Vorsicht bei "WARUM?"</div>
@@ -679,22 +589,174 @@
                     <li>Blickkontakt halten (nicht auf Laptop starren)</li>
                     <li>Nicht unterbrechen - ausreden lassen</li>
                     <li>Paraphrasieren: "Wenn ich Sie richtig verstehe..."</li>
-                    <li>Notizen machen und zeigen, dass Sie zuhören</li>
+                    <li>Notizen machen</li>
                     <li>Nachfragen bei Unklarheiten</li>
                 </ul>
                 <div class="info-box tip">
-                    <div class="info-box-header"><span>✨</span> Wichtig: Positives Ende!</div>
-                    <p>Jedes Gespräch sollte <strong>positiv</strong> enden. Starke Leistungen würdigen, Perspektiven aufzeigen.</p>
+                    <div class="info-box-header"><span>✨</span> Ein positives Ende!</div>
+                    <p>Jedes Gespräch sollte <strong>positiv</strong> enden. Starke Leistungen würdigen!</p>
                 </div>
             </div>
             <div class="quiz-container">
-                <h3>🎯 Wissenstest: Modul 7</h3>
+                <h3>🎯 Wissenstest</h3>
                 <div class="quiz-question" data-correct="a">
                     <p>Welche Frageart ist für Audits am besten geeignet?</p>
                     <div class="quiz-options">
-                        <label class="quiz-option" data-value="a"><input type="radio" name="q7" value="a"><span class="quiz-radio"></span><span>Offene W-Fragen</span></label>
-                        <label class="quiz-option" data-value="b"><input type="radio" name="q7" value="b"><span class="quiz-radio"></span><span>Suggestivfragen</span></label>
-                        <label class="quiz-option" data-value="c"><input type="radio" name="q7" value="c"><span class="quiz-radio"></span><span>Geschlossene Ja/Nein-Fragen</span></label>
+                        <label class="quiz-option" data-value="a"><input type="radio" name="q6" value="a"><span class="quiz-radio"></span><span>Offene W-Fragen</span></label>
+                        <label class="quiz-option" data-value="b"><input type="radio" name="q6" value="b"><span class="quiz-radio"></span><span>Suggestivfragen</span></label>
+                        <label class="quiz-option" data-value="c"><input type="radio" name="q6" value="c"><span class="quiz-radio"></span><span>Geschlossene Ja/Nein-Fragen</span></label>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+            </div>
+            <div class="module-navigation">
+                <button class="btn btn-secondary" onclick="goToModule(5)">← Zurück</button>
+                <button class="btn btn-primary" onclick="goToModule(7)">Weiter →</button>
+            </div>
+        </section>
+        <!-- Modul 7: Auditfragen - DAS HERZSTÜCK -->
+        <section class="module" id="module-7">
+            <div class="module-header">
+                <span class="module-number">Modul 7</span>
+                <h2 class="module-title">Praxis-Auditfragen</h2>
+                <p class="module-subtitle">Was wird der Auditor fragen? - Echte Fragen aus 30 Jahren Erfahrung</p>
+            </div>
+            <div class="content-card">
+                <h3>Diese Themen werden IMMER gefragt</h3>
+                <p>Zu jedem Thema kann sich der Auditor Dokumente als Nachweis zeigen lassen!</p>
+            </div>
+
+            <div class="content-card">
+                <h3>📚 Schulungen & Kompetenzen (Kap. 7.2)</h3>
+                <div class="audit-questions">
+                    <h4>🎯 Typische Auditfragen:</h4>
+                    <ul>
+                        <li>Wie planen Sie Schulungen?</li>
+                        <li>Woher weiß man, dass eine Schulung schlecht war?</li>
+                        <li>Gibt es eine Übersicht über die Qualifikationen Ihrer Mitarbeiter?</li>
+                        <li>Welche Fähigkeiten braucht ein MA für diese Tätigkeit?</li>
+                        <li>Wie werden neue Mitarbeiter eingearbeitet?</li>
+                    </ul>
+                </div>
+                <div class="info-box tip">
+                    <div class="info-box-header"><span>📄</span> Nachweise zeigen</div>
+                    <p>Schulungsplan, Qualifikationsmatrix, Schulungsnachweise, Einarbeitungsplan</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3>😊 Kundenzufriedenheit (Kap. 9.1.2)</h3>
+                <div class="audit-questions">
+                    <h4>🎯 Typische Auditfragen:</h4>
+                    <ul>
+                        <li>Wie ermitteln Sie die Kundenzufriedenheit?</li>
+                        <li>Erstellen Sie eine Auswertung darüber?</li>
+                        <li>Mussten Maßnahmen eingeleitet werden?</li>
+                        <li>Wie kommunizieren Sie mit Ihren Kunden?</li>
+                    </ul>
+                </div>
+                <div class="info-box tip">
+                    <div class="info-box-header"><span>📄</span> Nachweise zeigen</div>
+                    <p>Kundenbefragung, Auswertung, Reklamationsliste, Maßnahmenplan</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3>🎯 Qualitätsziele (Kap. 6.2)</h3>
+                <div class="audit-questions">
+                    <h4>🎯 Typische Auditfragen:</h4>
+                    <ul>
+                        <li>Wurden die Unternehmens-/Qualitätsziele festgelegt?</li>
+                        <li>Haben Sie Maßnahmen festgelegt, wie Sie diese Ziele erreichen?</li>
+                        <li>Gibt es sonstige Unterlagen? (z.B. Budgetplan)</li>
+                        <li>Sind die Ziele den Mitarbeitern bekannt? (zumindest die, die sie betreffen)</li>
+                    </ul>
+                </div>
+                <div class="info-box tip">
+                    <div class="info-box-header"><span>📄</span> Nachweise zeigen</div>
+                    <p>Qualitätsziele-Dokument, Maßnahmenplan, Kennzahlen, Managementbewertung</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3>📄 Dokumente & Aufzeichnungen (Kap. 7.5)</h3>
+                <div class="audit-questions">
+                    <h4>🎯 Typische Auditfragen:</h4>
+                    <ul>
+                        <li>Was passiert mit veralteten Dokumenten?</li>
+                        <li>Wo sind die Aufbewahrungsfristen festgelegt?</li>
+                        <li>Wie werden Dokumente gelenkt?</li>
+                        <li>Kennen die Mitarbeiter das QM-Handbuch?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3>🚚 Lieferanten (Kap. 8.4)</h3>
+                <div class="audit-questions">
+                    <h4>🎯 Typische Auditfragen:</h4>
+                    <ul>
+                        <li>Welche Lieferanten gibt es?</li>
+                        <li>Haben Sie eine Lieferantenbewertung erstellt?</li>
+                        <li>Gab es in letzter Zeit Probleme mit einem Lieferanten?</li>
+                        <li>Was wurde zur Verbesserung unternommen?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3>⚖️ Gesetzliche Anforderungen (Kap. 4.2)</h3>
+                <div class="audit-questions">
+                    <h4>🎯 Typische Auditfragen:</h4>
+                    <ul>
+                        <li>Welche gesetzlichen Anforderungen gelten für Ihr Unternehmen?</li>
+                        <li>Welche behördlichen Anforderungen gelten?</li>
+                        <li>Stellt Ihr Kunde die Anforderung, dass Sie nach bestimmten Normen arbeiten?</li>
+                        <li>Welche anderen Richtlinien gelten? (z.B. REACH)</li>
+                        <li>Wie stellen Sie sicher, dass Sie nach aktuell gültigen Anforderungen arbeiten?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3>🏭 Produktion / Dienstleistung (Kap. 8)</h3>
+                <div class="audit-questions">
+                    <h4>🎯 Typische Auditfragen:</h4>
+                    <ul>
+                        <li>Wie merken die MA, dass sie auf etwas Besonderes achten müssen?</li>
+                        <li>Was passiert mit internen Fehlern / fehlerhaften Produkten?</li>
+                        <li>Werden die Fehlerkosten erfasst?</li>
+                        <li>Stellt Ihr Kunde Ware zur Verfügung? (Kundeneigentum)</li>
+                        <li>Gibt es eine Wareneingangsprüfung und wie sieht sie aus?</li>
+                        <li>Wie werden die Maschinen/Autos gewartet?</li>
+                        <li>Liegen Wartungspläne / Wartungsverträge vor?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3>📋 Allgemeine Fragen zum QMS</h3>
+                <div class="audit-questions">
+                    <h4>🎯 Diese Fragen kommen IMMER:</h4>
+                    <ul>
+                        <li>Sind Verantwortlichkeiten festgelegt?</li>
+                        <li>Wurde ein internes Audit im gesamten Unternehmen durchgeführt?</li>
+                        <li>Haben Sie eine Managementbewertung erstellt?</li>
+                        <li>Gibt es regelmäßige Besprechungen?</li>
+                        <li>Wie erfahren Mitarbeiter Wichtiges/Interessantes?</li>
+                        <li>Sind die Aufgaben des QMB definiert?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <h3>🎯 Wissenstest</h3>
+                <div class="quiz-question" data-correct="c">
+                    <p>Welche Frage wird bei jedem Audit zur Kundenzufriedenheit gestellt?</p>
+                    <div class="quiz-options">
+                        <label class="quiz-option" data-value="a"><input type="radio" name="q7" value="a"><span class="quiz-radio"></span><span>Wie viele Kunden haben Sie?</span></label>
+                        <label class="quiz-option" data-value="b"><input type="radio" name="q7" value="b"><span class="quiz-radio"></span><span>Wie hoch ist Ihr Umsatz?</span></label>
+                        <label class="quiz-option" data-value="c"><input type="radio" name="q7" value="c"><span class="quiz-radio"></span><span>Wie ermitteln Sie die Kundenzufriedenheit?</span></label>
                     </div>
                     <div class="quiz-feedback"></div>
                 </div>
@@ -704,39 +766,35 @@
                 <button class="btn btn-primary" onclick="goToModule(8)">Weiter →</button>
             </div>
         </section>
-
         <!-- Modul 8: Dokumentation -->
         <section class="module" id="module-8">
             <div class="module-header">
                 <span class="module-number">Modul 8</span>
-                <h2 class="module-title">Dokumentation</h2>
-                <p class="module-subtitle">Feststellungen und Auditbericht</p>
+                <h2 class="module-title">Dokumentation & Nachbereitung</h2>
+                <p class="module-subtitle">Feststellungen, Auditbericht, PDCA</p>
             </div>
             <div class="content-card">
                 <h3>Arten von Feststellungen</h3>
                 <table class="styled-table">
                     <tr><th>Kategorie</th><th>Beschreibung</th><th>Maßnahme</th></tr>
                     <tr style="background:#f0fff4;"><td>✓ <strong>Konformität</strong></td><td>Anforderung erfüllt</td><td>Keine erforderlich</td></tr>
-                    <tr style="background:#f0fff4;"><td>💡 <strong>Verbesserung</strong></td><td>Optimierungspotential</td><td>Empfehlung</td></tr>
+                    <tr style="background:#f0fff4;"><td>💡 <strong>Verbesserung (VP)</strong></td><td>Optimierungspotential</td><td>Empfehlung</td></tr>
                     <tr style="background:#fefcbf;"><td>⚠️ <strong>Minor (Hinweis)</strong></td><td>Geringfügige Abweichung, Einzelfall</td><td>Empfohlen</td></tr>
-                    <tr style="background:#fff5f5;"><td>❌ <strong>Major (NC)</strong></td><td>Erhebliche Nichtkonformität, System betroffen</td><td>Erforderlich!</td></tr>
+                    <tr style="background:#fff5f5;"><td>❌ <strong>Major (NC)</strong></td><td>Erhebliche Abweichung, System betroffen</td><td>Erforderlich!</td></tr>
                 </table>
             </div>
             <div class="content-card">
                 <h3>Feststellungen richtig formulieren</h3>
-                <p>Eine gute Feststellung enthält drei Elemente:</p>
+                <p>Eine gute Feststellung enthält <strong>drei Elemente</strong>:</p>
                 <ol class="numbered-list">
                     <li><strong>WAS</strong> wurde festgestellt? (konkreter Nachweis)</li>
                     <li><strong>WOGEGEN</strong> verstößt es? (Normkapitel)</li>
                     <li><strong>WELCHE AUSWIRKUNG</strong> hat es? (Risiko)</li>
                 </ol>
-                <div class="info-box warning">
-                    <div class="info-box-header"><span>⚠️</span> Schlecht formuliert</div>
-                    <p>"Die Schulungen sind nicht in Ordnung."</p>
-                </div>
-                <div class="info-box tip">
-                    <div class="info-box-header"><span>✨</span> Gut formuliert</div>
-                    <p>"Für 3 von 5 geprüften Mitarbeitern fehlen Schulungsnachweise gemäß Schulungsplan (Kap. 7.2). Risiko: Qualitätsprobleme durch fehlende Kompetenz."</p>
+                <div class="example-box">
+                    <h4>Beispiel: Feststellung formulieren</h4>
+                    <p class="bad">❌ Schlecht: "Die Schulungen sind nicht in Ordnung."</p>
+                    <p class="good" style="margin-top:0.75rem;">✓ Gut: "Für 3 von 5 geprüften Mitarbeitern fehlen Schulungsnachweise gemäß Schulungsplan (Kap. 7.2). Risiko: Qualitätsprobleme durch fehlende Kompetenz."</p>
                 </div>
             </div>
             <div class="content-card">
@@ -746,242 +804,139 @@
                     <div class="checklist-item"><div class="checkbox checked"></div><div><strong>Auditumfang:</strong> Geprüfte Prozesse und Normkapitel</div></div>
                     <div class="checklist-item"><div class="checkbox checked"></div><div><strong>Positive Aspekte:</strong> Was läuft gut? Stärken!</div></div>
                     <div class="checklist-item"><div class="checkbox checked"></div><div><strong>Feststellungen:</strong> Mit Normenbezug und Bewertung</div></div>
-                    <div class="checklist-item"><div class="checkbox checked"></div><div><strong>Vorangegangene Maßnahmen:</strong> Status aus letztem Audit</div></div>
-                    <div class="checklist-item"><div class="checkbox checked"></div><div><strong>Handlungsbedarf:</strong> Maßnahmen mit Terminen</div></div>
-                    <div class="checklist-item"><div class="checkbox checked"></div><div><strong>Unterschriften:</strong> Auditor und Auditierter</div></div>
+                    <div class="checklist-item"><div class="checkbox checked"></div><div><strong>Offene Maßnahmen:</strong> Status aus letztem Audit</div></div>
+                    <div class="checklist-item"><div class="checkbox checked"></div><div><strong>Neue Maßnahmen:</strong> Mit Terminen und Verantwortlichen!</div></div>
+                </div>
+                <div class="info-box warning">
+                    <div class="info-box-header"><span>⚠️</span> Wichtig!</div>
+                    <p>Maßnahmen immer mit <strong>Terminen</strong> und <strong>Verantwortlichen</strong> festlegen!</p>
                 </div>
             </div>
             <div class="content-card">
-                <h3>Feststellung von Maßnahmen</h3>
+                <h3>Der PDCA-Zyklus</h3>
+                <div class="pdca-cycle">
+                    <div class="pdca-item plan"><h4>📋 PLAN</h4><p>Analysieren, Konzept entwickeln</p></div>
+                    <div class="pdca-item do"><h4>⚙️ DO</h4><p>Umsetzen, Testen</p></div>
+                    <div class="pdca-item check"><h4>🔍 CHECK</h4><p>Prüfen, Bewerten</p></div>
+                    <div class="pdca-item act"><h4>🚀 ACT</h4><p>Standard einführen</p></div>
+                </div>
+            </div>
+            <div class="content-card">
+                <h3>Nachverfolgung der Maßnahmen</h3>
                 <ul class="styled-list">
-                    <li>Maßnahmen im Abschlussgespräch besprechen</li>
-                    <li>Maßnahmen dokumentieren und verteilen</li>
-                    <li>Immer mit der <strong>verantwortlichen Person</strong> besprechen</li>
+                    <li>Zuständigkeit der Nachverfolgung klären</li>
+                    <li>Prüfen der <strong>Wirksamkeit</strong> (erst nach 4-8 Wochen!)</li>
+                    <li>Wenn Maßnahmen nicht umgesetzt: Gründe ermitteln!</li>
                 </ul>
                 <div class="info-box warning">
                     <div class="info-box-header"><span>⚠️</span> Wichtig!</div>
-                    <p>Immer <strong>Termine</strong> und <strong>Verantwortliche</strong> festlegen!</p>
+                    <p>Wenn nach dem Audit <strong>nichts mehr passiert</strong>, verlieren "Audit" und "QM" im Unternehmen ihre <strong>Bedeutsamkeit</strong>!</p>
                 </div>
             </div>
+            <div class="content-card">
+                <h3>Wann ist eine Maßnahme abgeschlossen?</h3>
+                <div class="info-box">
+                    <div class="info-box-header"><span>🎯</span> Merke</div>
+                    <p style="font-size:1.1rem;text-align:center;">Eine Maßnahme ist <strong>erst abgeschlossen</strong>, wenn die <strong>Wirksamkeit nachgewiesen</strong> wurde!</p>
+                </div>
+                <ul class="styled-list">
+                    <li>Ist das Problem wirklich behoben?</li>
+                    <li>Tritt die Abweichung nicht mehr auf?</li>
+                    <li>Ist die Maßnahme nachhaltig?</li>
+                </ul>
+            </div>
             <div class="quiz-container">
-                <h3>🎯 Wissenstest: Modul 8</h3>
-                <div class="quiz-question" data-correct="c">
-                    <p>Was muss eine gute Feststellung enthalten?</p>
+                <h3>🎯 Wissenstest</h3>
+                <div class="quiz-question" data-correct="b">
+                    <p>Wann ist eine Korrekturmaßnahme abgeschlossen?</p>
                     <div class="quiz-options">
-                        <label class="quiz-option" data-value="a"><input type="radio" name="q8" value="a"><span class="quiz-radio"></span><span>Nur die Problembeschreibung</span></label>
-                        <label class="quiz-option" data-value="b"><input type="radio" name="q8" value="b"><span class="quiz-radio"></span><span>Den Namen des verantwortlichen Mitarbeiters</span></label>
-                        <label class="quiz-option" data-value="c"><input type="radio" name="q8" value="c"><span class="quiz-radio"></span><span>Feststellung, Normenbezug und Auswirkung</span></label>
+                        <label class="quiz-option" data-value="a"><input type="radio" name="q8" value="a"><span class="quiz-radio"></span><span>Wenn sie umgesetzt wurde</span></label>
+                        <label class="quiz-option" data-value="b"><input type="radio" name="q8" value="b"><span class="quiz-radio"></span><span>Wenn die Wirksamkeit nachgewiesen wurde</span></label>
+                        <label class="quiz-option" data-value="c"><input type="radio" name="q8" value="c"><span class="quiz-radio"></span><span>Wenn der Auditor zufrieden ist</span></label>
                     </div>
                     <div class="quiz-feedback"></div>
                 </div>
             </div>
             <div class="module-navigation">
                 <button class="btn btn-secondary" onclick="goToModule(7)">← Zurück</button>
-                <button class="btn btn-primary" onclick="goToModule(9)">Weiter →</button>
+                <button class="btn btn-primary" onclick="goToModule(9)">Zum Abschlusstest →</button>
             </div>
         </section>
-        <!-- Modul 9: Nachbereitung -->
-        <section class="module" id="module-9">
-            <div class="module-header">
-                <span class="module-number">Modul 9</span>
-                <h2 class="module-title">Nachbereitung</h2>
-                <p class="module-subtitle">PDCA-Zyklus und Wirksamkeitsprüfung</p>
-            </div>
-            <div class="content-card">
-                <h3>Nachverfolgung der Maßnahmen</h3>
-                <ul class="styled-list">
-                    <li>Zuständigkeit der Nachverfolgung klären</li>
-                    <li>Wer ist für den Maßnahmenplan verantwortlich?</li>
-                    <li>Prüfen der Wirksamkeit</li>
-                    <li>Was ist, wenn Maßnahmen nicht umgesetzt werden? → Gründe ermitteln!</li>
-                </ul>
-                <div class="info-box warning">
-                    <div class="info-box-header"><span>⚠️</span> Wichtig!</div>
-                    <p>Wenn nach dem Audit nichts mehr passiert, verlieren die Themen "Audit" und "QM" im Unternehmen ihre <strong>Bedeutsamkeit</strong>!</p>
-                </div>
-            </div>
-            <div class="content-card">
-                <h3>Der PDCA-Zyklus</h3>
-                <div class="pdca-cycle">
-                    <div class="pdca-item plan">
-                        <h4>📋 PLAN</h4>
-                        <p>Analysieren<br>Konzept entwickeln<br>Maßnahmen planen</p>
-                    </div>
-                    <div class="pdca-item do">
-                        <h4>⚙️ DO</h4>
-                        <p>Konzept testen<br>Maßnahmen umsetzen<br>Optimieren</p>
-                    </div>
-                    <div class="pdca-item check">
-                        <h4>🔍 CHECK</h4>
-                        <p>Prüfen<br>Ergebnisse bewerten<br>Standard definieren</p>
-                    </div>
-                    <div class="pdca-item act">
-                        <h4>🚀 ACT</h4>
-                        <p>Neuen Standard einführen<br>Verbreiten<br>Nächsten Zyklus starten</p>
-                    </div>
-                </div>
-            </div>
-            <div class="content-card">
-                <h3>Korrekturmaßnahmen - 5 Schritte</h3>
-                <div class="process-flow">
-                    <div class="process-step"><div class="step-number">1</div><h4>Sofort</h4><p>Schadensbegrenzung</p></div>
-                    <div class="process-step"><div class="step-number">2</div><h4>Ursache</h4><p>5x Warum?</p></div>
-                    <div class="process-step"><div class="step-number">3</div><h4>Korrektur</h4><p>Ursache beseitigen</p></div>
-                    <div class="process-step"><div class="step-number">4</div><h4>Umsetzen</h4><p>Mit Termin!</p></div>
-                    <div class="process-step"><div class="step-number">5</div><h4>Prüfen</h4><p>Wirksamkeit</p></div>
-                </div>
-            </div>
-            <div class="content-card">
-                <h3>Wirksamkeitsprüfung</h3>
-                <p>Eine Maßnahme ist <strong>erst abgeschlossen</strong>, wenn die Wirksamkeit nachgewiesen wurde:</p>
-                <ul class="styled-list">
-                    <li>Ist das Problem wirklich behoben?</li>
-                    <li>Tritt die Abweichung nicht mehr auf?</li>
-                    <li>Ist die Maßnahme nachhaltig?</li>
-                    <li>Sind messbare Ziele erreicht?</li>
-                </ul>
-                <div class="info-box tip">
-                    <div class="info-box-header"><span>✨</span> Praxistipp</div>
-                    <p>Wirksamkeit erst nach <strong>4-8 Wochen</strong> prüfen, nicht direkt nach Umsetzung!</p>
-                </div>
-            </div>
-            <div class="content-card">
-                <h3>Pflichterfüllung vs. Echte Verbesserung</h3>
-                <table class="compare-table">
-                    <tr><th class="con">❌ Nur Pflichterfüllung</th><th class="pro">✓ Echte Verbesserung</th></tr>
-                    <tr><td>Schnelle Lösung ohne Analyse</td><td>Systematische Ursachenanalyse</td></tr>
-                    <tr><td>Auditor zufriedenstellen</td><td>Prozesse wirklich verbessern</td></tr>
-                    <tr><td>Hinweise ignorieren</td><td>Aus jedem Hinweis lernen</td></tr>
-                    <tr><td>Aktionismus</td><td>Nachhaltigkeit</td></tr>
-                </table>
-                <div class="info-box">
-                    <div class="info-box-header"><span>💡</span> Merksatz</div>
-                    <p>"Ein <strong>Hinweis</strong> kostet Sie nichts außer Aufmerksamkeit.<br>Eine <strong>Nichtkonformität</strong> kostet Sie Zeit, Geld und Nerven."</p>
-                </div>
-            </div>
-            <div class="quiz-container">
-                <h3>🎯 Wissenstest: Modul 9</h3>
-                <div class="quiz-question" data-correct="b">
-                    <p>Wann ist eine Korrekturmaßnahme abgeschlossen?</p>
-                    <div class="quiz-options">
-                        <label class="quiz-option" data-value="a"><input type="radio" name="q9" value="a"><span class="quiz-radio"></span><span>Wenn sie umgesetzt wurde</span></label>
-                        <label class="quiz-option" data-value="b"><input type="radio" name="q9" value="b"><span class="quiz-radio"></span><span>Wenn die Wirksamkeit nachgewiesen wurde</span></label>
-                        <label class="quiz-option" data-value="c"><input type="radio" name="q9" value="c"><span class="quiz-radio"></span><span>Wenn der Auditor zufrieden ist</span></label>
-                    </div>
-                    <div class="quiz-feedback"></div>
-                </div>
-            </div>
-            <div class="module-navigation">
-                <button class="btn btn-secondary" onclick="goToModule(8)">← Zurück</button>
-                <button class="btn btn-primary" onclick="goToModule(10)">Zum Abschlusstest →</button>
-            </div>
-        </section>
-
-        <!-- Modul 10: Abschlusstest -->
-        <section class="module" id="module-10">
-            <div class="module-header">
-                <span class="module-number">Abschluss</span>
-                <h2 class="module-title">Abschlusstest</h2>
-                <p class="module-subtitle">6 Fragen - 80% zum Bestehen</p>
-            </div>
-            <div class="quiz-container" id="finalQuiz">
-                <h3>📝 Abschlusstest - Interner Auditor ISO 9001</h3>
-                
-                <div class="quiz-question" data-correct="b">
-                    <p><strong>1.</strong> Was bedeutet "Unabhängigkeit" im Auditkontext?</p>
-                    <div class="quiz-options">
-                        <label class="quiz-option" data-value="a"><input type="radio" name="f1" value="a"><span class="quiz-radio"></span><span>Der Auditor arbeitet ohne Auftrag</span></label>
-                        <label class="quiz-option" data-value="b"><input type="radio" name="f1" value="b"><span class="quiz-radio"></span><span>Der Auditor ist unabhängig von der auditierten Tätigkeit</span></label>
-                        <label class="quiz-option" data-value="c"><input type="radio" name="f1" value="c"><span class="quiz-radio"></span><span>Der Auditor ist selbstständig</span></label>
-                    </div><div class="quiz-feedback"></div>
-                </div>
-                
-                <div class="quiz-question" data-correct="a">
-                    <p><strong>2.</strong> Welches ISO-Kapitel definiert die Anforderungen an interne Audits?</p>
-                    <div class="quiz-options">
-                        <label class="quiz-option" data-value="a"><input type="radio" name="f2" value="a"><span class="quiz-radio"></span><span>ISO 9001:2015, Kapitel 9.2</span></label>
-                        <label class="quiz-option" data-value="b"><input type="radio" name="f2" value="b"><span class="quiz-radio"></span><span>ISO 9001:2015, Kapitel 4.1</span></label>
-                        <label class="quiz-option" data-value="c"><input type="radio" name="f2" value="c"><span class="quiz-radio"></span><span>ISO 9001:2015, Kapitel 10.3</span></label>
-                    </div><div class="quiz-feedback"></div>
-                </div>
-                
-                <div class="quiz-question" data-correct="c">
-                    <p><strong>3.</strong> Was gehört NICHT zu den drei Basis-Auditmethoden?</p>
-                    <div class="quiz-options">
-                        <label class="quiz-option" data-value="a"><input type="radio" name="f3" value="a"><span class="quiz-radio"></span><span>Beobachtung</span></label>
-                        <label class="quiz-option" data-value="b"><input type="radio" name="f3" value="b"><span class="quiz-radio"></span><span>Befragung</span></label>
-                        <label class="quiz-option" data-value="c"><input type="radio" name="f3" value="c"><span class="quiz-radio"></span><span>Vermutung</span></label>
-                    </div><div class="quiz-feedback"></div>
-                </div>
-                
-                <div class="quiz-question" data-correct="b">
-                    <p><strong>4.</strong> Was unterscheidet eine Major- von einer Minor-Abweichung?</p>
-                    <div class="quiz-options">
-                        <label class="quiz-option" data-value="a"><input type="radio" name="f4" value="a"><span class="quiz-radio"></span><span>Es gibt keinen Unterschied</span></label>
-                        <label class="quiz-option" data-value="b"><input type="radio" name="f4" value="b"><span class="quiz-radio"></span><span>Major gefährdet die QMS-Wirksamkeit, Minor ist ein Einzelfall</span></label>
-                        <label class="quiz-option" data-value="c"><input type="radio" name="f4" value="c"><span class="quiz-radio"></span><span>Major ist größer geschrieben</span></label>
-                    </div><div class="quiz-feedback"></div>
-                </div>
-                
-                <div class="quiz-question" data-correct="a">
-                    <p><strong>5.</strong> Wie sollte die Gesprächsverteilung im Audit sein?</p>
-                    <div class="quiz-options">
-                        <label class="quiz-option" data-value="a"><input type="radio" name="f5" value="a"><span class="quiz-radio"></span><span>80% Auditierter, 20% Auditor</span></label>
-                        <label class="quiz-option" data-value="b"><input type="radio" name="f5" value="b"><span class="quiz-radio"></span><span>50% Auditierter, 50% Auditor</span></label>
-                        <label class="quiz-option" data-value="c"><input type="radio" name="f5" value="c"><span class="quiz-radio"></span><span>20% Auditierter, 80% Auditor</span></label>
-                    </div><div class="quiz-feedback"></div>
-                </div>
-                
-                <div class="quiz-question" data-correct="c">
-                    <p><strong>6.</strong> Was bedeutet PDCA im Verbesserungsprozess?</p>
-                    <div class="quiz-options">
-                        <label class="quiz-option" data-value="a"><input type="radio" name="f6" value="a"><span class="quiz-radio"></span><span>Problem, Diskussion, Chance, Abschluss</span></label>
-                        <label class="quiz-option" data-value="b"><input type="radio" name="f6" value="b"><span class="quiz-radio"></span><span>Prüfung, Dokumentation, Check, Audit</span></label>
-                        <label class="quiz-option" data-value="c"><input type="radio" name="f6" value="c"><span class="quiz-radio"></span><span>Plan, Do, Check, Act</span></label>
-                    </div><div class="quiz-feedback"></div>
-                </div>
-                
-                <div style="text-align:center;margin-top:2rem;">
-                    <button class="btn btn-success" onclick="evaluateFinalQuiz()" style="font-size:1.1rem;padding:1rem 2.5rem;">🎓 Test auswerten</button>
-                </div>
-                <div id="finalResult" style="display:none;margin-top:2rem;padding:1.5rem;background:rgba(255,255,255,0.15);border-radius:12px;text-align:center;"></div>
-            </div>
-            
-            <div class="certificate-preview" id="certificatePreview" style="display:none;">
-                <h2>🎓 Schulungszertifikat</h2>
-                <p style="color:var(--text-muted);">Interner Auditor ISO 9001</p>
-                <div class="seal">🏆</div>
-                <p><strong id="certName" style="cursor:pointer;font-size:1.2rem;">Klicken für Namenseingabe</strong></p>
-                <p style="margin-top:1rem;">hat erfolgreich an der erweiterten Schulung<br><strong>"Interner Auditor ISO 9001"</strong><br>teilgenommen und den Abschlusstest bestanden.</p>
-                <p style="margin-top:1.5rem;color:var(--text-muted);">Fürth, <span id="certDate"></span></p>
-                <p style="font-size:0.85rem;color:var(--text-muted);margin-top:1.5rem;">QM-Dienstleistungen | Holger Grosser<br>www.qm-guru.de</p>
-                <button class="btn btn-primary" onclick="window.print()" style="margin-top:1.5rem;">📄 Zertifikat drucken</button>
-            </div>
-            
-            <div class="module-navigation">
-                <button class="btn btn-secondary" onclick="goToModule(9)">← Zurück</button>
-                <div></div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <h3>QM-Dienstleistungen | Holger Grosser</h3>
-        <p>📍 Simonstraße 14, 90763 Fürth</p>
+straße 14, 90763 Fürth</p>
         <p>🌐 <a href="https://www.qm-guru.de">www.qm-guru.de</a> · 📧 <a href="mailto:info@qm-guru.de">info@qm-guru.de</a></p>
-        <p style="margin-top:1rem;opacity:0.7;">✓ 30+ Jahre Erfahrung · ✓ 1.000+ Projekte · ✓ Erstellt: QM Guru · Freigabe: QM Guru</p>
+        <p style="margin-top:0.75rem;opacity:0.7;">✓ 30+ Jahre Erfahrung · ✓ 1.000+ Projekte · ✓ Erstellt: QM Elfe · Freigabe: QM Guru</p>
     </footer>
 
     <script>
         const modules=document.querySelectorAll('.module'),navBtns=document.querySelectorAll('.nav-btn'),progressFill=document.getElementById('progressFill');
         let completedModules=new Set();
-        function goToModule(i){modules.forEach((m,x)=>{m.classList.remove('active');if(x===i)m.classList.add('active');});navBtns.forEach((b,x)=>{b.classList.remove('active');if(x===i)b.classList.add('active');});if(i>0){completedModules.add(i-1);navBtns[i-1].classList.add('completed');}progressFill.style.width=(completedModules.size/(modules.length-1))*100+'%';window.scrollTo({top:0,behavior:'smooth'});}
+        
+        function goToModule(i){
+            modules.forEach((m,x)=>{m.classList.remove('active');if(x===i)m.classList.add('active');});
+            navBtns.forEach((b,x)=>{b.classList.remove('active');if(x===i)b.classList.add('active');});
+            if(i>0){completedModules.add(i-1);navBtns[i-1].classList.add('completed');}
+            progressFill.style.width=(completedModules.size/(modules.length-1))*100+'%';
+            window.scrollTo({top:0,behavior:'smooth'});
+        }
+        
         navBtns.forEach((b,i)=>b.addEventListener('click',()=>goToModule(i)));
+        
         function toggleAccordion(h){h.parentElement.classList.toggle('open');}
         function toggleCheckbox(c){c.classList.toggle('checked');}
-        document.querySelectorAll('.quiz-option').forEach(o=>{o.addEventListener('click',function(){const q=this.closest('.quiz-question'),opts=q.querySelectorAll('.quiz-option'),fb=q.querySelector('.quiz-feedback'),correct=q.dataset.correct,selected=this.dataset.value;opts.forEach(x=>x.classList.remove('selected','correct','incorrect'));this.classList.add('selected');if(selected===correct){this.classList.add('correct');fb.className='quiz-feedback show correct';fb.innerHTML='✓ Richtig!';}else{this.classList.add('incorrect');opts.forEach(x=>{if(x.dataset.value===correct)x.classList.add('correct');});fb.className='quiz-feedback show incorrect';fb.innerHTML='✗ Leider falsch';}});});
-        function evaluateFinalQuiz(){const qs=document.querySelectorAll('#finalQuiz .quiz-question');let c=0,a=0;qs.forEach(q=>{const s=q.querySelector('.quiz-option.selected');if(s){a++;if(s.dataset.value===q.dataset.correct)c++;}});const r=document.getElementById('finalResult'),cert=document.getElementById('certificatePreview'),needed=Math.ceil(qs.length*0.8);if(a<qs.length){r.style.display='block';r.innerHTML='⚠️ Bitte alle '+qs.length+' Fragen beantworten (noch '+(qs.length-a)+' offen).';return;}r.style.display='block';if(c>=needed){r.innerHTML='🎉 <strong>Herzlichen Glückwunsch - Bestanden!</strong><br>'+c+' von '+qs.length+' Fragen richtig ('+Math.round(c/qs.length*100)+'%)';cert.style.display='block';document.getElementById('certDate').textContent=new Date().toLocaleDateString('de-DE');navBtns.forEach(b=>b.classList.add('completed'));progressFill.style.width='100%';}else{r.innerHTML='📚 Leider nicht bestanden. '+c+' von '+qs.length+' richtig (benötigt: '+needed+'). <br>Bitte die Module noch einmal durcharbeiten.';}}
-        document.getElementById('certName').addEventListener('click',function(){const n=prompt('Bitte geben Sie Ihren Namen ein:');if(n&&n.trim())this.textContent=n.trim();});
+        
+        document.querySelectorAll('.quiz-option').forEach(o=>{
+            o.addEventListener('click',function(){
+                const q=this.closest('.quiz-question'),
+                      opts=q.querySelectorAll('.quiz-option'),
+                      fb=q.querySelector('.quiz-feedback'),
+                      correct=q.dataset.correct,
+                      selected=this.dataset.value;
+                opts.forEach(x=>x.classList.remove('selected','correct','incorrect'));
+                this.classList.add('selected');
+                if(selected===correct){
+                    this.classList.add('correct');
+                    fb.className='quiz-feedback show correct';
+                    fb.innerHTML='✓ Richtig!';
+                }else{
+                    this.classList.add('incorrect');
+                    opts.forEach(x=>{if(x.dataset.value===correct)x.classList.add('correct');});
+                    fb.className='quiz-feedback show incorrect';
+                    fb.innerHTML='✗ Leider falsch';
+                }
+            });
+        });
+        
+        function evaluateFinalQuiz(){
+            const qs=document.querySelectorAll('#finalQuiz .quiz-question');
+            let c=0,a=0;
+            qs.forEach(q=>{
+                const s=q.querySelector('.quiz-option.selected');
+                if(s){a++;if(s.dataset.value===q.dataset.correct)c++;}
+            });
+            const r=document.getElementById('finalResult'),
+                  cert=document.getElementById('certificatePreview'),
+                  needed=Math.ceil(qs.length*0.8);
+            if(a<qs.length){
+                r.style.display='block';
+                r.innerHTML='⚠️ Bitte alle '+qs.length+' Fragen beantworten (noch '+(qs.length-a)+' offen).';
+                return;
+            }
+            r.style.display='block';
+            if(c>=needed){
+                r.innerHTML='🎉 <strong>Herzlichen Glückwunsch - Bestanden!</strong><br>'+c+' von '+qs.length+' Fragen richtig ('+Math.round(c/qs.length*100)+'%)';
+                cert.style.display='block';
+                document.getElementById('certDate').textContent=new Date().toLocaleDateString('de-DE');
+                navBtns.forEach(b=>b.classList.add('completed'));
+                progressFill.style.width='100%';
+            }else{
+                r.innerHTML='📚 Leider nicht bestanden. '+c+' von '+qs.length+' richtig (benötigt: '+needed+'). <br>Bitte die Module noch einmal durcharbeiten.';
+            }
+        }
+        
+        document.getElementById('certName').addEventListener('click',function(){
+            const n=prompt('Bitte geben Sie Ihren Namen ein:');
+            if(n&&n.trim())this.textContent=n.trim();
+        });
     </script>
 </body>
 </html>
