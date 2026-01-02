@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abschlusstest - Interner Auditor ISO 9001 | QM-Guru</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--primary:#1a365d;--primary-light:#2c5282;--secondary:#c53030;--accent:#38a169;--gold:#d69e2e;--bg-light:#f7fafc;--text-dark:#1a202c;--text-muted:#4a5568}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Source Sans Pro',sans-serif;background:var(--bg-light);color:var(--text-dark);line-height:1.7;min-height:100vh}
+        h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;font-weight:600}
+        .header{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);color:#fff;padding:1.5rem 2rem;text-align:center}
+        .header h1{font-size:1.8rem;margin-bottom:0.5rem}
+        .header p{opacity:0.9}
+        .main-content{max-width:800px;margin:0 auto;padding:2rem 1.5rem}
+        .info-box{background:#fff;border:2px solid var(--gold);border-radius:12px;padding:1.5rem;margin-bottom:2rem;text-align:center}
+        .info-box h3{color:var(--primary);margin-bottom:0.5rem}
+        .quiz-container{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border-radius:16px;padding:2rem;color:#fff}
+        .quiz-container h2{margin-bottom:1.5rem;text-align:center}
+        .quiz-question{background:rgba(255,255,255,0.1);border-radius:12px;padding:1.5rem;margin-bottom:1.25rem}
+        .quiz-question p{margin-bottom:1rem;font-weight:600;font-size:1.1rem}
+        .quiz-options{display:flex;flex-direction:column;gap:0.5rem}
+        .quiz-option{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:rgba(255,255,255,0.1);border-radius:8px;cursor:pointer;border:2px solid transparent;transition:all 0.3s}
+        .quiz-option:hover{background:rgba(255,255,255,0.2)}
+        .quiz-option.selected{border-color:var(--gold);background:rgba(255,255,255,0.2)}
+        .quiz-option.correct{border-color:var(--accent);background:rgba(56,161,105,0.3)}
+        .quiz-option.incorrect{border-color:var(--secondary);background:rgba(197,48,48,0.3)}
+        .quiz-option input{display:none}
+        .quiz-radio{width:20px;height:20px;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .quiz-option.selected .quiz-radio::after,.quiz-option.correct .quiz-radio::after{content:'';width:10px;height:10px;background:#fff;border-radius:50%}
+        .quiz-feedback{margin-top:0.75rem;padding:0.75rem;border-radius:8px;display:none}
+        .quiz-feedback.show{display:block}
+        .quiz-feedback.correct{background:rgba(56,161,105,0.3)}
+        .quiz-feedback.incorrect{background:rgba(197,48,48,0.3)}
+        .btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:1rem 2rem;border:none;border-radius:50px;font-family:inherit;font-size:1.1rem;font-weight:600;cursor:pointer;transition:all 0.3s ease}
+        .btn-success{background:var(--accent);color:#fff}
+        .btn-success:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(56,161,105,0.4)}
+        .btn-secondary{background:transparent;color:#fff;border:2px solid #fff;margin-right:1rem}
+        .btn-secondary:hover{background:rgba(255,255,255,0.1)}
+        .btn-container{text-align:center;margin-top:2rem}
+        #finalResult{display:none;margin-top:1.5rem;padding:1.5rem;background:rgba(255,255,255,0.15);border-radius:12px;text-align:center;font-size:1.1rem}
+        .certificate-preview{background:linear-gradient(135deg,#faf5ff 0%,#ebf8ff 100%);border:3px solid var(--gold);border-radius:16px;padding:2.5rem;text-align:center;margin-top:2rem;display:none}
+        .certificate-preview h2{color:var(--primary);font-size:1.8rem;margin-bottom:0.5rem}
+        .certificate-preview .seal{width:60px;height:60px;background:var(--gold);border-radius:50%;margin:1rem auto;display:flex;align-items:center;justify-content:center;font-size:2rem}
+        .certificate-preview p{color:var(--text-dark)}
+        .btn-print{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);color:#fff;margin-top:1.5rem}
+        .footer{background:var(--primary);color:#fff;padding:1.5rem;text-align:center;margin-top:2rem}
+        .footer a{color:var(--gold);text-decoration:none}
+        @media print{
+            .header,.btn-container,.footer,.quiz-container{display:none!important}
+            .certificate-preview{display:block!important;border:2px solid #333;page-break-inside:avoid}
+            body{background:#fff}
+        }
+        @media(max-width:600px){
+            .main-content{padding:1rem}
+            .quiz-container{padding:1.25rem}
+            .quiz-question{padding:1rem}
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🎓 Abschlusstest</h1>
+        <p>Interner Auditor ISO 9001 | QM-Guru Online-Schulung</p>
+    </header>
+
+    <main class="main-content">
+        <div class="info-box">
+            <h3>📋 Prüfungsregeln</h3>
+            <p><strong>6 Fragen</strong> · Mindestens <strong>80% richtig</strong> zum Bestehen (5 von 6)</p>
+            <p style="margin-top:0.5rem;color:var(--text-muted);">Nach bestandenem Test erhalten Sie Ihr Zertifikat.</p>
+        </div>
+
+        <div class="quiz-container" id="finalQuiz">
+            <h2>📝 Abschlusstest - Interner Auditor ISO 9001</h2>
+            
+            <div class="quiz-question" data-correct="b">
+                <p><strong>Frage 1:</strong> Was bedeutet "Unabhängigkeit" im Auditkontext?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f1" value="a"><span class="quiz-radio"></span><span>Der Auditor arbeitet ohne Auftrag</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f1" value="b"><span class="quiz-radio"></span><span>Der Auditor ist unabhängig von der auditierten Tätigkeit</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f1" value="c"><span class="quiz-radio"></span><span>Der Auditor ist selbstständig tätig</span></label>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+            
+            <div class="quiz-question" data-correct="a">
+                <p><strong>Frage 2:</strong> Welches ISO-Kapitel definiert die Anforderungen an interne Audits?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f2" value="a"><span class="quiz-radio"></span><span>ISO 9001:2015, Kapitel 9.2</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f2" value="b"><span class="quiz-radio"></span><span>ISO 9001:2015, Kapitel 4.1</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f2" value="c"><span class="quiz-radio"></span><span>ISO 9001:2015, Kapitel 10.3</span></label>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+            
+            <div class="quiz-question" data-correct="c">
+                <p><strong>Frage 3:</strong> Welche Frageart sollte im Audit vermieden werden?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f3" value="a"><span class="quiz-radio"></span><span>Offene W-Fragen</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f3" value="b"><span class="quiz-radio"></span><span>Sokrates-Fragen</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f3" value="c"><span class="quiz-radio"></span><span>Suggestivfragen</span></label>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+            
+            <div class="quiz-question" data-correct="b">
+                <p><strong>Frage 4:</strong> Was unterscheidet eine Major- von einer Minor-Abweichung?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f4" value="a"><span class="quiz-radio"></span><span>Es gibt keinen Unterschied</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f4" value="b"><span class="quiz-radio"></span><span>Major gefährdet die QMS-Wirksamkeit, Minor ist ein Einzelfall</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f4" value="c"><span class="quiz-radio"></span><span>Major ist größer geschrieben</span></label>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+            
+            <div class="quiz-question" data-correct="a">
+                <p><strong>Frage 5:</strong> Wie sollte die Gesprächsverteilung im Audit sein?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f5" value="a"><span class="quiz-radio"></span><span>80% Auditierter, 20% Auditor</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f5" value="b"><span class="quiz-radio"></span><span>50% Auditierter, 50% Auditor</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f5" value="c"><span class="quiz-radio"></span><span>20% Auditierter, 80% Auditor</span></label>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+            
+            <div class="quiz-question" data-correct="b">
+                <p><strong>Frage 6:</strong> Wann ist eine Korrekturmaßnahme abgeschlossen?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f6" value="a"><span class="quiz-radio"></span><span>Wenn sie umgesetzt wurde</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f6" value="b"><span class="quiz-radio"></span><span>Wenn die Wirksamkeit nachgewiesen wurde</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f6" value="c"><span class="quiz-radio"></span><span>Wenn der Auditor zufrieden ist</span></label>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+            
+            <div class="btn-container">
+                <a href="index.html" class="btn btn-secondary">← Zurück zur Schulung</a>
+                <button class="btn btn-success" onclick="evaluateFinalQuiz()">🎓 Test auswerten</button>
+            </div>
+            
+            <div id="finalResult"></div>
+        </div>
+
+        <div class="certificate-preview" id="certificatePreview">
+            <h2>🎓 Schulungszertifikat</h2>
+            <p style="color:var(--text-muted);font-size:1.1rem;">Interner Auditor ISO 9001</p>
+            <div class="seal">🏆</div>
+            <p style="font-size:1.3rem;margin:1rem 0;"><strong id="certName" style="cursor:pointer;">Klicken für Namenseingabe</strong></p>
+            <p style="margin-top:1rem;font-size:1.1rem;">hat erfolgreich an der Online-Schulung<br><strong>"Interner Auditor ISO 9001"</strong><br>teilgenommen und den Abschlusstest bestanden.</p>
+            <p style="margin-top:1.5rem;color:var(--text-muted);">Fürth, <span id="certDate"></span></p>
+            <p style="font-size:0.9rem;color:var(--text-muted);margin-top:1.5rem;">
+                QM-Dienstleistungen | Holger Grosser<br>
+                Erstellt: QM Elfe · Freigabe: QM Guru<br>
+                www.qm-guru.de
+            </p>
+            <button class="btn btn-print" onclick="window.print()">📄 Zertifikat drucken</button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p><strong>QM-Dienstleistungen | Holger Grosser</strong></p>
+        <p>📍 Simonstraße 14, 90763 Fürth · 🌐 <a href="https://www.qm-guru.de">www.qm-guru.de</a></p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.quiz-option').forEach(o=>{
+            o.addEventListener('click',function(){
+                const q=this.closest('.quiz-question'),
+                      opts=q.querySelectorAll('.quiz-option'),
+                      fb=q.querySelector('.quiz-feedback'),
+                      correct=q.dataset.correct,
+                      selected=this.dataset.value;
+                opts.forEach(x=>x.classList.remove('selected','correct','incorrect'));
+                this.classList.add('selected');
+                if(selected===correct){
+                    this.classList.add('correct');
+                    fb.className='quiz-feedback show correct';
+                    fb.innerHTML='✓ Richtig!';
+                }else{
+                    this.classList.add('incorrect');
+                    opts.forEach(x=>{if(x.dataset.value===correct)x.classList.add('correct');});
+                    fb.className='quiz-feedback show incorrect';
+                    fb.innerHTML='✗ Leider falsch. Die richtige Antwort ist markiert.';
+                }
+            });
+        });
+
+        function evaluateFinalQuiz(){
+            const qs=document.querySelectorAll('#finalQuiz .quiz-question');
+            let correct=0,answered=0;
+            qs.forEach(q=>{
+                const selected=q.querySelector('.quiz-option.selected');
+                if(selected){
+                    answered++;
+                    if(selected.dataset.value===q.dataset.correct) correct++;
+                }
+            });
+            const result=document.getElementById('finalResult'),
+                  cert=document.getElementById('certificatePreview'),
+                  needed=Math.ceil(qs.length*0.8);
+            
+            result.style.display='block';
+            
+            if(answered<qs.length){
+                result.innerHTML='⚠️ Bitte alle <strong>'+qs.length+' Fragen</strong> beantworten. (Noch '+(qs.length-answered)+' offen)';
+                return;
+            }
+            
+            const percent=Math.round(correct/qs.length*100);
+            
+            if(correct>=needed){
+                result.innerHTML='🎉 <strong>Herzlichen Glückwunsch - BESTANDEN!</strong><br><br>'+correct+' von '+qs.length+' Fragen richtig ('+percent+'%)<br><br>Ihr Zertifikat wird unten angezeigt.';
+                cert.style.display='block';
+                document.getElementById('certDate').textContent=new Date().toLocaleDateString('de-DE');
+                cert.scrollIntoView({behavior:'smooth',block:'start'});
+            }else{
+                result.innerHTML='📚 <strong>Leider nicht bestanden.</strong><br><br>'+correct+' von '+qs.length+' richtig ('+percent+'%)<br>Benötigt: mindestens '+needed+' richtige Antworten (80%)<br><br>Bitte arbeiten Sie die Schulungsmodule noch einmal durch.';
+            }
+        }
+
+        document.getElementById('certName').addEventListener('click',function(){
+            const name=prompt('Bitte geben Sie Ihren vollständigen Namen ein:');
+            if(name && name.trim()){
+                this.textContent=name.trim();
+            }
+        });
+    </script>
+</body>
+</html>
