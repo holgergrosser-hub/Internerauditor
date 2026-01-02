@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Unterweisung - Internes Audit</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Online Unterweisung</h1>
+            <h2>Internes Audit</h2>
+        </header>
+
+        <!-- Welcome Section -->
+        <section id="welcome" class="section active">
+            <div class="content-card">
+                <h3>Willkommen zur Online-Unterweisung</h3>
+                <p>Diese Unterweisung vermittelt Ihnen die Grundlagen des internen Audits und bereitet Sie auf Ihre Aufgaben als interner Auditor vor.</p>
+                
+                <div class="info-box">
+                    <h4>Was Sie lernen werden:</h4>
+                    <ul>
+                        <li>Grundlagen und Ziele des internen Audits</li>
+                        <li>Auditprozess und -methoden</li>
+                        <li>Dokumentation und Berichterstattung</li>
+                        <li>Verhaltensregeln und Ethik</li>
+                    </ul>
+                </div>
+
+                <div class="input-group">
+                    <label for="participantName">Ihr Name:</label>
+                    <input type="text" id="participantName" placeholder="Vor- und Nachname eingeben">
+                </div>
+
+                <button class="btn-primary" onclick="startTraining()">Unterweisung starten</button>
+            </div>
+        </section>
+
+        <!-- Module 1 -->
+        <section id="module1" class="section">
+            <div class="content-card">
+                <div class="module-header">
+                    <span class="module-number">Modul 1</span>
+                    <h3>Grundlagen des Internen Audits</h3>
+                </div>
+
+                <div class="content">
+                    <h4>Definition und Zweck</h4>
+                    <p>Das interne Audit ist eine unabhängige und objektive Prüfungs- und Beratungstätigkeit. Es dient dazu, den Wert einer Organisation zu steigern und ihre Geschäftsprozesse zu verbessern.</p>
+
+                    <h4>Hauptziele:</h4>
+                    <ul>
+                        <li><strong>Risikoidentifikation:</strong> Erkennung und Bewertung von Risiken</li>
+                        <li><strong>Compliance:</strong> Sicherstellung der Einhaltung von Vorschriften</li>
+                        <li><strong>Prozessoptimierung:</strong> Verbesserung von Abläufen</li>
+                        <li><strong>Wertschöpfung:</strong> Beitrag zum Unternehmenserfolg</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <strong>Wichtig:</strong> Das interne Audit ist unabhängig von der operativen Geschäftstätigkeit und berichtet direkt an die Geschäftsführung.
+                    </div>
+                </div>
+
+                <div class="quiz">
+                    <h4>Verständnisfrage:</h4>
+                    <p>Was ist das Hauptziel des internen Audits?</p>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="wrong">
+                            <span>Mitarbeiter zu kontrollieren</span>
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="correct">
+                            <span>Den Wert der Organisation zu steigern und Prozesse zu verbessern</span>
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="wrong">
+                            <span>Kosten zu reduzieren</span>
+                        </label>
+                    </div>
+                    <div id="q1-feedback" class="feedback"></div>
+                </div>
+
+                <div class="navigation">
+                    <button class="btn-secondary" onclick="previousSection()">Zurück</button>
+                    <button class="btn-primary" onclick="checkAnswer('q1', 'module2')">Weiter</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module 2 -->
+        <section id="module2" class="section">
+            <div class="content-card">
+                <div class="module-header">
+                    <span class="module-number">Modul 2</span>
+                    <h3>Der Auditprozess</h3>
+                </div>
+
+                <div class="content">
+                    <h4>Phasen eines Audits:</h4>
+                    
+                    <div class="process-step">
+                        <h5>1. Planung</h5>
+                        <ul>
+                            <li>Festlegung des Auditumfangs</li>
+                            <li>Risikoanalyse</li>
+                            <li>Erstellung des Auditplans</li>
+                        </ul>
+                    </div>
+
+                    <div class="process-step">
+                        <h5>2. Durchführung</h5>
+                        <ul>
+                            <li>Dokumentenprüfung</li>
+                            <li>Interviews mit Mitarbeitern</li>
+                            <li>Prozessbeobachtung</li>
+                            <li>Datenanalyse</li>
+                        </ul>
+                    </div>
+
+                    <div class="process-step">
+                        <h5>3. Berichterstattung</h5>
+                        <ul>
+                            <li>Zusammenfassung der Ergebnisse</li>
+                            <li>Identifikation von Abweichungen</li>
+                            <li>Empfehlungen zur Verbesserung</li>
+                        </ul>
+                    </div>
+
+                    <div class="process-step">
+                        <h5>4. Nachverfolgung</h5>
+                        <ul>
+                            <li>Überwachung der Umsetzung</li>
+                            <li>Wirksamkeitsprüfung</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>Tipp:</strong> Eine gründliche Planung ist der Schlüssel zu einem erfolgreichen Audit.
+                    </div>
+                </div>
+
+                <div class="quiz">
+                    <h4>Verständnisfrage:</h4>
+                    <p>In welcher Phase des Audits werden Interviews mit Mitarbeitern durchgeführt?</p>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="wrong">
+                            <span>Planung</span>
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="correct">
+                            <span>Durchführung</span>
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="wrong">
+                            <span>Berichterstattung</span>
+                        </label>
+                    </div>
+                    <div id="q2-feedback" class="feedback"></div>
+                </div>
+
+                <div class="navigation">
+                    <button class="btn-secondary" onclick="previousSection()">Zurück</button>
+                    <button class="btn-primary" onclick="checkAnswer('q2', 'module3')">Weiter</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module 3 -->
+        <section id="module3" class="section">
+            <div class="content-card">
+                <div class="module-header">
+                    <span class="module-number">Modul 3</span>
+                    <h3>Dokumentation und Berichterstattung</h3>
+                </div>
+
+                <div class="content">
+                    <h4>Wichtige Dokumentationsaspekte:</h4>
+
+                    <div class="doc-item">
+                        <h5>Arbeitspapiere</h5>
+                        <p>Alle Prüfungshandlungen müssen nachvollziehbar dokumentiert werden. Arbeitspapiere dienen als Nachweis der durchgeführten Tätigkeiten.</p>
+                    </div>
+
+                    <div class="doc-item">
+                        <h5>Auditbericht</h5>
+                        <p>Der Auditbericht enthält:</p>
+                        <ul>
+                            <li>Zielsetzung des Audits</li>
+                            <li>Umfang und Methodik</li>
+                            <li>Feststellungen und Bewertungen</li>
+                            <li>Empfehlungen</li>
+                        </ul>
+                    </div>
+
+                    <div class="doc-item">
+                        <h5>Aufbewahrung</h5>
+                        <p>Auditdokumente müssen gemäß den gesetzlichen und internen Vorgaben aufbewahrt werden (in der Regel mindestens 10 Jahre).</p>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>Wichtig:</strong> Alle Dokumentationen müssen objektiv, präzise und nachvollziehbar sein.
+                    </div>
+                </div>
+
+                <div class="quiz">
+                    <h4>Verständnisfrage:</h4>
+                    <p>Wie lange müssen Auditdokumente mindestens aufbewahrt werden?</p>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="wrong">
+                            <span>5 Jahre</span>
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="correct">
+                            <span>10 Jahre</span>
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="wrong">
+                            <span>15 Jahre</span>
+                        </label>
+                    </div>
+                    <div id="q3-feedback" class="feedback"></div>
+                </div>
+
+                <div class="navigation">
+                    <button class="btn-secondary" onclick="previousSection()">Zurück</button>
+                    <button class="btn-primary" onclick="checkAnswer('q3', 'module4')">Weiter</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module 4 -->
+        <section id="module4" class="section">
+            <div class="content-card">
+                <div class="module-header">
+                    <span class="module-number">Modul 4</span>
+                    <h3>Verhaltensregeln und Ethik</h3>
+                </div>
+
+                <div class="content">
+                    <h4>Grundprinzipien für interne Auditoren:</h4>
+
+                    <div class="ethics-item">
+                        <h5>🔒 Integrität</h5>
+                        <p>Ehrlichkeit und Verantwortungsbewusstsein in allen Handlungen.</p>
+                    </div>
+
+                    <div class="ethics-item">
+                        <h5>🎯 Objektivität</h5>
+                        <p>Unvoreingenommene Beurteilung ohne Interessenkonflikte.</p>
+                    </div>
+
+                    <div class="ethics-item">
+                        <h5>🤐 Vertraulichkeit</h5>
+                        <p>Schutz sensibler Informationen und Daten.</p>
+                    </div>
+
+                    <div class="ethics-item">
+                        <h5>💼 Kompetenz</h5>
+                        <p>Kontinuierliche Weiterbildung und Anwendung von Fachwissen.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>Wichtig:</strong> Verstöße gegen diese Grundprinzipien können die Glaubwürdigkeit des gesamten Auditprozesses beeinträchtigen.
+                    </div>
+
+                    <h4>Interessenkonflikte vermeiden:</h4>
+                    <ul>
+                        <li>Keine Prüfung von Bereichen, in denen man zuvor tätig war (mindestens 1 Jahr Wartezeit)</li>
+                        <li>Keine persönlichen Beziehungen zu Geprüften</li>
+                        <li>Transparente Offenlegung potentieller Konflikte</li>
+                    </ul>
+                </div>
+
+                <div class="quiz">
+                    <h4>Verständnisfrage:</h4>
+                    <p>Was ist ein Grundprinzip für interne Auditoren?</p>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="wrong">
+                            <span>Schnelligkeit vor Genauigkeit</span>
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="correct">
+                            <span>Vertraulichkeit und Objektivität</span>
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="wrong">
+                            <span>Maximale Berichterstattung</span>
+                        </label>
+                    </div>
+                    <div id="q4-feedback" class="feedback"></div>
+                </div>
+
+                <div class="navigation">
+                    <button class="btn-secondary" onclick="previousSection()">Zurück</button>
+                    <button class="btn-primary" onclick="checkAnswer('q4', 'completion')">Abschließen</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Completion Section -->
+        <section id="completion" class="section">
+            <div class="content-card completion-card">
+                <div class="success-icon">✓</div>
+                <h3>Herzlichen Glückwunsch!</h3>
+                <p>Sie haben die Online-Unterweisung zum internen Audit erfolgreich abgeschlossen.</p>
+
+                <div class="completion-info">
+                    <p><strong>Teilnehmer:</strong> <span id="certificateName"></span></p>
+                    <p><strong>Abschlussdatum:</strong> <span id="completionDate"></span></p>
+                </div>
+
+                <div class="certificate-actions">
+                    <button class="btn-primary btn-large" onclick="generateCertificate()">
+                        📜 Zertifikat herunterladen
+                    </button>
+                    <button class="btn-secondary" onclick="restartTraining()">
+                        ↺ Unterweisung erneut durchführen
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificate (Hidden, for generation) -->
+        <div id="certificate" class="certificate">
+            <div class="certificate-border">
+                <div class="certificate-content">
+                    <div class="certificate-logo">🎓</div>
+                    <h1 class="certificate-title">Zertifikat</h1>
+                    <h2 class="certificate-subtitle">Online-Unterweisung Internes Audit</h2>
+                    
+                    <div class="certificate-body">
+                        <p class="certificate-text">Hiermit wird bestätigt, dass</p>
+                        <p class="certificate-name" id="certName"></p>
+                        <p class="certificate-text">die Online-Unterweisung zum Thema</p>
+                        <p class="certificate-course">Internes Audit</p>
+                        <p class="certificate-text">erfolgreich abgeschlossen hat.</p>
+                    </div>
+
+                    <div class="certificate-details">
+                        <div class="certificate-date">
+                            <p>Datum:</p>
+                            <p id="certDate"></p>
+                        </div>
+                        <div class="certificate-signature">
+                            <p>Unterschrift:</p>
+                            <p class="signature-line">_________________</p>
+                        </div>
+                    </div>
+
+                    <div class="certificate-footer">
+                        <p>Dieses Zertifikat bestätigt die Teilnahme und das Verständnis der vermittelten Inhalte.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
