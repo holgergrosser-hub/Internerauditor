@@ -154,8 +154,16 @@ function generateCertificate() {
     if (typeof html2canvas === 'undefined') {
         const script = document.createElement('script');
         script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+        script.integrity = 'sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==';
+        script.crossOrigin = 'anonymous';
         script.onload = function() {
             renderCertificate(certificateElement);
+        };
+        script.onerror = function() {
+            alert('Fehler beim Laden der Zertifikat-Bibliothek. Bitte überprüfen Sie Ihre Internetverbindung.');
+            certificateElement.style.position = 'fixed';
+            certificateElement.style.top = '-9999px';
+            certificateElement.style.left = '-9999px';
         };
         document.head.appendChild(script);
     } else {
@@ -181,7 +189,10 @@ function renderCertificate(certificateElement) {
         canvas.toBlob(function(blob) {
             const url = URL.createObjectURL(blob);
             const link = document.createElement('a');
-            const fileName = `Zertifikat_Internes_Audit_${participantName.replace(/\s+/g, '_')}_${completionDate.replace(/\./g, '-')}.png`;
+            // Sanitize filename - remove path traversal and special characters
+            const sanitizedName = participantName.replace(/[^a-zA-Z0-9äöüÄÖÜß\s-]/g, '').replace(/\s+/g, '_');
+            const sanitizedDate = completionDate.replace(/\./g, '-');
+            const fileName = `Zertifikat_Internes_Audit_${sanitizedName}_${sanitizedDate}.png`;
             link.href = url;
             link.download = fileName;
             link.click();
@@ -218,6 +229,7 @@ function printCertificate() {
 // Restart training
 function restartTraining() {
     if (confirm('Möchten Sie die Unterweisung wirklich erneut durchführen?')) {
+        // Reset state
         currentSection = 'welcome';
         currentModule = 0;
         participantName = '';
@@ -234,11 +246,13 @@ function restartTraining() {
         feedbacks.forEach(feedback => {
             feedback.className = 'feedback';
             feedback.textContent = '';
+            feedback.style.display = 'none';
         });
         
         // Reset input
         document.getElementById('participantName').value = '';
         
+        // Navigate to welcome and update progress
         goToSection('welcome');
         updateProgress();
     }
