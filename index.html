@@ -4,8 +4,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interner Auditor ISO 9001 | Online-Schulung | QM-Guru</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--primary:#1a365d;--primary-light:#2c5282;--secondary:#c53030;--accent:#38a169;--gold:#d69e2e;--bg-light:#f7fafc;--bg-cream:#fffbf0;--text-dark:#1a202c;--text-muted:#4a5568}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Source Sans Pro',sans-serif;background:var(--bg-light);color:var(--text-dark);line-height:1.7}
+        h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;font-weight:600}
+        .header{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);color:#fff;padding:1rem 2rem;position:sticky;top:0;z-index:1000}
+        .header-content{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+        .logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700}
+        .logo span{color:var(--gold)}
+        .progress-bar{width:200px;height:8px;background:rgba(255,255,255,0.3);border-radius:4px;overflow:hidden}
+        .progress-fill{height:100%;background:var(--gold);width:0%;transition:width 0.5s ease}
+        .hero{background:linear-gradient(135deg,var(--primary) 0%,#2d3748 100%);color:#fff;padding:3rem 2rem;text-align:center}
+        .hero h1{font-size:2.2rem;margin-bottom:1rem}
+        .hero-subtitle{font-size:1.1rem;opacity:0.9;margin-bottom:1.5rem}
+        .hero-badges{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+        .badge{background:rgba(255,255,255,0.15);padding:0.5rem 1rem;border-radius:50px;display:flex;align-items:center;gap:0.5rem;font-size:0.9rem}
+        .nav-container{background:#fff;border-bottom:1px solid #e2e8f0;padding:0.75rem 1rem;position:sticky;top:60px;z-index:999}
+        .module-nav{max-width:1400px;margin:0 auto;display:flex;gap:0.4rem;overflow-x:auto;padding-bottom:0.5rem}
+        .nav-btn{padding:0.5rem 0.8rem;border:2px solid var(--primary);background:transparent;color:var(--primary);border-radius:20px;cursor:pointer;font-family:inherit;font-size:0.75rem;font-weight:600;white-space:nowrap;transition:all 0.3s ease}
+        .nav-btn:hover,.nav-btn.active{background:var(--primary);color:#fff}
+        .nav-btn.completed{background:var(--accent);border-color:var(--accent);color:#fff}
+        .main-content{max-width:1000px;margin:0 auto;padding:2rem 1.5rem}
+        .module{display:none;animation:fadeIn 0.5s ease}
+        .module.active{display:block}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .module-header{text-align:center;margin-bottom:2rem}
+        .module-number{display:inline-block;background:var(--primary);color:#fff;padding:0.4rem 1.2rem;border-radius:50px;font-size:0.85rem;font-weight:600;margin-bottom:0.75rem}
+        .module-title{font-size:1.8rem;color:var(--primary);margin-bottom:0.5rem}
+        .module-subtitle{color:var(--text-muted);font-size:1rem}
+        .content-card{background:#fff;border-radius:16px;padding:1.5rem;margin-bottom:1.5rem;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);border-left:4px solid var(--primary)}
+        .content-card h3{color:var(--primary);margin-bottom:1rem;font-size:1.3rem}
+        .info-box{background:var(--bg-cream);border:1px solid var(--gold);border-radius:12px;padding:1.25rem;margin:1.25rem 0}
+        .info-box.tip{background:#f0fff4;border-color:var(--accent)}
+        .info-box.warning{background:#fff5f5;border-color:var(--secondary)}
+        .info-box.norm{background:#ebf8ff;border-color:#3182ce}
+        .info-box-header{display:flex;align-items:center;gap:0.5rem;font-weight:600;margin-bottom:0.5rem;color:var(--primary)}
+        .styled-list{list-style:none;padding:0}
+        .styled-list li{padding:0.5rem 0 0.5rem 1.75rem;position:relative;border-bottom:1px solid #e2e8f0}
+        .styled-list li:last-child{border-bottom:none}
+        .styled-list li::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:bold}
+        .numbered-list{counter-reset:item;list-style:none;padding:0}
+        .numbered-list li{counter-increment:item;padding:0.6rem 0 0.6rem 2.5rem;position:relative;border-bottom:1px solid #e2e8f0}
+        .numbered-list li::before{content:counter(item);position:absolute;left:0;top:0.6rem;width:1.5rem;height:1.5rem;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.8rem}
+        .process-flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:0.5rem;margin:1rem 0}
+        .process-step{background:#fff;border-radius:10px;padding:0.75rem;text-align:center;box-shadow:0 2px 4px rgba(0,0,0,0.1)}
+        .step-number{width:32px;height:32px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;margin:0 auto 0.5rem}
+        .process-step h4{color:var(--primary);font-size:0.75rem}
+        .accordion-item{background:#fff;border-radius:8px;margin-bottom:0.5rem;box-shadow:0 2px 4px rgba(0,0,0,0.05);overflow:hidden}
+        .accordion-header{padding:0.75rem 1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;color:var(--primary);font-size:0.95rem}
+        .accordion-header:hover{background:#f7fafc}
+        .accordion-icon{transition:transform 0.3s ease}
+        .accordion-item.open .accordion-icon{transform:rotate(180deg)}
+        .accordion-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease}
+        .accordion-item.open .accordion-content{max-height:800px}
+        .accordion-body{padding:0 1rem 1rem;font-size:0.9rem}
+        .styled-table{width:100%;border-collapse:collapse;margin:1rem 0;background:#fff;border-radius:12px;overflow:hidden;font-size:0.85rem}
+        .styled-table th{background:var(--primary);color:#fff;padding:0.6rem;text-align:left}
+        .styled-table td{padding:0.6rem;border-bottom:1px solid #e2e8f0}
+        .styled-table tr:hover td{background:#f7fafc}
+        .compare-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.85rem}
+        .compare-table th{background:var(--primary);color:#fff;padding:0.6rem;text-align:center}
+        .compare-table th.pro{background:var(--accent)}
+        .compare-table th.con{background:var(--secondary)}
+        .compare-table td{padding:0.6rem;border:1px solid #e2e8f0;vertical-align:top}
+        .quiz-container{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border-radius:16px;padding:1.25rem;margin:1.5rem 0;color:#fff}
+        .quiz-container h3{margin-bottom:0.75rem;font-size:1.1rem}
+        .quiz-question{background:rgba(255,255,255,0.1);border-radius:10px;padding:1rem;margin-bottom:0.75rem}
+        .quiz-question p{margin-bottom:0.5rem;font-weight:600;font-size:0.95rem}
+        .quiz-options{display:flex;flex-direction:column;gap:0.3rem}
+        .quiz-option{display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.75rem;background:rgba(255,255,255,0.1);border-radius:6px;cursor:pointer;border:2px solid transparent;transition:all 0.3s;font-size:0.9rem}
+        .quiz-option:hover{background:rgba(255,255,255,0.2)}
+        .quiz-option.selected{border-color:var(--gold);background:rgba(255,255,255,0.2)}
+        .quiz-option.correct{border-color:var(--accent);background:rgba(56,161,105,0.3)}
+        .quiz-option.incorrect{border-color:var(--secondary);background:rgba(197,48,48,0.3)}
+        .quiz-option input{display:none}
+        .quiz-radio{width:16px;height:16px;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .quiz-option.selected .quiz-radio::after,.quiz-option.correct .quiz-radio::after{content:'';width:8px;height:8px;background:#fff;border-radius:50%}
+        .quiz-feedback{margin-top:0.5rem;padding:0.5rem;border-radius:6px;display:none;font-size:0.85rem}
+        .quiz-feedback.show{display:block}
+        .quiz-feedback.correct{background:rgba(56,161,105,0.3)}
+        .quiz-feedback.incorrect{background:rgba(197,48,48,0.3)}
+        .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;border:none;border-radius:50px;font-family:inherit;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all 0.3s ease}
+        .btn-primary{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);color:#fff}
+        .btn-primary:hover{transform:translateY(-2px)}
+        .btn-secondary{background:transparent;color:var(--primary);border:2px solid var(--primary)}
+        .btn-secondary:hover{background:var(--primary);color:#fff}
+        .btn-success{background:var(--accent);color:#fff}
+        .module-navigation{display:flex;justify-content:space-between;margin-top:2rem;padding-top:1.5rem;border-top:1px solid #e2e8f0}
+        .checklist{background:#fff;border-radius:10px;padding:0.75rem}
+        .checklist-item{display:flex;align-items:flex-start;gap:0.5rem;padding:0.4rem 0;border-bottom:1px solid #e2e8f0;font-size:0.9rem}
+        .checkbox{width:20px;height:20px;border:2px solid var(--primary);border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .checkbox.checked{background:var(--accent);border-color:var(--accent)}
+        .checkbox.checked::after{content:'✓';color:#fff;font-weight:bold;font-size:0.7rem}
+        .turtle-diagram{display:grid;grid-template-areas:"top top top" "left center right" "bottom bottom bottom";grid-template-columns:1fr 2fr 1fr;gap:0.5rem;margin:1rem 0;padding:0.75rem;background:#fff;border-radius:12px}
+        .turtle-section{background:var(--bg-cream);padding:0.6rem;border-radius:8px;text-align:center}
+        .turtle-section.top{grid-area:top;background:#ebf8ff}
+        .turtle-section.left{grid-area:left;background:#fff5f5}
+        .turtle-section.center{grid-area:center;background:var(--primary);color:#fff}
+        .turtle-section.right{grid-area:right;background:#f0fff4}
+        .turtle-section.bottom{grid-area:bottom;background:#faf5ff}
+        .turtle-section h4{margin-bottom:0.3rem;font-size:0.8rem}
+        .turtle-section ul{text-align:left;font-size:0.7rem;padding-left:1rem;margin:0}
+        .audit-questions{background:#f8f9fa;border-radius:10px;padding:1rem;margin:1rem 0}
+        .audit-questions h4{color:var(--primary);margin-bottom:0.75rem;font-size:1rem;display:flex;align-items:center;gap:0.5rem}
+        .audit-questions ul{list-style:none;padding:0;margin:0}
+        .audit-questions li{padding:0.4rem 0 0.4rem 1.5rem;position:relative;border-bottom:1px solid #e2e8f0;font-size:0.85rem}
+        .audit-questions li::before{content:'❓';position:absolute;left:0;font-size:0.75rem}
+        .audit-questions li:last-child{border-bottom:none}
+        .example-box{background:#fff;border:2px solid var(--gold);border-radius:10px;padding:1rem;margin:1rem 0}
+        .example-box h4{color:var(--gold);margin-bottom:0.5rem;font-size:0.95rem}
+        .example-box .good{color:var(--accent);font-weight:600}
+        .example-box .bad{color:var(--secondary);font-weight:600}
+        .pdca-cycle{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1rem 0}
+        .pdca-item{padding:1rem;border-radius:10px;text-align:center}
+        .pdca-item.plan{background:#ebf8ff;border:2px solid #3182ce}
+        .pdca-item.do{background:#f0fff4;border:2px solid var(--accent)}
+        .pdca-item.check{background:#faf5ff;border:2px solid #805ad5}
+        .pdca-item.act{background:#fff5f5;border:2px solid var(--secondary)}
+        .pdca-item h4{margin-bottom:0.4rem;font-size:0.9rem}
+        .pdca-item p{font-size:0.8rem}
+        .certificate-preview{background:linear-gradient(135deg,#faf5ff 0%,#ebf8ff 100%);border:3px solid var(--gold);border-radius:16px;padding:2rem;text-align:center;margin:1.5rem 0}
+        .certificate-preview h2{color:var(--primary);font-size:1.5rem;margin-bottom:0.5rem}
+        .certificate-preview .seal{width:50px;height:50px;background:var(--gold);border-radius:50%;margin:0.75rem auto;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+        .footer{background:var(--primary);color:#fff;padding:2rem 1.5rem;text-align:center}
+        .footer h3{margin-bottom:0.5rem;font-size:1rem}
+        .footer a{color:var(--gold);text-decoration:none}
+        .footer p{font-size:0.85rem}
+        @media(max-width:768px){
+            .hero h1{font-size:1.4rem}
+            .process-flow{grid-template-columns:1fr 1fr}
+            .turtle-diagram{grid-template-areas:"top" "left" "center" "right" "bottom";grid-template-columns:1fr}
+            .module-navigation{flex-direction:column;gap:0.5rem}
+            .btn{width:100%;justify-content:center}
+            .pdca-cycle{grid-template-columns:1fr}
+        }
+        @media print{.header,.nav-container,.module-navigation,.quiz-container{display:none}.module{display:block!important}}
+    </style>
 </head>
 <body>
     <header class="header"><div class="header-content"><div class="logo">QM-<span>Guru</span></div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></div></header>
@@ -66,6 +202,29 @@
                 </div>
             </div>
             <div class="content-card">
+                <h3>📝 Anmeldung für Ihr Zertifikat</h3>
+                <p>Bitte geben Sie Ihre Daten ein. Nach bestandenem Abschlusstest erhalten Sie Ihr persönliches Zertifikat per E-Mail.</p>
+                <div style="max-width:400px;margin:1.5rem auto;">
+                    <div style="margin-bottom:1rem;">
+                        <label style="display:block;font-weight:600;margin-bottom:0.5rem;color:var(--primary);">Vorname und Nachname *</label>
+                        <input type="text" id="teilnehmerName" placeholder="z.B. Max Mustermann" required
+                            style="width:100%;padding:0.75rem 1rem;border:2px solid #e2e8f0;border-radius:8px;font-size:1rem;transition:border-color 0.3s;"
+                            onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='#e2e8f0'">
+                    </div>
+                    <div style="margin-bottom:1rem;">
+                        <label style="display:block;font-weight:600;margin-bottom:0.5rem;color:var(--primary);">E-Mail-Adresse *</label>
+                        <input type="email" id="teilnehmerEmail" placeholder="z.B. max.mustermann@firma.de" required
+                            style="width:100%;padding:0.75rem 1rem;border:2px solid #e2e8f0;border-radius:8px;font-size:1rem;transition:border-color 0.3s;"
+                            onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='#e2e8f0'">
+                    </div>
+                    <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.5rem;">* Pflichtfelder. Ihre Daten werden nur für das Zertifikat verwendet.</p>
+                </div>
+                <div class="info-box tip">
+                    <div class="info-box-header"><span>🎓</span> Zertifikat</div>
+                    <p>Nach bestandenem Test (mind. 80%) wird Ihr Zertifikat automatisch erstellt und an Ihre E-Mail-Adresse gesendet.</p>
+                </div>
+            </div>
+            <div class="content-card">
                 <h3>Vorwissen abfragen</h3>
                 <p>Was wissen Sie bereits zum Thema internes Audit?</p>
                 <div class="checklist">
@@ -76,7 +235,7 @@
                 </div>
                 <p style="margin-top:0.75rem;color:var(--text-muted);font-size:0.85rem;">Keine Sorge - diese Schulung ist für Einsteiger und Fortgeschrittene geeignet!</p>
             </div>
-            <div class="module-navigation"><div></div><button class="btn btn-primary" onclick="goToModule(1)">Schulung starten →</button></div>
+            <div class="module-navigation"><div></div><button class="btn btn-primary" onclick="startSchulung()">Schulung starten →</button></div>
         </section>
 
         <!-- Modul 1: Grundlagen -->
@@ -739,8 +898,64 @@
     <script>
         const modules=document.querySelectorAll('.module'),navBtns=document.querySelectorAll('.nav-btn'),progressFill=document.getElementById('progressFill');
         let completedModules=new Set();
+        let teilnehmerDaten = {name:'', email:''};
+        
+        // Beim Laden prüfen ob Daten im localStorage sind
+        window.onload = function() {
+            const saved = localStorage.getItem('auditorTeilnehmer');
+            if(saved) {
+                teilnehmerDaten = JSON.parse(saved);
+                document.getElementById('teilnehmerName').value = teilnehmerDaten.name;
+                document.getElementById('teilnehmerEmail').value = teilnehmerDaten.email;
+            }
+        };
+        
+        // Validierung der E-Mail
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+        
+        // Schulung starten mit Validierung
+        function startSchulung() {
+            const name = document.getElementById('teilnehmerName').value.trim();
+            const email = document.getElementById('teilnehmerEmail').value.trim();
+            
+            if(!name) {
+                alert('Bitte geben Sie Ihren Namen ein.');
+                document.getElementById('teilnehmerName').focus();
+                return;
+            }
+            if(!email) {
+                alert('Bitte geben Sie Ihre E-Mail-Adresse ein.');
+                document.getElementById('teilnehmerEmail').focus();
+                return;
+            }
+            if(!isValidEmail(email)) {
+                alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+                document.getElementById('teilnehmerEmail').focus();
+                return;
+            }
+            
+            // Daten speichern
+            teilnehmerDaten = {name: name, email: email};
+            localStorage.setItem('auditorTeilnehmer', JSON.stringify(teilnehmerDaten));
+            
+            // Zu Modul 1 wechseln
+            goToModule(1);
+        }
+        
         function goToModule(i){
-            if(i===9){window.location.href='abschlusstest.html';return;}
+            // Zum Abschlusstest mit Daten
+            if(i===9){
+                const saved = localStorage.getItem('auditorTeilnehmer');
+                if(saved) {
+                    const data = JSON.parse(saved);
+                    window.location.href = 'abschlusstest.html?name=' + encodeURIComponent(data.name) + '&email=' + encodeURIComponent(data.email);
+                } else {
+                    window.location.href = 'abschlusstest.html';
+                }
+                return;
+            }
             modules.forEach((m,x)=>{m.classList.remove('active');if(x===i)m.classList.add('active');});
             navBtns.forEach((b,x)=>{b.classList.remove('active');if(x===i)b.classList.add('active');});
             if(i>0){completedModules.add(i-1);navBtns[i-1].classList.add('completed');}
