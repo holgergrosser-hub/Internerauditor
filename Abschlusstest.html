@@ -34,15 +34,9 @@
         .quiz-option{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:rgba(255,255,255,0.1);border-radius:8px;cursor:pointer;border:2px solid transparent;transition:all 0.3s}
         .quiz-option:hover{background:rgba(255,255,255,0.2)}
         .quiz-option.selected{border-color:var(--gold);background:rgba(255,255,255,0.2)}
-        .quiz-option.correct{border-color:var(--accent);background:rgba(56,161,105,0.3)}
-        .quiz-option.incorrect{border-color:var(--secondary);background:rgba(197,48,48,0.3)}
         .quiz-option input{display:none}
         .quiz-radio{width:20px;height:20px;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-        .quiz-option.selected .quiz-radio::after,.quiz-option.correct .quiz-radio::after{content:'';width:10px;height:10px;background:#fff;border-radius:50%}
-        .quiz-feedback{margin-top:0.75rem;padding:0.75rem;border-radius:8px;display:none;font-size:0.9rem}
-        .quiz-feedback.show{display:block}
-        .quiz-feedback.correct{background:rgba(56,161,105,0.3)}
-        .quiz-feedback.incorrect{background:rgba(197,48,48,0.3)}
+        .quiz-option.selected .quiz-radio::after{content:'';width:10px;height:10px;background:#fff;border-radius:50%}
         .btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:1rem 2rem;border:none;border-radius:50px;font-family:inherit;font-size:1.1rem;font-weight:600;cursor:pointer;transition:all 0.3s ease}
         .btn-success{background:var(--accent);color:#fff}
         .btn-success:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(56,161,105,0.4)}
@@ -51,11 +45,12 @@
         .btn-secondary:hover{background:rgba(255,255,255,0.1)}
         .btn-container{text-align:center;margin-top:2rem}
         #finalResult{display:none;margin-top:1.5rem;padding:1.5rem;background:rgba(255,255,255,0.15);border-radius:12px;text-align:center;font-size:1.1rem}
-        .certificate-preview{background:linear-gradient(135deg,#faf5ff 0%,#ebf8ff 100%);border:3px solid var(--gold);border-radius:16px;padding:2.5rem;text-align:center;margin-top:2rem;display:none}
-        .certificate-preview h2{color:var(--primary);font-size:1.8rem;margin-bottom:0.5rem}
-        .certificate-preview .seal{width:60px;height:60px;background:var(--gold);border-radius:50%;margin:1rem auto;display:flex;align-items:center;justify-content:center;font-size:2rem}
-        .certificate-preview p{color:var(--text-dark)}
-        .btn-print{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);color:#fff;margin-top:1.5rem}
+        .result-success{background:linear-gradient(135deg,#d4edda 0%,#c3e6cb 100%);border:2px solid var(--accent);border-radius:16px;padding:2rem;text-align:center;margin-top:2rem;display:none;color:var(--text-dark)}
+        .result-success h2{color:var(--accent);margin-bottom:1rem}
+        .result-success .score{font-size:1.5rem;color:var(--primary);margin:1rem 0}
+        .result-success .email-info{background:#fff;padding:1rem;border-radius:8px;margin-top:1.5rem;border-left:4px solid var(--accent)}
+        .result-fail{background:linear-gradient(135deg,#f8d7da 0%,#f5c6cb 100%);border:2px solid var(--secondary);border-radius:16px;padding:2rem;text-align:center;margin-top:2rem;display:none;color:var(--text-dark)}
+        .result-fail h2{color:var(--secondary);margin-bottom:1rem}
         .loading{display:none;text-align:center;padding:2rem}
         .loading.show{display:block}
         .spinner{width:40px;height:40px;border:4px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 1rem}
@@ -64,11 +59,6 @@
         .footer a{color:var(--gold);text-decoration:none}
         .error-msg{background:#f8d7da;color:#721c24;padding:1rem;border-radius:8px;margin-top:1rem;display:none}
         .error-msg.show{display:block}
-        @media print{
-            .header,.btn-container,.footer,.quiz-container,.teilnehmer-box,.info-box{display:none!important}
-            .certificate-preview{display:block!important;border:2px solid #333;page-break-inside:avoid}
-            body{background:#fff}
-        }
         @media(max-width:600px){
             .main-content{padding:1rem}
             .quiz-container{padding:1.25rem}
@@ -83,7 +73,7 @@
     </header>
 
     <main class="main-content">
-        <!-- Teilnehmer-Daten Anzeige/Eingabe -->
+        <!-- Teilnehmer-Daten -->
         <div class="teilnehmer-box" id="teilnehmerBox">
             <h3>👤 Ihre Daten für das Zertifikat</h3>
             <div class="teilnehmer-info">
@@ -111,7 +101,7 @@
         <div class="quiz-container" id="finalQuiz">
             <h2>📝 Abschlusstest - Interner Auditor ISO 9001</h2>
             
-            <!-- Frage 1: Grundlagen -->
+            <!-- Frage 1 -->
             <div class="quiz-question" data-correct="b">
                 <div class="category">Modul 1: Grundlagen</div>
                 <p><strong>Frage 1:</strong> Was bedeutet "Unabhängigkeit" im Auditkontext?</p>
@@ -120,10 +110,9 @@
                     <label class="quiz-option" data-value="b"><input type="radio" name="f1" value="b"><span class="quiz-radio"></span><span>Der Auditor ist unabhängig von der auditierten Tätigkeit</span></label>
                     <label class="quiz-option" data-value="c"><input type="radio" name="f1" value="c"><span class="quiz-radio"></span><span>Der Auditor ist selbstständig tätig</span></label>
                 </div>
-                <div class="quiz-feedback"></div>
             </div>
             
-            <!-- Frage 2: Normen -->
+            <!-- Frage 2 -->
             <div class="quiz-question" data-correct="a">
                 <div class="category">Modul 2: Normen</div>
                 <p><strong>Frage 2:</strong> Welches ISO-Kapitel definiert die Anforderungen an interne Audits?</p>
@@ -132,10 +121,9 @@
                     <label class="quiz-option" data-value="b"><input type="radio" name="f2" value="b"><span class="quiz-radio"></span><span>ISO 9001:2015, Kapitel 4.1</span></label>
                     <label class="quiz-option" data-value="c"><input type="radio" name="f2" value="c"><span class="quiz-radio"></span><span>ISO 9001:2015, Kapitel 10.3</span></label>
                 </div>
-                <div class="quiz-feedback"></div>
             </div>
             
-            <!-- Frage 3: Normen - NEU -->
+            <!-- Frage 3 -->
             <div class="quiz-question" data-correct="c">
                 <div class="category">Modul 2: Normen</div>
                 <p><strong>Frage 3:</strong> Welches ist KEIN Auditprinzip nach ISO 19011?</p>
@@ -144,10 +132,9 @@
                     <label class="quiz-option" data-value="b"><input type="radio" name="f3" value="b"><span class="quiz-radio"></span><span>Unabhängigkeit</span></label>
                     <label class="quiz-option" data-value="c"><input type="radio" name="f3" value="c"><span class="quiz-radio"></span><span>Schnelligkeit</span></label>
                 </div>
-                <div class="quiz-feedback"></div>
             </div>
             
-            <!-- Frage 4: Planung -->
+            <!-- Frage 4 -->
             <div class="quiz-question" data-correct="a">
                 <div class="category">Modul 3: Planung</div>
                 <p><strong>Frage 4:</strong> Wann sollte der Auditplan kommuniziert werden?</p>
@@ -156,10 +143,9 @@
                     <label class="quiz-option" data-value="b"><input type="radio" name="f4" value="b"><span class="quiz-radio"></span><span>Am Tag des Audits</span></label>
                     <label class="quiz-option" data-value="c"><input type="radio" name="f4" value="c"><span class="quiz-radio"></span><span>Nach dem Audit</span></label>
                 </div>
-                <div class="quiz-feedback"></div>
             </div>
             
-            <!-- Frage 5: Planung - NEU -->
+            <!-- Frage 5 -->
             <div class="quiz-question" data-correct="b">
                 <div class="category">Modul 3: Planung</div>
                 <p><strong>Frage 5:</strong> Was ist der Unterschied zwischen Auditprogramm und Auditplan?</p>
@@ -168,10 +154,9 @@
                     <label class="quiz-option" data-value="b"><input type="radio" name="f5" value="b"><span class="quiz-radio"></span><span>Auditprogramm = Jahresplan aller Audits, Auditplan = Einzelaudit</span></label>
                     <label class="quiz-option" data-value="c"><input type="radio" name="f5" value="c"><span class="quiz-radio"></span><span>Auditplan = Jahresplan, Auditprogramm = Einzelaudit</span></label>
                 </div>
-                <div class="quiz-feedback"></div>
             </div>
 
-            <!-- Frage 6: Vorbereitung - NEU -->
+            <!-- Frage 6 -->
             <div class="quiz-question" data-correct="a">
                 <div class="category">Modul 4: Vorbereitung</div>
                 <p><strong>Frage 6:</strong> Wann sollte ein Audit auf jeden Fall ANGEMELDET werden?</p>
@@ -180,10 +165,9 @@
                     <label class="quiz-option" data-value="b"><input type="radio" name="f6" value="b"><span class="quiz-radio"></span><span>Bei Routineaudits erfahrener Mitarbeiter</span></label>
                     <label class="quiz-option" data-value="c"><input type="radio" name="f6" value="c"><span class="quiz-radio"></span><span>Audits sollten nie angemeldet werden</span></label>
                 </div>
-                <div class="quiz-feedback"></div>
             </div>
             
-            <!-- Frage 7: Durchführung -->
+            <!-- Frage 7 -->
             <div class="quiz-question" data-correct="c">
                 <div class="category">Modul 5: Durchführung</div>
                 <p><strong>Frage 7:</strong> Was ist ein Vorteil des "Rückwärts-Auditierens"?</p>
@@ -192,10 +176,9 @@
                     <label class="quiz-option" data-value="b"><input type="radio" name="f7" value="b"><span class="quiz-radio"></span><span>Es ist einfacher für den Auditor</span></label>
                     <label class="quiz-option" data-value="c"><input type="radio" name="f7" value="c"><span class="quiz-radio"></span><span>Es zeigt Lücken in der Dokumentation</span></label>
                 </div>
-                <div class="quiz-feedback"></div>
             </div>
             
-            <!-- Frage 8: Fragetechnik -->
+            <!-- Frage 8 -->
             <div class="quiz-question" data-correct="c">
                 <div class="category">Modul 6: Fragetechnik</div>
                 <p><strong>Frage 8:</strong> Welche Frageart sollte im Audit vermieden werden?</p>
@@ -204,10 +187,9 @@
                     <label class="quiz-option" data-value="b"><input type="radio" name="f8" value="b"><span class="quiz-radio"></span><span>Sokrates-Fragen</span></label>
                     <label class="quiz-option" data-value="c"><input type="radio" name="f8" value="c"><span class="quiz-radio"></span><span>Suggestivfragen</span></label>
                 </div>
-                <div class="quiz-feedback"></div>
             </div>
             
-            <!-- Frage 9: Fragetechnik -->
+            <!-- Frage 9 -->
             <div class="quiz-question" data-correct="a">
                 <div class="category">Modul 6: Fragetechnik</div>
                 <p><strong>Frage 9:</strong> Wie sollte die Gesprächsverteilung im Audit sein?</p>
@@ -216,10 +198,9 @@
                     <label class="quiz-option" data-value="b"><input type="radio" name="f9" value="b"><span class="quiz-radio"></span><span>50% Auditierter, 50% Auditor</span></label>
                     <label class="quiz-option" data-value="c"><input type="radio" name="f9" value="c"><span class="quiz-radio"></span><span>20% Auditierter, 80% Auditor</span></label>
                 </div>
-                <div class="quiz-feedback"></div>
             </div>
 
-            <!-- Frage 10: Auditfragen - NEU -->
+            <!-- Frage 10 -->
             <div class="quiz-question" data-correct="b">
                 <div class="category">Modul 7: Praxis-Auditfragen</div>
                 <p><strong>Frage 10:</strong> Welche Frage wird zur Kundenzufriedenheit (Kap. 9.1.2) IMMER gestellt?</p>
@@ -228,10 +209,9 @@
                     <label class="quiz-option" data-value="b"><input type="radio" name="f10" value="b"><span class="quiz-radio"></span><span>Wie ermitteln Sie die Kundenzufriedenheit?</span></label>
                     <label class="quiz-option" data-value="c"><input type="radio" name="f10" value="c"><span class="quiz-radio"></span><span>Wie viele Kunden haben Sie?</span></label>
                 </div>
-                <div class="quiz-feedback"></div>
             </div>
             
-            <!-- Frage 11: Dokumentation -->
+            <!-- Frage 11 -->
             <div class="quiz-question" data-correct="b">
                 <div class="category">Modul 8: Dokumentation</div>
                 <p><strong>Frage 11:</strong> Was unterscheidet eine Major- von einer Minor-Abweichung?</p>
@@ -240,10 +220,9 @@
                     <label class="quiz-option" data-value="b"><input type="radio" name="f11" value="b"><span class="quiz-radio"></span><span>Major gefährdet die QMS-Wirksamkeit, Minor ist ein Einzelfall</span></label>
                     <label class="quiz-option" data-value="c"><input type="radio" name="f11" value="c"><span class="quiz-radio"></span><span>Major ist größer geschrieben</span></label>
                 </div>
-                <div class="quiz-feedback"></div>
             </div>
             
-            <!-- Frage 12: Nachbereitung -->
+            <!-- Frage 12 -->
             <div class="quiz-question" data-correct="b">
                 <div class="category">Modul 8: Nachbereitung</div>
                 <p><strong>Frage 12:</strong> Wann ist eine Korrekturmaßnahme abgeschlossen?</p>
@@ -252,7 +231,6 @@
                     <label class="quiz-option" data-value="b"><input type="radio" name="f12" value="b"><span class="quiz-radio"></span><span>Wenn die Wirksamkeit nachgewiesen wurde</span></label>
                     <label class="quiz-option" data-value="c"><input type="radio" name="f12" value="c"><span class="quiz-radio"></span><span>Wenn der Auditor zufrieden ist</span></label>
                 </div>
-                <div class="quiz-feedback"></div>
             </div>
             
             <div class="btn-container">
@@ -269,23 +247,29 @@
             <div class="error-msg" id="errorMsg"></div>
         </div>
 
-        <div class="certificate-preview" id="certificatePreview">
-            <h2>🎓 Schulungszertifikat</h2>
-            <p style="color:var(--text-muted);font-size:1.1rem;">Interner Auditor ISO 9001</p>
-            <div class="seal">🏆</div>
-            <p style="font-size:1.3rem;margin:1rem 0;"><strong id="certName">-</strong></p>
-            <p style="margin-top:1rem;font-size:1.1rem;">hat erfolgreich an der Online-Schulung<br><strong>"Interner Auditor ISO 9001"</strong><br>teilgenommen und den Abschlusstest bestanden.</p>
-            <p style="margin-top:1rem;font-size:0.95rem;color:var(--text-muted);">Ergebnis: <span id="certScore">-</span> von 12 Fragen richtig</p>
-            <p style="margin-top:1.5rem;color:var(--text-muted);">Fürth, <span id="certDate"></span></p>
-            <p style="font-size:0.9rem;color:var(--text-muted);margin-top:1.5rem;">
-                QM-Dienstleistungen | Holger Grosser<br>
-                Erstellt: QM Elfe · Freigabe: QM Guru<br>
-                www.qm-guru.de
-            </p>
-            <div style="background:#d4edda;padding:1rem;border-radius:8px;margin-top:1.5rem;">
-                <p style="color:#155724;margin:0;">📧 Das Zertifikat wurde an <strong id="certEmail">-</strong> gesendet!</p>
+        <!-- Erfolg -->
+        <div class="result-success" id="resultSuccess">
+            <h2>🎉 Herzlichen Glückwunsch!</h2>
+            <p>Sie haben den Abschlusstest <strong>bestanden</strong>!</p>
+            <div class="score">
+                <span id="scoreDisplay"></span> von 12 Fragen richtig
             </div>
-            <button class="btn btn-print" onclick="window.print()">📄 Zertifikat drucken</button>
+            <div class="email-info">
+                <p>📧 <strong>Ihr Zertifikat wurde an <span id="emailDisplay"></span> gesendet.</strong></p>
+                <p style="font-size:0.9rem;color:var(--text-muted);margin-top:0.5rem;">Bitte prüfen Sie ggf. auch Ihren Spam-Ordner.</p>
+            </div>
+            <p style="margin-top:1.5rem;"><a href="index.html" style="color:var(--primary);">← Zurück zur Schulung</a></p>
+        </div>
+
+        <!-- Nicht bestanden -->
+        <div class="result-fail" id="resultFail">
+            <h2>📚 Leider nicht bestanden</h2>
+            <div class="score">
+                <span id="scoreDisplayFail"></span> von 12 Fragen richtig
+            </div>
+            <p style="margin-top:1rem;">Benötigt: mindestens <strong>10 richtige Antworten</strong> (80%)</p>
+            <p style="margin-top:1rem;">Bitte arbeiten Sie die Schulungsmodule noch einmal durch und versuchen Sie es erneut.</p>
+            <p style="margin-top:1.5rem;"><a href="index.html" style="color:var(--secondary);">← Zurück zur Schulung</a></p>
         </div>
     </main>
 
@@ -296,41 +280,22 @@
 
     <script>
         // ============================================
-        // WICHTIG: Web App URL hier eintragen!
-        // Nach dem Deploy des Google Apps Scripts:
-        // 1. Bereitstellen > Neue Bereitstellung
-        // 2. Typ: Web-App, Zugriff: Jeder
-        // 3. URL hier einfügen
+        // KONFIGURATION
         // ============================================
         const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyf9xFQzURKn3gyAZJ1nvqVIqZsw47R8MMW2I608r8dUkl5v5S4uGf76_oqg0pAOwjv/exec';
         
-        // Teilnehmerdaten
         let teilnehmerName = '';
         let teilnehmerEmail = '';
         
-        // URL-Parameter auslesen
-        function getUrlParams() {
-            const params = new URLSearchParams(window.location.search);
-            return {
-                name: params.get('name') || '',
-                email: params.get('email') || ''
-            };
-        }
-        
         // Beim Laden
         window.onload = function() {
-            // Zuerst URL-Parameter prüfen
-            const urlParams = getUrlParams();
-            
-            // Dann localStorage prüfen
             const saved = localStorage.getItem('auditorTeilnehmer');
-            let savedData = saved ? JSON.parse(saved) : {name:'', email:''};
+            if(saved) {
+                const data = JSON.parse(saved);
+                teilnehmerName = data.name || '';
+                teilnehmerEmail = data.email || '';
+            }
             
-            // URL-Parameter haben Vorrang
-            teilnehmerName = urlParams.name || savedData.name || '';
-            teilnehmerEmail = urlParams.email || savedData.email || '';
-            
-            // Felder füllen
             const nameInput = document.getElementById('inputName');
             const emailInput = document.getElementById('inputEmail');
             
@@ -343,7 +308,6 @@
                 emailInput.classList.add('filled');
             }
             
-            // Bei Änderung speichern
             nameInput.addEventListener('input', function() {
                 teilnehmerName = this.value.trim();
                 this.classList.toggle('filled', teilnehmerName.length > 0);
@@ -363,37 +327,22 @@
             }));
         }
         
-        // E-Mail Validierung
         function isValidEmail(email) {
             return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         }
         
-        // Quiz-Optionen
-        document.querySelectorAll('.quiz-option').forEach(o=>{
-            o.addEventListener('click',function(){
-                const q=this.closest('.quiz-question'),
-                      opts=q.querySelectorAll('.quiz-option'),
-                      fb=q.querySelector('.quiz-feedback'),
-                      correct=q.dataset.correct,
-                      selected=this.dataset.value;
-                opts.forEach(x=>x.classList.remove('selected','correct','incorrect'));
+        // Quiz-Optionen - NUR Auswahl markieren, KEINE Korrektur
+        document.querySelectorAll('.quiz-option').forEach(o => {
+            o.addEventListener('click', function() {
+                const q = this.closest('.quiz-question');
+                const opts = q.querySelectorAll('.quiz-option');
+                opts.forEach(x => x.classList.remove('selected'));
                 this.classList.add('selected');
-                if(selected===correct){
-                    this.classList.add('correct');
-                    fb.className='quiz-feedback show correct';
-                    fb.innerHTML='✓ Richtig!';
-                }else{
-                    this.classList.add('incorrect');
-                    opts.forEach(x=>{if(x.dataset.value===correct)x.classList.add('correct');});
-                    fb.className='quiz-feedback show incorrect';
-                    fb.innerHTML='✗ Leider falsch. Die richtige Antwort ist markiert.';
-                }
             });
         });
 
         // Test auswerten
-        function evaluateFinalQuiz(){
-            // Daten aus Feldern holen
+        function evaluateFinalQuiz() {
             teilnehmerName = document.getElementById('inputName').value.trim();
             teilnehmerEmail = document.getElementById('inputEmail').value.trim();
             
@@ -408,13 +357,7 @@
                 document.getElementById('inputName').focus();
                 return;
             }
-            if(!teilnehmerEmail) {
-                errorMsg.innerHTML = '⚠️ Bitte geben Sie Ihre E-Mail-Adresse ein.';
-                errorMsg.classList.add('show');
-                document.getElementById('inputEmail').focus();
-                return;
-            }
-            if(!isValidEmail(teilnehmerEmail)) {
+            if(!teilnehmerEmail || !isValidEmail(teilnehmerEmail)) {
                 errorMsg.innerHTML = '⚠️ Bitte geben Sie eine gültige E-Mail-Adresse ein.';
                 errorMsg.classList.add('show');
                 document.getElementById('inputEmail').focus();
@@ -439,12 +382,11 @@
             });
             
             const totalQuestions = qs.length;
-            const needed = Math.ceil(totalQuestions * 0.8); // 80%
-            
-            result.style.display = 'block';
+            const needed = 10; // 80% von 12
             
             // Alle Fragen beantwortet?
             if(answered < totalQuestions) {
+                result.style.display = 'block';
                 result.innerHTML = '⚠️ Bitte alle <strong>' + totalQuestions + ' Fragen</strong> beantworten. (Noch ' + (totalQuestions - answered) + ' offen)';
                 return;
             }
@@ -453,11 +395,10 @@
             
             // Bestanden?
             if(correct >= needed) {
-                result.innerHTML = '🎉 <strong>Herzlichen Glückwunsch - BESTANDEN!</strong><br><br>' + 
-                    correct + ' von ' + totalQuestions + ' Fragen richtig (' + percent + '%)<br><br>' +
-                    'Ihr Zertifikat wird erstellt...';
+                result.style.display = 'block';
+                result.innerHTML = '⏳ Zertifikat wird erstellt und versendet...';
                 
-                // Zertifikat an Web App senden
+                // Zertifikat senden
                 sendCertificateRequest({
                     name: teilnehmerName,
                     email: teilnehmerEmail,
@@ -469,77 +410,59 @@
                 });
                 
             } else {
-                result.innerHTML = '📚 <strong>Leider nicht bestanden.</strong><br><br>' + 
-                    correct + ' von ' + totalQuestions + ' richtig (' + percent + '%)<br>' +
-                    'Benötigt: mindestens ' + needed + ' richtige Antworten (80%)<br><br>' +
-                    'Bitte arbeiten Sie die Schulungsmodule noch einmal durch.';
+                // Nicht bestanden
+                document.getElementById('finalQuiz').style.display = 'none';
+                document.getElementById('teilnehmerBox').style.display = 'none';
+                document.querySelector('.info-box').style.display = 'none';
+                
+                document.getElementById('scoreDisplayFail').textContent = correct;
+                document.getElementById('resultFail').style.display = 'block';
+                document.getElementById('resultFail').scrollIntoView({behavior:'smooth'});
             }
         }
         
-        // Zertifikat-Request an Web App
+        // Zertifikat-Request
         async function sendCertificateRequest(data) {
             const loading = document.getElementById('loadingIndicator');
             const submitBtn = document.getElementById('submitBtn');
-            const result = document.getElementById('finalResult');
-            const errorMsg = document.getElementById('errorMsg');
-            const cert = document.getElementById('certificatePreview');
             
-            // UI aktualisieren
             loading.classList.add('show');
             submitBtn.disabled = true;
-            errorMsg.classList.remove('show');
             
             try {
-                // Request mit no-cors mode für Google Apps Script
-                // Bei no-cors können wir keine Response lesen, aber der Request wird gesendet
                 await fetch(WEBAPP_URL, {
                     method: 'POST',
                     mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'text/plain'
-                    },
+                    headers: { 'Content-Type': 'text/plain' },
                     body: JSON.stringify(data)
                 });
                 
-                // Bei no-cors gehen wir davon aus, dass es funktioniert hat
+                // Erfolg anzeigen
                 loading.classList.remove('show');
                 
-                // Erfolg anzeigen
-                result.innerHTML = '🎉 <strong>Herzlichen Glückwunsch - BESTANDEN!</strong><br><br>' + 
-                    data.score + ' von ' + data.totalQuestions + ' Fragen richtig (' + data.percentage + '%)<br><br>' +
-                    '📧 Ihr Zertifikat wird an <strong>' + data.email + '</strong> gesendet!<br>' +
-                    '<small style="opacity:0.8;">(Bitte prüfen Sie ggf. auch Ihren Spam-Ordner)</small>';
+                document.getElementById('finalQuiz').style.display = 'none';
+                document.getElementById('teilnehmerBox').style.display = 'none';
+                document.querySelector('.info-box').style.display = 'none';
                 
-                // Zertifikat-Vorschau anzeigen
-                document.getElementById('certName').textContent = data.name;
-                document.getElementById('certScore').textContent = data.score;
-                document.getElementById('certEmail').textContent = data.email;
-                document.getElementById('certDate').textContent = new Date().toLocaleDateString('de-DE');
-                cert.style.display = 'block';
-                cert.scrollIntoView({behavior:'smooth', block:'start'});
+                document.getElementById('scoreDisplay').textContent = data.score;
+                document.getElementById('emailDisplay').textContent = data.email;
+                document.getElementById('resultSuccess').style.display = 'block';
+                document.getElementById('resultSuccess').scrollIntoView({behavior:'smooth'});
                 
-                // localStorage löschen
                 localStorage.removeItem('auditorTeilnehmer');
                 
             } catch(error) {
+                // Bei no-cors trotzdem Erfolg annehmen
                 loading.classList.remove('show');
-                submitBtn.disabled = false;
                 
-                console.error('Fehler:', error);
+                document.getElementById('finalQuiz').style.display = 'none';
+                document.getElementById('teilnehmerBox').style.display = 'none';
+                document.querySelector('.info-box').style.display = 'none';
                 
-                // Trotzdem Erfolg anzeigen, da no-cors oft Fehler wirft obwohl es funktioniert
-                result.innerHTML = '🎉 <strong>Herzlichen Glückwunsch - BESTANDEN!</strong><br><br>' + 
-                    data.score + ' von ' + data.totalQuestions + ' Fragen richtig (' + data.percentage + '%)<br><br>' +
-                    '📧 Ihr Zertifikat wird an <strong>' + data.email + '</strong> gesendet.<br>' +
-                    '<small style="opacity:0.8;">(Bitte prüfen Sie ggf. auch Ihren Spam-Ordner)</small>';
-                
-                // Zertifikat-Vorschau trotzdem anzeigen
-                document.getElementById('certName').textContent = data.name;
-                document.getElementById('certScore').textContent = data.score;
-                document.getElementById('certEmail').textContent = data.email;
-                document.getElementById('certDate').textContent = new Date().toLocaleDateString('de-DE');
-                cert.style.display = 'block';
-                cert.scrollIntoView({behavior:'smooth', block:'start'});
+                document.getElementById('scoreDisplay').textContent = data.score;
+                document.getElementById('emailDisplay').textContent = data.email;
+                document.getElementById('resultSuccess').style.display = 'block';
+                document.getElementById('resultSuccess').scrollIntoView({behavior:'smooth'});
             }
         }
     </script>
