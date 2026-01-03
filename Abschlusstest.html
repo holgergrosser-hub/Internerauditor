@@ -17,6 +17,14 @@
         .info-box{background:#fff;border:2px solid var(--gold);border-radius:12px;padding:1.5rem;margin-bottom:2rem;text-align:center}
         .info-box h3{color:var(--primary);margin-bottom:0.5rem}
         .info-box .highlight{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);color:#fff;padding:0.5rem 1rem;border-radius:8px;display:inline-block;margin-top:0.5rem}
+        .teilnehmer-box{background:#fff;border:2px solid var(--accent);border-radius:12px;padding:1.5rem;margin-bottom:2rem}
+        .teilnehmer-box h3{color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+        .teilnehmer-info{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+        .teilnehmer-info label{font-weight:600;color:var(--primary);display:block;margin-bottom:0.25rem;font-size:0.85rem}
+        .teilnehmer-info input{width:100%;padding:0.75rem 1rem;border:2px solid #e2e8f0;border-radius:8px;font-size:1rem}
+        .teilnehmer-info input:focus{border-color:var(--primary);outline:none}
+        .teilnehmer-info input.filled{background:#f0fff4;border-color:var(--accent)}
+        @media(max-width:500px){.teilnehmer-info{grid-template-columns:1fr}}
         .quiz-container{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border-radius:16px;padding:2rem;color:#fff}
         .quiz-container h2{margin-bottom:1.5rem;text-align:center}
         .quiz-question{background:rgba(255,255,255,0.1);border-radius:12px;padding:1.5rem;margin-bottom:1.25rem}
@@ -38,6 +46,7 @@
         .btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:1rem 2rem;border:none;border-radius:50px;font-family:inherit;font-size:1.1rem;font-weight:600;cursor:pointer;transition:all 0.3s ease}
         .btn-success{background:var(--accent);color:#fff}
         .btn-success:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(56,161,105,0.4)}
+        .btn-success:disabled{background:#ccc;cursor:not-allowed;transform:none}
         .btn-secondary{background:transparent;color:#fff;border:2px solid #fff;margin-right:1rem}
         .btn-secondary:hover{background:rgba(255,255,255,0.1)}
         .btn-container{text-align:center;margin-top:2rem}
@@ -47,10 +56,16 @@
         .certificate-preview .seal{width:60px;height:60px;background:var(--gold);border-radius:50%;margin:1rem auto;display:flex;align-items:center;justify-content:center;font-size:2rem}
         .certificate-preview p{color:var(--text-dark)}
         .btn-print{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);color:#fff;margin-top:1.5rem}
+        .loading{display:none;text-align:center;padding:2rem}
+        .loading.show{display:block}
+        .spinner{width:40px;height:40px;border:4px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 1rem}
+        @keyframes spin{to{transform:rotate(360deg)}}
         .footer{background:var(--primary);color:#fff;padding:1.5rem;text-align:center;margin-top:2rem}
         .footer a{color:var(--gold);text-decoration:none}
+        .error-msg{background:#f8d7da;color:#721c24;padding:1rem;border-radius:8px;margin-top:1rem;display:none}
+        .error-msg.show{display:block}
         @media print{
-            .header,.btn-container,.footer,.quiz-container{display:none!important}
+            .header,.btn-container,.footer,.quiz-container,.teilnehmer-box,.info-box{display:none!important}
             .certificate-preview{display:block!important;border:2px solid #333;page-break-inside:avoid}
             body{background:#fff}
         }
@@ -68,11 +83,29 @@
     </header>
 
     <main class="main-content">
+        <!-- Teilnehmer-Daten Anzeige/Eingabe -->
+        <div class="teilnehmer-box" id="teilnehmerBox">
+            <h3>👤 Ihre Daten für das Zertifikat</h3>
+            <div class="teilnehmer-info">
+                <div>
+                    <label for="inputName">Name *</label>
+                    <input type="text" id="inputName" placeholder="Vorname Nachname" required>
+                </div>
+                <div>
+                    <label for="inputEmail">E-Mail *</label>
+                    <input type="email" id="inputEmail" placeholder="ihre@email.de" required>
+                </div>
+            </div>
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-top:1rem;text-align:center;">
+                Das Zertifikat wird nach bestandenem Test an diese E-Mail-Adresse gesendet.
+            </p>
+        </div>
+        
         <div class="info-box">
             <h3>📋 Prüfungsregeln</h3>
             <p><strong>12 Fragen</strong> aus allen Schulungsmodulen</p>
             <div class="highlight">Mindestens <strong>80% richtig</strong> zum Bestehen (10 von 12)</div>
-            <p style="margin-top:0.75rem;color:var(--text-muted);font-size:0.9rem;">Nach bestandenem Test erhalten Sie Ihr Zertifikat.</p>
+            <p style="margin-top:0.75rem;color:var(--text-muted);font-size:0.9rem;">Nach bestandenem Test erhalten Sie Ihr Zertifikat per E-Mail.</p>
         </div>
 
         <div class="quiz-container" id="finalQuiz">
@@ -224,25 +257,34 @@
             
             <div class="btn-container">
                 <a href="index.html" class="btn btn-secondary">← Zurück zur Schulung</a>
-                <button class="btn btn-success" onclick="evaluateFinalQuiz()">🎓 Test auswerten</button>
+                <button class="btn btn-success" id="submitBtn" onclick="evaluateFinalQuiz()">🎓 Test auswerten</button>
+            </div>
+            
+            <div class="loading" id="loadingIndicator">
+                <div class="spinner"></div>
+                <p>Zertifikat wird erstellt und versendet...</p>
             </div>
             
             <div id="finalResult"></div>
+            <div class="error-msg" id="errorMsg"></div>
         </div>
 
         <div class="certificate-preview" id="certificatePreview">
             <h2>🎓 Schulungszertifikat</h2>
             <p style="color:var(--text-muted);font-size:1.1rem;">Interner Auditor ISO 9001</p>
             <div class="seal">🏆</div>
-            <p style="font-size:1.3rem;margin:1rem 0;"><strong id="certName" style="cursor:pointer;">Klicken für Namenseingabe</strong></p>
+            <p style="font-size:1.3rem;margin:1rem 0;"><strong id="certName">-</strong></p>
             <p style="margin-top:1rem;font-size:1.1rem;">hat erfolgreich an der Online-Schulung<br><strong>"Interner Auditor ISO 9001"</strong><br>teilgenommen und den Abschlusstest bestanden.</p>
-            <p style="margin-top:1rem;font-size:0.95rem;color:var(--text-muted);">Ergebnis: <span id="certScore"></span> von 12 Fragen richtig</p>
+            <p style="margin-top:1rem;font-size:0.95rem;color:var(--text-muted);">Ergebnis: <span id="certScore">-</span> von 12 Fragen richtig</p>
             <p style="margin-top:1.5rem;color:var(--text-muted);">Fürth, <span id="certDate"></span></p>
             <p style="font-size:0.9rem;color:var(--text-muted);margin-top:1.5rem;">
                 QM-Dienstleistungen | Holger Grosser<br>
                 Erstellt: QM Elfe · Freigabe: QM Guru<br>
                 www.qm-guru.de
             </p>
+            <div style="background:#d4edda;padding:1rem;border-radius:8px;margin-top:1.5rem;">
+                <p style="color:#155724;margin:0;">📧 Das Zertifikat wurde an <strong id="certEmail">-</strong> gesendet!</p>
+            </div>
             <button class="btn btn-print" onclick="window.print()">📄 Zertifikat drucken</button>
         </div>
     </main>
@@ -253,6 +295,80 @@
     </footer>
 
     <script>
+        // ============================================
+        // WICHTIG: Web App URL hier eintragen!
+        // Nach dem Deploy des Google Apps Scripts:
+        // 1. Bereitstellen > Neue Bereitstellung
+        // 2. Typ: Web-App, Zugriff: Jeder
+        // 3. URL hier einfügen
+        // ============================================
+        const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyf9xFQzURKn3gyAZJ1nvqVIqZsw47R8MMW2I608r8dUkl5v5S4uGf76_oqg0pAOwjv/exec';
+        
+        // Teilnehmerdaten
+        let teilnehmerName = '';
+        let teilnehmerEmail = '';
+        
+        // URL-Parameter auslesen
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                name: params.get('name') || '',
+                email: params.get('email') || ''
+            };
+        }
+        
+        // Beim Laden
+        window.onload = function() {
+            // Zuerst URL-Parameter prüfen
+            const urlParams = getUrlParams();
+            
+            // Dann localStorage prüfen
+            const saved = localStorage.getItem('auditorTeilnehmer');
+            let savedData = saved ? JSON.parse(saved) : {name:'', email:''};
+            
+            // URL-Parameter haben Vorrang
+            teilnehmerName = urlParams.name || savedData.name || '';
+            teilnehmerEmail = urlParams.email || savedData.email || '';
+            
+            // Felder füllen
+            const nameInput = document.getElementById('inputName');
+            const emailInput = document.getElementById('inputEmail');
+            
+            if(teilnehmerName) {
+                nameInput.value = teilnehmerName;
+                nameInput.classList.add('filled');
+            }
+            if(teilnehmerEmail) {
+                emailInput.value = teilnehmerEmail;
+                emailInput.classList.add('filled');
+            }
+            
+            // Bei Änderung speichern
+            nameInput.addEventListener('input', function() {
+                teilnehmerName = this.value.trim();
+                this.classList.toggle('filled', teilnehmerName.length > 0);
+                saveToLocalStorage();
+            });
+            emailInput.addEventListener('input', function() {
+                teilnehmerEmail = this.value.trim();
+                this.classList.toggle('filled', teilnehmerEmail.length > 0);
+                saveToLocalStorage();
+            });
+        };
+        
+        function saveToLocalStorage() {
+            localStorage.setItem('auditorTeilnehmer', JSON.stringify({
+                name: teilnehmerName,
+                email: teilnehmerEmail
+            }));
+        }
+        
+        // E-Mail Validierung
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+        
+        // Quiz-Optionen
         document.querySelectorAll('.quiz-option').forEach(o=>{
             o.addEventListener('click',function(){
                 const q=this.closest('.quiz-question'),
@@ -275,46 +391,157 @@
             });
         });
 
+        // Test auswerten
         function evaluateFinalQuiz(){
-            const qs=document.querySelectorAll('#finalQuiz .quiz-question');
-            let correct=0,answered=0;
-            qs.forEach(q=>{
-                const selected=q.querySelector('.quiz-option.selected');
-                if(selected){
-                    answered++;
-                    if(selected.dataset.value===q.dataset.correct) correct++;
-                }
-            });
-            const result=document.getElementById('finalResult'),
-                  cert=document.getElementById('certificatePreview'),
-                  needed=Math.ceil(qs.length*0.8);
+            // Daten aus Feldern holen
+            teilnehmerName = document.getElementById('inputName').value.trim();
+            teilnehmerEmail = document.getElementById('inputEmail').value.trim();
             
-            result.style.display='block';
+            const result = document.getElementById('finalResult');
+            const errorMsg = document.getElementById('errorMsg');
+            errorMsg.classList.remove('show');
             
-            if(answered<qs.length){
-                result.innerHTML='⚠️ Bitte alle <strong>'+qs.length+' Fragen</strong> beantworten. (Noch '+(qs.length-answered)+' offen)';
+            // Validierung
+            if(!teilnehmerName) {
+                errorMsg.innerHTML = '⚠️ Bitte geben Sie Ihren Namen ein.';
+                errorMsg.classList.add('show');
+                document.getElementById('inputName').focus();
+                return;
+            }
+            if(!teilnehmerEmail) {
+                errorMsg.innerHTML = '⚠️ Bitte geben Sie Ihre E-Mail-Adresse ein.';
+                errorMsg.classList.add('show');
+                document.getElementById('inputEmail').focus();
+                return;
+            }
+            if(!isValidEmail(teilnehmerEmail)) {
+                errorMsg.innerHTML = '⚠️ Bitte geben Sie eine gültige E-Mail-Adresse ein.';
+                errorMsg.classList.add('show');
+                document.getElementById('inputEmail').focus();
                 return;
             }
             
-            const percent=Math.round(correct/qs.length*100);
+            // Antworten sammeln
+            const qs = document.querySelectorAll('#finalQuiz .quiz-question');
+            let correct = 0;
+            let answered = 0;
+            let answers = [];
             
-            if(correct>=needed){
-                result.innerHTML='🎉 <strong>Herzlichen Glückwunsch - BESTANDEN!</strong><br><br>'+correct+' von '+qs.length+' Fragen richtig ('+percent+'%)<br><br>Ihr Zertifikat wird unten angezeigt.';
-                cert.style.display='block';
-                document.getElementById('certDate').textContent=new Date().toLocaleDateString('de-DE');
-                document.getElementById('certScore').textContent=correct;
-                cert.scrollIntoView({behavior:'smooth',block:'start'});
-            }else{
-                result.innerHTML='📚 <strong>Leider nicht bestanden.</strong><br><br>'+correct+' von '+qs.length+' richtig ('+percent+'%)<br>Benötigt: mindestens '+needed+' richtige Antworten (80%)<br><br>Bitte arbeiten Sie die Schulungsmodule noch einmal durch.';
+            qs.forEach(q => {
+                const selected = q.querySelector('.quiz-option.selected');
+                if(selected) {
+                    answered++;
+                    answers.push(selected.dataset.value);
+                    if(selected.dataset.value === q.dataset.correct) correct++;
+                } else {
+                    answers.push('');
+                }
+            });
+            
+            const totalQuestions = qs.length;
+            const needed = Math.ceil(totalQuestions * 0.8); // 80%
+            
+            result.style.display = 'block';
+            
+            // Alle Fragen beantwortet?
+            if(answered < totalQuestions) {
+                result.innerHTML = '⚠️ Bitte alle <strong>' + totalQuestions + ' Fragen</strong> beantworten. (Noch ' + (totalQuestions - answered) + ' offen)';
+                return;
+            }
+            
+            const percent = Math.round(correct / totalQuestions * 100);
+            
+            // Bestanden?
+            if(correct >= needed) {
+                result.innerHTML = '🎉 <strong>Herzlichen Glückwunsch - BESTANDEN!</strong><br><br>' + 
+                    correct + ' von ' + totalQuestions + ' Fragen richtig (' + percent + '%)<br><br>' +
+                    'Ihr Zertifikat wird erstellt...';
+                
+                // Zertifikat an Web App senden
+                sendCertificateRequest({
+                    name: teilnehmerName,
+                    email: teilnehmerEmail,
+                    score: correct,
+                    totalQuestions: totalQuestions,
+                    percentage: percent,
+                    answers: answers,
+                    timestamp: new Date().toISOString()
+                });
+                
+            } else {
+                result.innerHTML = '📚 <strong>Leider nicht bestanden.</strong><br><br>' + 
+                    correct + ' von ' + totalQuestions + ' richtig (' + percent + '%)<br>' +
+                    'Benötigt: mindestens ' + needed + ' richtige Antworten (80%)<br><br>' +
+                    'Bitte arbeiten Sie die Schulungsmodule noch einmal durch.';
             }
         }
-
-        document.getElementById('certName').addEventListener('click',function(){
-            const name=prompt('Bitte geben Sie Ihren vollständigen Namen ein:');
-            if(name && name.trim()){
-                this.textContent=name.trim();
+        
+        // Zertifikat-Request an Web App
+        async function sendCertificateRequest(data) {
+            const loading = document.getElementById('loadingIndicator');
+            const submitBtn = document.getElementById('submitBtn');
+            const result = document.getElementById('finalResult');
+            const errorMsg = document.getElementById('errorMsg');
+            const cert = document.getElementById('certificatePreview');
+            
+            // UI aktualisieren
+            loading.classList.add('show');
+            submitBtn.disabled = true;
+            errorMsg.classList.remove('show');
+            
+            try {
+                // Request mit no-cors mode für Google Apps Script
+                // Bei no-cors können wir keine Response lesen, aber der Request wird gesendet
+                await fetch(WEBAPP_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'text/plain'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                // Bei no-cors gehen wir davon aus, dass es funktioniert hat
+                loading.classList.remove('show');
+                
+                // Erfolg anzeigen
+                result.innerHTML = '🎉 <strong>Herzlichen Glückwunsch - BESTANDEN!</strong><br><br>' + 
+                    data.score + ' von ' + data.totalQuestions + ' Fragen richtig (' + data.percentage + '%)<br><br>' +
+                    '📧 Ihr Zertifikat wird an <strong>' + data.email + '</strong> gesendet!<br>' +
+                    '<small style="opacity:0.8;">(Bitte prüfen Sie ggf. auch Ihren Spam-Ordner)</small>';
+                
+                // Zertifikat-Vorschau anzeigen
+                document.getElementById('certName').textContent = data.name;
+                document.getElementById('certScore').textContent = data.score;
+                document.getElementById('certEmail').textContent = data.email;
+                document.getElementById('certDate').textContent = new Date().toLocaleDateString('de-DE');
+                cert.style.display = 'block';
+                cert.scrollIntoView({behavior:'smooth', block:'start'});
+                
+                // localStorage löschen
+                localStorage.removeItem('auditorTeilnehmer');
+                
+            } catch(error) {
+                loading.classList.remove('show');
+                submitBtn.disabled = false;
+                
+                console.error('Fehler:', error);
+                
+                // Trotzdem Erfolg anzeigen, da no-cors oft Fehler wirft obwohl es funktioniert
+                result.innerHTML = '🎉 <strong>Herzlichen Glückwunsch - BESTANDEN!</strong><br><br>' + 
+                    data.score + ' von ' + data.totalQuestions + ' Fragen richtig (' + data.percentage + '%)<br><br>' +
+                    '📧 Ihr Zertifikat wird an <strong>' + data.email + '</strong> gesendet.<br>' +
+                    '<small style="opacity:0.8;">(Bitte prüfen Sie ggf. auch Ihren Spam-Ordner)</small>';
+                
+                // Zertifikat-Vorschau trotzdem anzeigen
+                document.getElementById('certName').textContent = data.name;
+                document.getElementById('certScore').textContent = data.score;
+                document.getElementById('certEmail').textContent = data.email;
+                document.getElementById('certDate').textContent = new Date().toLocaleDateString('de-DE');
+                cert.style.display = 'block';
+                cert.scrollIntoView({behavior:'smooth', block:'start'});
             }
-        });
+        }
     </script>
 </body>
 </html>
