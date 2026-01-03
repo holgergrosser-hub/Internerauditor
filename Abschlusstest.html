@@ -16,10 +16,12 @@
         .main-content{max-width:800px;margin:0 auto;padding:2rem 1.5rem}
         .info-box{background:#fff;border:2px solid var(--gold);border-radius:12px;padding:1.5rem;margin-bottom:2rem;text-align:center}
         .info-box h3{color:var(--primary);margin-bottom:0.5rem}
+        .info-box .highlight{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);color:#fff;padding:0.5rem 1rem;border-radius:8px;display:inline-block;margin-top:0.5rem}
         .quiz-container{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border-radius:16px;padding:2rem;color:#fff}
         .quiz-container h2{margin-bottom:1.5rem;text-align:center}
         .quiz-question{background:rgba(255,255,255,0.1);border-radius:12px;padding:1.5rem;margin-bottom:1.25rem}
-        .quiz-question p{margin-bottom:1rem;font-weight:600;font-size:1.1rem}
+        .quiz-question p{margin-bottom:1rem;font-weight:600;font-size:1.05rem}
+        .quiz-question .category{font-size:0.75rem;opacity:0.8;margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.5px}
         .quiz-options{display:flex;flex-direction:column;gap:0.5rem}
         .quiz-option{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:rgba(255,255,255,0.1);border-radius:8px;cursor:pointer;border:2px solid transparent;transition:all 0.3s}
         .quiz-option:hover{background:rgba(255,255,255,0.2)}
@@ -29,7 +31,7 @@
         .quiz-option input{display:none}
         .quiz-radio{width:20px;height:20px;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
         .quiz-option.selected .quiz-radio::after,.quiz-option.correct .quiz-radio::after{content:'';width:10px;height:10px;background:#fff;border-radius:50%}
-        .quiz-feedback{margin-top:0.75rem;padding:0.75rem;border-radius:8px;display:none}
+        .quiz-feedback{margin-top:0.75rem;padding:0.75rem;border-radius:8px;display:none;font-size:0.9rem}
         .quiz-feedback.show{display:block}
         .quiz-feedback.correct{background:rgba(56,161,105,0.3)}
         .quiz-feedback.incorrect{background:rgba(197,48,48,0.3)}
@@ -68,14 +70,17 @@
     <main class="main-content">
         <div class="info-box">
             <h3>📋 Prüfungsregeln</h3>
-            <p><strong>6 Fragen</strong> · Mindestens <strong>80% richtig</strong> zum Bestehen (5 von 6)</p>
-            <p style="margin-top:0.5rem;color:var(--text-muted);">Nach bestandenem Test erhalten Sie Ihr Zertifikat.</p>
+            <p><strong>12 Fragen</strong> aus allen Schulungsmodulen</p>
+            <div class="highlight">Mindestens <strong>80% richtig</strong> zum Bestehen (10 von 12)</div>
+            <p style="margin-top:0.75rem;color:var(--text-muted);font-size:0.9rem;">Nach bestandenem Test erhalten Sie Ihr Zertifikat.</p>
         </div>
 
         <div class="quiz-container" id="finalQuiz">
             <h2>📝 Abschlusstest - Interner Auditor ISO 9001</h2>
             
+            <!-- Frage 1: Grundlagen -->
             <div class="quiz-question" data-correct="b">
+                <div class="category">Modul 1: Grundlagen</div>
                 <p><strong>Frage 1:</strong> Was bedeutet "Unabhängigkeit" im Auditkontext?</p>
                 <div class="quiz-options">
                     <label class="quiz-option" data-value="a"><input type="radio" name="f1" value="a"><span class="quiz-radio"></span><span>Der Auditor arbeitet ohne Auftrag</span></label>
@@ -85,7 +90,9 @@
                 <div class="quiz-feedback"></div>
             </div>
             
+            <!-- Frage 2: Normen -->
             <div class="quiz-question" data-correct="a">
+                <div class="category">Modul 2: Normen</div>
                 <p><strong>Frage 2:</strong> Welches ISO-Kapitel definiert die Anforderungen an interne Audits?</p>
                 <div class="quiz-options">
                     <label class="quiz-option" data-value="a"><input type="radio" name="f2" value="a"><span class="quiz-radio"></span><span>ISO 9001:2015, Kapitel 9.2</span></label>
@@ -95,42 +102,122 @@
                 <div class="quiz-feedback"></div>
             </div>
             
+            <!-- Frage 3: Normen - NEU -->
             <div class="quiz-question" data-correct="c">
-                <p><strong>Frage 3:</strong> Welche Frageart sollte im Audit vermieden werden?</p>
+                <div class="category">Modul 2: Normen</div>
+                <p><strong>Frage 3:</strong> Welches ist KEIN Auditprinzip nach ISO 19011?</p>
                 <div class="quiz-options">
-                    <label class="quiz-option" data-value="a"><input type="radio" name="f3" value="a"><span class="quiz-radio"></span><span>Offene W-Fragen</span></label>
-                    <label class="quiz-option" data-value="b"><input type="radio" name="f3" value="b"><span class="quiz-radio"></span><span>Sokrates-Fragen</span></label>
-                    <label class="quiz-option" data-value="c"><input type="radio" name="f3" value="c"><span class="quiz-radio"></span><span>Suggestivfragen</span></label>
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f3" value="a"><span class="quiz-radio"></span><span>Vertraulichkeit</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f3" value="b"><span class="quiz-radio"></span><span>Unabhängigkeit</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f3" value="c"><span class="quiz-radio"></span><span>Schnelligkeit</span></label>
                 </div>
                 <div class="quiz-feedback"></div>
             </div>
             
-            <div class="quiz-question" data-correct="b">
-                <p><strong>Frage 4:</strong> Was unterscheidet eine Major- von einer Minor-Abweichung?</p>
-                <div class="quiz-options">
-                    <label class="quiz-option" data-value="a"><input type="radio" name="f4" value="a"><span class="quiz-radio"></span><span>Es gibt keinen Unterschied</span></label>
-                    <label class="quiz-option" data-value="b"><input type="radio" name="f4" value="b"><span class="quiz-radio"></span><span>Major gefährdet die QMS-Wirksamkeit, Minor ist ein Einzelfall</span></label>
-                    <label class="quiz-option" data-value="c"><input type="radio" name="f4" value="c"><span class="quiz-radio"></span><span>Major ist größer geschrieben</span></label>
-                </div>
-                <div class="quiz-feedback"></div>
-            </div>
-            
+            <!-- Frage 4: Planung -->
             <div class="quiz-question" data-correct="a">
-                <p><strong>Frage 5:</strong> Wie sollte die Gesprächsverteilung im Audit sein?</p>
+                <div class="category">Modul 3: Planung</div>
+                <p><strong>Frage 4:</strong> Wann sollte der Auditplan kommuniziert werden?</p>
                 <div class="quiz-options">
-                    <label class="quiz-option" data-value="a"><input type="radio" name="f5" value="a"><span class="quiz-radio"></span><span>80% Auditierter, 20% Auditor</span></label>
-                    <label class="quiz-option" data-value="b"><input type="radio" name="f5" value="b"><span class="quiz-radio"></span><span>50% Auditierter, 50% Auditor</span></label>
-                    <label class="quiz-option" data-value="c"><input type="radio" name="f5" value="c"><span class="quiz-radio"></span><span>20% Auditierter, 80% Auditor</span></label>
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f4" value="a"><span class="quiz-radio"></span><span>Mindestens 2 Wochen vorher</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f4" value="b"><span class="quiz-radio"></span><span>Am Tag des Audits</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f4" value="c"><span class="quiz-radio"></span><span>Nach dem Audit</span></label>
                 </div>
                 <div class="quiz-feedback"></div>
             </div>
             
+            <!-- Frage 5: Planung - NEU -->
             <div class="quiz-question" data-correct="b">
-                <p><strong>Frage 6:</strong> Wann ist eine Korrekturmaßnahme abgeschlossen?</p>
+                <div class="category">Modul 3: Planung</div>
+                <p><strong>Frage 5:</strong> Was ist der Unterschied zwischen Auditprogramm und Auditplan?</p>
                 <div class="quiz-options">
-                    <label class="quiz-option" data-value="a"><input type="radio" name="f6" value="a"><span class="quiz-radio"></span><span>Wenn sie umgesetzt wurde</span></label>
-                    <label class="quiz-option" data-value="b"><input type="radio" name="f6" value="b"><span class="quiz-radio"></span><span>Wenn die Wirksamkeit nachgewiesen wurde</span></label>
-                    <label class="quiz-option" data-value="c"><input type="radio" name="f6" value="c"><span class="quiz-radio"></span><span>Wenn der Auditor zufrieden ist</span></label>
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f5" value="a"><span class="quiz-radio"></span><span>Es gibt keinen Unterschied</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f5" value="b"><span class="quiz-radio"></span><span>Auditprogramm = Jahresplan aller Audits, Auditplan = Einzelaudit</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f5" value="c"><span class="quiz-radio"></span><span>Auditplan = Jahresplan, Auditprogramm = Einzelaudit</span></label>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <!-- Frage 6: Vorbereitung - NEU -->
+            <div class="quiz-question" data-correct="a">
+                <div class="category">Modul 4: Vorbereitung</div>
+                <p><strong>Frage 6:</strong> Wann sollte ein Audit auf jeden Fall ANGEMELDET werden?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f6" value="a"><span class="quiz-radio"></span><span>Beim ersten Audit einer neuen Person</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f6" value="b"><span class="quiz-radio"></span><span>Bei Routineaudits erfahrener Mitarbeiter</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f6" value="c"><span class="quiz-radio"></span><span>Audits sollten nie angemeldet werden</span></label>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+            
+            <!-- Frage 7: Durchführung -->
+            <div class="quiz-question" data-correct="c">
+                <div class="category">Modul 5: Durchführung</div>
+                <p><strong>Frage 7:</strong> Was ist ein Vorteil des "Rückwärts-Auditierens"?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f7" value="a"><span class="quiz-radio"></span><span>Es geht schneller</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f7" value="b"><span class="quiz-radio"></span><span>Es ist einfacher für den Auditor</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f7" value="c"><span class="quiz-radio"></span><span>Es zeigt Lücken in der Dokumentation</span></label>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+            
+            <!-- Frage 8: Fragetechnik -->
+            <div class="quiz-question" data-correct="c">
+                <div class="category">Modul 6: Fragetechnik</div>
+                <p><strong>Frage 8:</strong> Welche Frageart sollte im Audit vermieden werden?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f8" value="a"><span class="quiz-radio"></span><span>Offene W-Fragen</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f8" value="b"><span class="quiz-radio"></span><span>Sokrates-Fragen</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f8" value="c"><span class="quiz-radio"></span><span>Suggestivfragen</span></label>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+            
+            <!-- Frage 9: Fragetechnik -->
+            <div class="quiz-question" data-correct="a">
+                <div class="category">Modul 6: Fragetechnik</div>
+                <p><strong>Frage 9:</strong> Wie sollte die Gesprächsverteilung im Audit sein?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f9" value="a"><span class="quiz-radio"></span><span>80% Auditierter, 20% Auditor</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f9" value="b"><span class="quiz-radio"></span><span>50% Auditierter, 50% Auditor</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f9" value="c"><span class="quiz-radio"></span><span>20% Auditierter, 80% Auditor</span></label>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <!-- Frage 10: Auditfragen - NEU -->
+            <div class="quiz-question" data-correct="b">
+                <div class="category">Modul 7: Praxis-Auditfragen</div>
+                <p><strong>Frage 10:</strong> Welche Frage wird zur Kundenzufriedenheit (Kap. 9.1.2) IMMER gestellt?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f10" value="a"><span class="quiz-radio"></span><span>Wie hoch ist Ihr Jahresumsatz?</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f10" value="b"><span class="quiz-radio"></span><span>Wie ermitteln Sie die Kundenzufriedenheit?</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f10" value="c"><span class="quiz-radio"></span><span>Wie viele Kunden haben Sie?</span></label>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+            
+            <!-- Frage 11: Dokumentation -->
+            <div class="quiz-question" data-correct="b">
+                <div class="category">Modul 8: Dokumentation</div>
+                <p><strong>Frage 11:</strong> Was unterscheidet eine Major- von einer Minor-Abweichung?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f11" value="a"><span class="quiz-radio"></span><span>Es gibt keinen Unterschied</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f11" value="b"><span class="quiz-radio"></span><span>Major gefährdet die QMS-Wirksamkeit, Minor ist ein Einzelfall</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f11" value="c"><span class="quiz-radio"></span><span>Major ist größer geschrieben</span></label>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+            
+            <!-- Frage 12: Nachbereitung -->
+            <div class="quiz-question" data-correct="b">
+                <div class="category">Modul 8: Nachbereitung</div>
+                <p><strong>Frage 12:</strong> Wann ist eine Korrekturmaßnahme abgeschlossen?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f12" value="a"><span class="quiz-radio"></span><span>Wenn sie umgesetzt wurde</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f12" value="b"><span class="quiz-radio"></span><span>Wenn die Wirksamkeit nachgewiesen wurde</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f12" value="c"><span class="quiz-radio"></span><span>Wenn der Auditor zufrieden ist</span></label>
                 </div>
                 <div class="quiz-feedback"></div>
             </div>
@@ -149,6 +236,7 @@
             <div class="seal">🏆</div>
             <p style="font-size:1.3rem;margin:1rem 0;"><strong id="certName" style="cursor:pointer;">Klicken für Namenseingabe</strong></p>
             <p style="margin-top:1rem;font-size:1.1rem;">hat erfolgreich an der Online-Schulung<br><strong>"Interner Auditor ISO 9001"</strong><br>teilgenommen und den Abschlusstest bestanden.</p>
+            <p style="margin-top:1rem;font-size:0.95rem;color:var(--text-muted);">Ergebnis: <span id="certScore"></span> von 12 Fragen richtig</p>
             <p style="margin-top:1.5rem;color:var(--text-muted);">Fürth, <span id="certDate"></span></p>
             <p style="font-size:0.9rem;color:var(--text-muted);margin-top:1.5rem;">
                 QM-Dienstleistungen | Holger Grosser<br>
@@ -214,6 +302,7 @@
                 result.innerHTML='🎉 <strong>Herzlichen Glückwunsch - BESTANDEN!</strong><br><br>'+correct+' von '+qs.length+' Fragen richtig ('+percent+'%)<br><br>Ihr Zertifikat wird unten angezeigt.';
                 cert.style.display='block';
                 document.getElementById('certDate').textContent=new Date().toLocaleDateString('de-DE');
+                document.getElementById('certScore').textContent=correct;
                 cert.scrollIntoView({behavior:'smooth',block:'start'});
             }else{
                 result.innerHTML='📚 <strong>Leider nicht bestanden.</strong><br><br>'+correct+' von '+qs.length+' richtig ('+percent+'%)<br>Benötigt: mindestens '+needed+' richtige Antworten (80%)<br><br>Bitte arbeiten Sie die Schulungsmodule noch einmal durch.';
