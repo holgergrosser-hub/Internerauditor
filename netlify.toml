@@ -19,3 +19,20 @@
   from = "/audit-training"
   to = "/index.html"
   status = 200
+
+# Sicherheitsnetz: alte/falsch geschriebene Links auf den Abschlusstest
+# (Netlify unterscheidet Groß-/Kleinschreibung - lokal auf Windows/Mac nicht!)
+[[redirects]]
+  from = "/Abschlusstest.html"
+  to = "/abschlusstest.html"
+  status = 301
+
+[[redirects]]
+  from = "/abschlusstest"
+  to = "/abschlusstest.html"
+  status = 200
+
+[[redirects]]
+  from = "/test"
+  to = "/abschlusstest.html"
+  status = 200

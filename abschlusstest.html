@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abschlusstest - Interner Auditor ISO 9001 | QM-Guru</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--primary:#1a365d;--primary-light:#2c5282;--secondary:#c53030;--accent:#38a169;--gold:#d69e2e;--bg-light:#f7fafc;--text-dark:#1a202c;--text-muted:#4a5568}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Source Sans Pro',sans-serif;background:var(--bg-light);color:var(--text-dark);line-height:1.7;min-height:100vh}
+        h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;font-weight:600}
+        .header{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);color:#fff;padding:1.5rem 2rem;text-align:center}
+        .header h1{font-size:1.8rem;margin-bottom:0.5rem}
+        .header p{opacity:0.9}
+        .main-content{max-width:800px;margin:0 auto;padding:2rem 1.5rem}
+        .info-box{background:#fff;border:2px solid var(--gold);border-radius:12px;padding:1.5rem;margin-bottom:2rem;text-align:center}
+        .info-box h3{color:var(--primary);margin-bottom:0.5rem}
+        .info-box .highlight{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);color:#fff;padding:0.5rem 1rem;border-radius:8px;display:inline-block;margin-top:0.5rem}
+        .teilnehmer-box{background:#fff;border:2px solid var(--accent);border-radius:12px;padding:1.5rem;margin-bottom:2rem}
+        .teilnehmer-box h3{color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+        .teilnehmer-info{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+        .teilnehmer-info label{font-weight:600;color:var(--primary);display:block;margin-bottom:0.25rem;font-size:0.85rem}
+        .teilnehmer-info input{width:100%;padding:0.75rem 1rem;border:2px solid #e2e8f0;border-radius:8px;font-size:1rem}
+        .teilnehmer-info input:focus{border-color:var(--primary);outline:none}
+        .teilnehmer-info input.filled{background:#f0fff4;border-color:var(--accent)}
+        @media(max-width:500px){.teilnehmer-info{grid-template-columns:1fr}}
+        .quiz-container{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border-radius:16px;padding:2rem;color:#fff}
+        .quiz-container h2{margin-bottom:1.5rem;text-align:center}
+        .quiz-question{background:rgba(255,255,255,0.1);border-radius:12px;padding:1.5rem;margin-bottom:1.25rem}
+        .quiz-question p{margin-bottom:1rem;font-weight:600;font-size:1.05rem}
+        .quiz-question .category{font-size:0.75rem;opacity:0.8;margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.5px}
+        .quiz-options{display:flex;flex-direction:column;gap:0.5rem}
+        .quiz-option{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:rgba(255,255,255,0.1);border-radius:8px;cursor:pointer;border:2px solid transparent;transition:all 0.3s}
+        .quiz-option:hover{background:rgba(255,255,255,0.2)}
+        .quiz-option.selected{border-color:var(--gold);background:rgba(255,255,255,0.2)}
+        .quiz-option input{display:none}
+        .quiz-radio{width:20px;height:20px;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .quiz-option.selected .quiz-radio::after{content:'';width:10px;height:10px;background:#fff;border-radius:50%}
+        .btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:1rem 2rem;border:none;border-radius:50px;font-family:inherit;font-size:1.1rem;font-weight:600;cursor:pointer;transition:all 0.3s ease}
+        .btn-success{background:var(--accent);color:#fff}
+        .btn-success:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(56,161,105,0.4)}
+        .btn-success:disabled{background:#ccc;cursor:not-allowed;transform:none}
+        .btn-secondary{background:transparent;color:#fff;border:2px solid #fff;margin-right:1rem}
+        .btn-secondary:hover{background:rgba(255,255,255,0.1)}
+        .btn-container{text-align:center;margin-top:2rem}
+        #finalResult{display:none;margin-top:1.5rem;padding:1.5rem;background:rgba(255,255,255,0.15);border-radius:12px;text-align:center;font-size:1.1rem}
+        .result-success{background:linear-gradient(135deg,#d4edda 0%,#c3e6cb 100%);border:2px solid var(--accent);border-radius:16px;padding:2rem;text-align:center;margin-top:2rem;display:none;color:var(--text-dark)}
+        .result-success h2{color:var(--accent);margin-bottom:1rem}
+        .result-success .score{font-size:1.5rem;color:var(--primary);margin:1rem 0}
+        .result-success .email-info{background:#fff;padding:1rem;border-radius:8px;margin-top:1.5rem;border-left:4px solid var(--accent)}
+        .result-fail{background:linear-gradient(135deg,#f8d7da 0%,#f5c6cb 100%);border:2px solid var(--secondary);border-radius:16px;padding:2rem;text-align:center;margin-top:2rem;display:none;color:var(--text-dark)}
+        .result-fail h2{color:var(--secondary);margin-bottom:1rem}
+        .loading{display:none;text-align:center;padding:2rem}
+        .loading.show{display:block}
+        .spinner{width:40px;height:40px;border:4px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 1rem}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .footer{background:var(--primary);color:#fff;padding:1.5rem;text-align:center;margin-top:2rem}
+        .footer a{color:var(--gold);text-decoration:none}
+        .error-msg{background:#f8d7da;color:#721c24;padding:1rem;border-radius:8px;margin-top:1rem;display:none}
+        .error-msg.show{display:block}
+        @media(max-width:600px){
+            .main-content{padding:1rem}
+            .quiz-container{padding:1.25rem}
+            .quiz-question{padding:1rem}
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🎓 Abschlusstest</h1>
+        <p>Interner Auditor ISO 9001 | QM-Guru Online-Schulung</p>
+    </header>
+
+    <main class="main-content">
+        <!-- Teilnehmer-Daten -->
+        <div class="teilnehmer-box" id="teilnehmerBox">
+            <h3>👤 Ihre Daten für das Zertifikat</h3>
+            <div class="teilnehmer-info">
+                <div>
+                    <label for="inputName">Name *</label>
+                    <input type="text" id="inputName" placeholder="Vorname Nachname" required>
+                </div>
+                <div>
+                    <label for="inputEmail">E-Mail *</label>
+                    <input type="email" id="inputEmail" placeholder="ihre@email.de" required>
+                </div>
+            </div>
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-top:1rem;text-align:center;">
+                Das Zertifikat wird nach bestandenem Test an diese E-Mail-Adresse gesendet.
+            </p>
+        </div>
+        
+        <div class="info-box">
+            <h3>📋 Prüfungsregeln</h3>
+            <p><strong>12 Fragen</strong> aus allen Schulungsmodulen</p>
+            <div class="highlight">Mindestens <strong>80% richtig</strong> zum Bestehen (10 von 12)</div>
+            <p style="margin-top:0.75rem;color:var(--text-muted);font-size:0.9rem;">Nach bestandenem Test erhalten Sie Ihr Zertifikat per E-Mail.</p>
+        </div>
+
+        <div class="quiz-container" id="finalQuiz">
+            <h2>📝 Abschlusstest - Interner Auditor ISO 9001</h2>
+            
+            <!-- Frage 1 -->
+            <div class="quiz-question" data-correct="b">
+                <div class="category">Modul 1: Grundlagen</div>
+                <p><strong>Frage 1:</strong> Was bedeutet "Unabhängigkeit" im Auditkontext?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f1" value="a"><span class="quiz-radio"></span><span>Der Auditor arbeitet ohne Auftrag</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f1" value="b"><span class="quiz-radio"></span><span>Der Auditor ist unabhängig von der auditierten Tätigkeit</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f1" value="c"><span class="quiz-radio"></span><span>Der Auditor ist selbstständig tätig</span></label>
+                </div>
+            </div>
+            
+            <!-- Frage 2 -->
+            <div class="quiz-question" data-correct="a">
+                <div class="category">Modul 2: Normen</div>
+                <p><strong>Frage 2:</strong> Welches ISO-Kapitel definiert die Anforderungen an interne Audits?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f2" value="a"><span class="quiz-radio"></span><span>ISO 9001:2015, Kapitel 9.2</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f2" value="b"><span class="quiz-radio"></span><span>ISO 9001:2015, Kapitel 4.1</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f2" value="c"><span class="quiz-radio"></span><span>ISO 9001:2015, Kapitel 10.3</span></label>
+                </div>
+            </div>
+            
+            <!-- Frage 3 -->
+            <div class="quiz-question" data-correct="c">
+                <div class="category">Modul 2: Normen</div>
+                <p><strong>Frage 3:</strong> Welches ist KEIN Auditprinzip nach ISO 19011?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f3" value="a"><span class="quiz-radio"></span><span>Vertraulichkeit</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f3" value="b"><span class="quiz-radio"></span><span>Unabhängigkeit</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f3" value="c"><span class="quiz-radio"></span><span>Schnelligkeit</span></label>
+                </div>
+            </div>
+            
+            <!-- Frage 4 -->
+            <div class="quiz-question" data-correct="a">
+                <div class="category">Modul 3: Planung</div>
+                <p><strong>Frage 4:</strong> Wann sollte der Auditplan kommuniziert werden?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f4" value="a"><span class="quiz-radio"></span><span>Mindestens 2 Wochen vorher</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f4" value="b"><span class="quiz-radio"></span><span>Am Tag des Audits</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f4" value="c"><span class="quiz-radio"></span><span>Nach dem Audit</span></label>
+                </div>
+            </div>
+            
+            <!-- Frage 5 -->
+            <div class="quiz-question" data-correct="b">
+                <div class="category">Modul 3: Planung</div>
+                <p><strong>Frage 5:</strong> Was ist der Unterschied zwischen Auditprogramm und Auditplan?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f5" value="a"><span class="quiz-radio"></span><span>Es gibt keinen Unterschied</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f5" value="b"><span class="quiz-radio"></span><span>Auditprogramm = Jahresplan aller Audits, Auditplan = Einzelaudit</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f5" value="c"><span class="quiz-radio"></span><span>Auditplan = Jahresplan, Auditprogramm = Einzelaudit</span></label>
+                </div>
+            </div>
+
+            <!-- Frage 6 -->
+            <div class="quiz-question" data-correct="a">
+                <div class="category">Modul 4: Vorbereitung</div>
+                <p><strong>Frage 6:</strong> Wann sollte ein Audit auf jeden Fall ANGEMELDET werden?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f6" value="a"><span class="quiz-radio"></span><span>Beim ersten Audit einer neuen Person</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f6" value="b"><span class="quiz-radio"></span><span>Bei Routineaudits erfahrener Mitarbeiter</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f6" value="c"><span class="quiz-radio"></span><span>Audits sollten nie angemeldet werden</span></label>
+                </div>
+            </div>
+            
+            <!-- Frage 7 -->
+            <div class="quiz-question" data-correct="c">
+                <div class="category">Modul 5: Durchführung</div>
+                <p><strong>Frage 7:</strong> Was ist ein Vorteil des "Rückwärts-Auditierens"?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f7" value="a"><span class="quiz-radio"></span><span>Es geht schneller</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f7" value="b"><span class="quiz-radio"></span><span>Es ist einfacher für den Auditor</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f7" value="c"><span class="quiz-radio"></span><span>Es zeigt Lücken in der Dokumentation</span></label>
+                </div>
+            </div>
+            
+            <!-- Frage 8 -->
+            <div class="quiz-question" data-correct="c">
+                <div class="category">Modul 6: Fragetechnik</div>
+                <p><strong>Frage 8:</strong> Welche Frageart sollte im Audit vermieden werden?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f8" value="a"><span class="quiz-radio"></span><span>Offene W-Fragen</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f8" value="b"><span class="quiz-radio"></span><span>Sokrates-Fragen</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f8" value="c"><span class="quiz-radio"></span><span>Suggestivfragen</span></label>
+                </div>
+            </div>
+            
+            <!-- Frage 9 -->
+            <div class="quiz-question" data-correct="a">
+                <div class="category">Modul 6: Fragetechnik</div>
+                <p><strong>Frage 9:</strong> Wie sollte die Gesprächsverteilung im Audit sein?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f9" value="a"><span class="quiz-radio"></span><span>80% Auditierter, 20% Auditor</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f9" value="b"><span class="quiz-radio"></span><span>50% Auditierter, 50% Auditor</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f9" value="c"><span class="quiz-radio"></span><span>20% Auditierter, 80% Auditor</span></label>
+                </div>
+            </div>
+
+            <!-- Frage 10 -->
+            <div class="quiz-question" data-correct="b">
+                <div class="category">Modul 7: Praxis-Auditfragen</div>
+                <p><strong>Frage 10:</strong> Welche Frage wird zur Kundenzufriedenheit (Kap. 9.1.2) IMMER gestellt?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f10" value="a"><span class="quiz-radio"></span><span>Wie hoch ist Ihr Jahresumsatz?</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f10" value="b"><span class="quiz-radio"></span><span>Wie ermitteln Sie die Kundenzufriedenheit?</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f10" value="c"><span class="quiz-radio"></span><span>Wie viele Kunden haben Sie?</span></label>
+                </div>
+            </div>
+            
+            <!-- Frage 11 -->
+            <div class="quiz-question" data-correct="b">
+                <div class="category">Modul 8: Dokumentation</div>
+                <p><strong>Frage 11:</strong> Was unterscheidet eine Major- von einer Minor-Abweichung?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f11" value="a"><span class="quiz-radio"></span><span>Es gibt keinen Unterschied</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f11" value="b"><span class="quiz-radio"></span><span>Major gefährdet die QMS-Wirksamkeit, Minor ist ein Einzelfall</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f11" value="c"><span class="quiz-radio"></span><span>Major ist größer geschrieben</span></label>
+                </div>
+            </div>
+            
+            <!-- Frage 12 -->
+            <div class="quiz-question" data-correct="b">
+                <div class="category">Modul 8: Nachbereitung</div>
+                <p><strong>Frage 12:</strong> Wann ist eine Korrekturmaßnahme abgeschlossen?</p>
+                <div class="quiz-options">
+                    <label class="quiz-option" data-value="a"><input type="radio" name="f12" value="a"><span class="quiz-radio"></span><span>Wenn sie umgesetzt wurde</span></label>
+                    <label class="quiz-option" data-value="b"><input type="radio" name="f12" value="b"><span class="quiz-radio"></span><span>Wenn die Wirksamkeit nachgewiesen wurde</span></label>
+                    <label class="quiz-option" data-value="c"><input type="radio" name="f12" value="c"><span class="quiz-radio"></span><span>Wenn der Auditor zufrieden ist</span></label>
+                </div>
+            </div>
+            
+            <div class="btn-container">
+                <a href="index.html" class="btn btn-secondary">← Zurück zur Schulung</a>
+                <button class="btn btn-success" id="submitBtn" onclick="evaluateFinalQuiz()">🎓 Test auswerten</button>
+            </div>
+            
+            <div class="loading" id="loadingIndicator">
+                <div class="spinner"></div>
+                <p>Zertifikat wird erstellt und versendet...</p>
+            </div>
+            
+            <div id="finalResult"></div>
+            <div class="error-msg" id="errorMsg"></div>
+        </div>
+
+        <!-- Erfolg -->
+        <div class="result-success" id="resultSuccess">
+            <h2>🎉 Herzlichen Glückwunsch!</h2>
+            <p>Sie haben den Abschlusstest <strong>bestanden</strong>!</p>
+            <div class="score">
+                <span id="scoreDisplay"></span> von 12 Fragen richtig
+            </div>
+            <div class="email-info">
+                <p>📧 <strong>Ihr Zertifikat wurde an <span id="emailDisplay"></span> gesendet.</strong></p>
+                <p style="font-size:0.9rem;color:var(--text-muted);margin-top:0.5rem;">Bitte prüfen Sie ggf. auch Ihren Spam-Ordner.</p>
+            </div>
+            <p style="margin-top:1.5rem;"><a href="index.html" style="color:var(--primary);">← Zurück zur Schulung</a></p>
+        </div>
+
+        <!-- Nicht bestanden -->
+        <div class="result-fail" id="resultFail">
+            <h2>📚 Leider nicht bestanden</h2>
+            <div class="score">
+                <span id="scoreDisplayFail"></span> von 12 Fragen richtig
+            </div>
+            <p style="margin-top:1rem;">Benötigt: mindestens <strong>10 richtige Antworten</strong> (80%)</p>
+            <p style="margin-top:1rem;">Bitte arbeiten Sie die Schulungsmodule noch einmal durch und versuchen Sie es erneut.</p>
+            <p style="margin-top:1.5rem;"><a href="index.html" style="color:var(--secondary);">← Zurück zur Schulung</a></p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p><strong>QM-Dienstleistungen | Holger Grosser</strong></p>
+        <p>📍 Simonstraße 14, 90763 Fürth · 🌐 <a href="https://www.qm-guru.de">www.qm-guru.de</a></p>
+    </footer>
+
+    <script>
+        // ============================================
+        // KONFIGURATION
+        // ============================================
+        const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyf9xFQzURKn3gyAZJ1nvqVIqZsw47R8MMW2I608r8dUkl5v5S4uGf76_oqg0pAOwjv/exec';
+        
+        let teilnehmerName = '';
+        let teilnehmerEmail = '';
+        
+        // Beim Laden
+        window.onload = function() {
+            const saved = localStorage.getItem('auditorTeilnehmer');
+            if(saved) {
+                const data = JSON.parse(saved);
+                teilnehmerName = data.name || '';
+                teilnehmerEmail = data.email || '';
+            }
+            
+            const nameInput = document.getElementById('inputName');
+            const emailInput = document.getElementById('inputEmail');
+            
+            if(teilnehmerName) {
+                nameInput.value = teilnehmerName;
+                nameInput.classList.add('filled');
+            }
+            if(teilnehmerEmail) {
+                emailInput.value = teilnehmerEmail;
+                emailInput.classList.add('filled');
+            }
+            
+            nameInput.addEventListener('input', function() {
+                teilnehmerName = this.value.trim();
+                this.classList.toggle('filled', teilnehmerName.length > 0);
+                saveToLocalStorage();
+            });
+            emailInput.addEventListener('input', function() {
+                teilnehmerEmail = this.value.trim();
+                this.classList.toggle('filled', teilnehmerEmail.length > 0);
+                saveToLocalStorage();
+            });
+        };
+        
+        function saveToLocalStorage() {
+            localStorage.setItem('auditorTeilnehmer', JSON.stringify({
+                name: teilnehmerName,
+                email: teilnehmerEmail
+            }));
+        }
+        
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+        
+        // Quiz-Optionen - NUR Auswahl markieren, KEINE Korrektur
+        document.querySelectorAll('.quiz-option').forEach(o => {
+            o.addEventListener('click', function() {
+                const q = this.closest('.quiz-question');
+                const opts = q.querySelectorAll('.quiz-option');
+                opts.forEach(x => x.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        // Test auswerten
+        function evaluateFinalQuiz() {
+            teilnehmerName = document.getElementById('inputName').value.trim();
+            teilnehmerEmail = document.getElementById('inputEmail').value.trim();
+            
+            const result = document.getElementById('finalResult');
+            const errorMsg = document.getElementById('errorMsg');
+            errorMsg.classList.remove('show');
+            
+            // Validierung
+            if(!teilnehmerName) {
+                errorMsg.innerHTML = '⚠️ Bitte geben Sie Ihren Namen ein.';
+                errorMsg.classList.add('show');
+                document.getElementById('inputName').focus();
+                return;
+            }
+            if(!teilnehmerEmail || !isValidEmail(teilnehmerEmail)) {
+                errorMsg.innerHTML = '⚠️ Bitte geben Sie eine gültige E-Mail-Adresse ein.';
+                errorMsg.classList.add('show');
+                document.getElementById('inputEmail').focus();
+                return;
+            }
+            
+            // Antworten sammeln
+            const qs = document.querySelectorAll('#finalQuiz .quiz-question');
+            let correct = 0;
+            let answered = 0;
+            let answers = [];
+            
+            qs.forEach(q => {
+                const selected = q.querySelector('.quiz-option.selected');
+                if(selected) {
+                    answered++;
+                    answers.push(selected.dataset.value);
+                    if(selected.dataset.value === q.dataset.correct) correct++;
+                } else {
+                    answers.push('');
+                }
+            });
+            
+            const totalQuestions = qs.length;
+            const needed = 10; // 80% von 12
+            
+            // Alle Fragen beantwortet?
+            if(answered < totalQuestions) {
+                result.style.display = 'block';
+                result.innerHTML = '⚠️ Bitte alle <strong>' + totalQuestions + ' Fragen</strong> beantworten. (Noch ' + (totalQuestions - answered) + ' offen)';
+                return;
+            }
+            
+            const percent = Math.round(correct / totalQuestions * 100);
+            
+            // Bestanden?
+            if(correct >= needed) {
+                result.style.display = 'block';
+                result.innerHTML = '⏳ Zertifikat wird erstellt und versendet...';
+                
+                // Zertifikat senden
+                sendCertificateRequest({
+                    name: teilnehmerName,
+                    email: teilnehmerEmail,
+                    score: correct,
+                    totalQuestions: totalQuestions,
+                    percentage: percent,
+                    answers: answers,
+                    timestamp: new Date().toISOString()
+                });
+                
+            } else {
+                // Nicht bestanden
+                document.getElementById('finalQuiz').style.display = 'none';
+                document.getElementById('teilnehmerBox').style.display = 'none';
+                document.querySelector('.info-box').style.display = 'none';
+                
+                document.getElementById('scoreDisplayFail').textContent = correct;
+                document.getElementById('resultFail').style.display = 'block';
+                document.getElementById('resultFail').scrollIntoView({behavior:'smooth'});
+            }
+        }
+        
+        // Ergebnisanzeige (gemeinsam für Erfolg und Zustellproblem)
+        function showResultScreen(data, bestaetigt) {
+            document.getElementById('finalQuiz').style.display = 'none';
+            document.getElementById('teilnehmerBox').style.display = 'none';
+            const infoBox = document.querySelector('.info-box');
+            if(infoBox) infoBox.style.display = 'none';
+
+            document.getElementById('scoreDisplay').textContent = data.score;
+            document.getElementById('emailDisplay').textContent = data.email;
+            document.getElementById('resultSuccess').style.display = 'block';
+            document.getElementById('resultSuccess').scrollIntoView({behavior:'smooth'});
+
+            if(bestaetigt) {
+                localStorage.removeItem('auditorTeilnehmer');
+            } else {
+                // Ergebnis NICHT verwerfen - Teilnehmer bekommt einen Notweg
+                const hinweis = document.createElement('div');
+                hinweis.style.cssText = 'margin-top:1.5rem;padding:1rem;border-radius:8px;background:#fffbe6;border:1px solid #f0c36d;color:#7a5b00;text-align:left;';
+                hinweis.innerHTML = '<strong>⚠️ Das Ergebnis konnte nicht bestätigt werden.</strong><br>' +
+                    'Ihr Test ist bestanden, aber die Übertragung an unseren Server ließ sich nicht verifizieren. ' +
+                    'Bitte senden Sie uns zur Sicherheit eine kurze Mail – dann stellen wir das Zertifikat manuell aus:<br>' +
+                    '<a style="font-weight:bold" href="mailto:info@qm-guru.de?subject=' +
+                    encodeURIComponent('Zertifikat Interner Auditor - Ergebnis nicht übertragen') +
+                    '&body=' + encodeURIComponent(
+                        'Name: ' + data.name + '\nE-Mail: ' + data.email +
+                        '\nErgebnis: ' + data.score + ' von ' + data.totalQuestions + ' (' + data.percentage + '%)' +
+                        '\nZeitpunkt: ' + data.timestamp + '\nAntworten: ' + (data.answers || []).join(',')
+                    ) + '">Ergebnis per E-Mail melden</a>';
+                document.getElementById('resultSuccess').appendChild(hinweis);
+            }
+        }
+
+        // Zertifikat-Request
+        async function sendCertificateRequest(data) {
+            const loading = document.getElementById('loadingIndicator');
+            const submitBtn = document.getElementById('submitBtn');
+
+            loading.classList.add('show');
+            submitBtn.disabled = true;
+
+            let bestaetigt = false;
+
+            // 1. Versuch: echter CORS-Request - hier sehen wir, ob der Server geantwortet hat
+            try {
+                const res = await fetch(WEBAPP_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify(data),
+                    redirect: 'follow'
+                });
+                if(res.ok) bestaetigt = true;
+            } catch(e) {
+                // 2. Versuch: no-cors als Fallback. Antwort ist nicht lesbar,
+                //    ein Netzwerkfehler wirft hier aber weiterhin.
+                try {
+                    await fetch(WEBAPP_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'text/plain' },
+                        body: JSON.stringify(data)
+                    });
+                    bestaetigt = true;
+                } catch(e2) {
+                    bestaetigt = false;
+                }
+            }
+
+            loading.classList.remove('show');
+            showResultScreen(data, bestaetigt);
+        }
+    </script>
+</body>
+</html>
